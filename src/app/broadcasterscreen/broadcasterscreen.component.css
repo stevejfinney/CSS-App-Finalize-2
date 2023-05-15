@@ -1,0 +1,443 @@
+/* ------------------CSS For mat-tab------------------------------- */
+.grid_container {
+  background-color: white;
+  height: 91.3vh;
+  width: 100%;
+  margin-top: -11px;
+}
+
+::ng-deep .mat-tab-list .mat-tab-label {
+  color: khaki;
+  background-color: #000080;
+  font-size: 20px;
+}
+
+::ng-deep .mat-tab-label-active {
+  color: red !important;
+  background-color: #000080;
+}
+
+/* ---------------------------- Current Skater CSS  ---------------------------------------------*/
+
+.current_skater_container {
+  height: 88.5vh;
+}
+.current_skater_container .segment_name {
+  background-color: khaki;
+  color: #000080;
+  width: 85%;
+  display: inline-block;
+  text-align: center;
+  font-size: 150%;
+  margin-bottom: 2px;
+  margin-top: 3px;
+  margin-left: 1%;
+}
+.current_skater_select {
+  background-color: khaki;
+  color: #000080;
+  width: 12%;
+  display: inline-block;
+  text-align: center;
+  font-size: 150%;
+  margin-bottom: 2px;
+  margin-top: 3px;
+  margin-left: 0.5%;
+}
+.current_skater_container .fieldset_devide {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+}
+.h-95 {
+  height: 98%;
+}
+
+/* -------------------------- Current Skater CSS for Top Skater --------------- */
+
+.current_skater_container .w-50 {
+  width: 49%;
+  height: 98%;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 3px;
+}
+.current_skater_container .margin_top {
+  margin-top: 5px;
+}
+
+.current_skater_container .margin_right {
+  margin-right: 5px;
+}
+
+.current_skater_container .top-left {
+  height: 84%;
+}
+
+.bottom-left {
+  height: 14%;
+}
+
+.current_skater_container .right-top {
+  height: 60%;
+}
+
+.right-middle {
+  height: 14%;
+}
+
+.right-bottom {
+  height: 16%;
+}
+
+/* 
+.current_skater_container .top-left-right {
+  height: 64%;
+}
+.current_skater_container .middle-left {
+  height: 19%;
+}
+.current_skater_container .bottom-left-right {
+  height: 16%;
+} */
+
+.current_skater_container .top_skater {
+  background-color: khaki;
+  color: #000080;
+  width: 100%;
+  text-align: center;
+  font-size: 150%;
+}
+.current_skater_container .family_container {
+  height: 95%;
+  background-color: white;
+}
+.current_skater_container .w-49 {
+  width: 48%;
+  height: 98%;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 3px;
+}
+.current_skater_container .element_container {
+  margin-top: 5px;
+  height: 99%;
+  overflow-y: scroll;
+  background-color: #000080;
+}
+.current_skater_container
+  .family_container
+  .element_container::-webkit-scrollbar {
+  display: none;
+}
+.current_skater_container #current_data {
+  width: 100%;
+  background-color: #000080;
+  cursor: pointer;
+}
+
+#current_data .mat-header-cell {
+  color: #000080;
+  font-weight: 500;
+  font-size: 20px;
+  position: sticky;
+  top: 2px;
+  padding: 2px;
+  z-index: 10;
+  bottom: 0px;
+  text-align: center;
+  background: rgb(235, 226, 226);
+  height: 40px !important;
+}
+tr.mat-header-row {
+  height: 0px !important;
+}
+
+#current_data tr.mat-row {
+  height: 40px !important;
+}
+tr.mat-row {
+  height: 0px !important;
+}
+#current_data td.mat-cell {
+  border-bottom: 1px solid white;
+}
+
+.current_skater_container table .mat-cell {
+  color: white;
+  font-weight: 500;
+  font-size: 20px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.current_skater_container .w-48 {
+  width: 49%;
+  height: 99%;
+  margin-left: 3px;
+  margin-right: 3px;
+  margin-top: -0.5px;
+}
+.left_right_top {
+  height: 132px;
+}
+.current_skater_container .pc_container {
+  margin-top: 10px;
+  height: 100%;
+  overflow-y: scroll;
+  background-color: white;
+}
+
+.current_skater_container .pc_container::-webkit-scrollbar {
+  display: none;
+}
+.current_skater_container #pc_data {
+  width: 100%;
+  background-color: rgb(229, 221, 221);
+  cursor: pointer;
+}
+
+#pc_data .mat-header-cell {
+  font-weight: 600;
+  font-size: 20px;
+  position: sticky;
+  top: 2px;
+  padding: 2px;
+  z-index: 10;
+  bottom: 0px;
+  text-align: center;
+  background-color: rgb(235, 226, 226);
+  height: 34px;
+}
+#pc_data tr.mat-row {
+  height: 32px !important;
+}
+
+#pc_data td.mat-cell {
+  border-bottom: 1px solid white;
+  padding: 2px;
+  justify-content: center;
+  text-align: center;
+}
+.current_skater_container #pc_data .mat-cell {
+  background-color: white;
+  font-weight: 500;
+  color: #000080;
+  font-size: 20px;
+  border: 1px solid rgb(219, 214, 214);
+}
+.left_right_bottom {
+  height: 50%;
+}
+/* .bottom-left {
+  height: 30%;
+} */
+.current_skater_container .element_container_bottom {
+  margin-top: 2px;
+  height: 99%;
+  overflow-y: scroll;
+  background-color: white;
+}
+.element_container_bottom::-webkit-scrollbar {
+  display: none;
+}
+.current_skater_container #bottom_table_data {
+  width: 100%;
+  background-color: rgb(229, 221, 221);
+  cursor: pointer;
+}
+#bottom_table_data .mat-header-cell {
+  font-weight: 600;
+  font-size: 20px;
+  position: sticky;
+  top: 2px;
+  padding: 2px;
+  z-index: 10;
+  bottom: 0px;
+  text-align: center;
+  background-color: rgb(235, 226, 226);
+  height: 34px;
+}
+#bottom_table_data tr.mat-row {
+  height: 32px !important;
+}
+
+#bottom_table_data td.mat-cell {
+  border-bottom: 1px solid black;
+  padding: 2px;
+  justify-content: center;
+  text-align: center;
+}
+
+.current_skater_container #bottom_table_data .mat-cell {
+  background-color: white;
+  font-weight: 500;
+  color: #000080;
+  font-size: 20px;
+  border: 1px solid rgb(219, 214, 214);
+}
+
+/* -------------------------- Current Skater CSS for Current Skater - Right side --------------- */
+
+.h-90 {
+  height: 90%;
+}
+
+.current_skater_container .current_skater {
+  background-color: khaki;
+  color: #000080;
+  width: 78%;
+  display: inline-block;
+  text-align: center;
+  font-size: 150%;
+  margin-left: 1%;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.prenex_skater {
+  background-color: rgb(229, 221, 221);
+  color: #000080;
+  width: 5%;
+  height: 6.5%;
+  text-align: center;
+  font-size: 150%;
+  margin-left: 1%;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.prenex_skater1 {
+  background-color: gray;
+  color: #000080;
+  width: 5%;
+  height: 7%;
+  text-align: center;
+  font-size: 150%;
+  margin-left: 1%;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.current_skater_container .h-80 {
+  height: 97%;
+}
+
+.text_error {
+  color: #f45c6b !important;
+}
+
+/* ----------------------------Ranking CSS ---------------------------------------------*/
+
+.ranking_container {
+  height: 85vh;
+}
+
+.ranking_container .segment_name {
+  background-color: khaki;
+  color: #000080;
+  width: 96%;
+  display: block;
+  height: 5%;
+  text-align: center;
+  font-size: 150%;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  margin-left: 2%;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.ranking_container .table_container {
+  height: 97%;
+}
+
+.ranking_container table {
+  width: 96%;
+  background-color: #000080 !important;
+  border-spacing: 0 5px !important;
+  cursor: pointer;
+  margin-top: 5px;
+  margin-left: 2%;
+}
+
+.ranking_container .mat-header-cell {
+  font-weight: 600;
+  font-size: 16px;
+  position: sticky;
+  top: 0px;
+  justify-content: center;
+  text-align: center;
+  z-index: 1;
+  background-color: rgb(235, 226, 226);
+}
+.ranking_container td.mat-cell {
+  padding: 5px 15px;
+  border-bottom: none;
+  text-align: center;
+}
+
+.ranking_container .mat-cell {
+  color: white;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 32px;
+  border-style: 2px solid white;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+::ng-deep .green-snackbar {
+  background: #3f7227;
+  color: #ffffff;
+}
+.bottom_fieldset {
+  position: inherit;
+}
+
+/* ------------------------------------  error message  css ---------------------------------------*/
+
+.error .wrapper {
+  color: #fff;
+  font: normal 100%/1.15 "Merriweather", serif;
+  position: relative;
+  max-width: 1298px;
+  height: 93%;
+  margin: 0 auto 0 auto;
+  background: transparent url("../../assets/wood-fence.png") no-repeat center
+    top 24em;
+}
+
+.error .box {
+  max-width: 70%;
+  min-height: 650px;
+  margin: 0 auto;
+  padding: 1em 1em;
+  text-align: center;
+  background: transparent url("../../assets/dog-family.jpg") no-repeat top 12em
+    center;
+}
+
+.error h1 {
+  margin: 0 0 2rem 0;
+  font-size: 8em;
+  text-shadow: 0 0 6px #8b4d1a;
+}
+
+.error p {
+  margin-bottom: 0.5em;
+  font-size: 1.75em;
+  color: #ea8a1a;
+}
+
+.error p:first-of-type {
+  margin-top: 1.5em;
+  text-shadow: none;
+}
+
+.error p > a {
+  border-bottom: 1px dashed #837256;
+  font-style: italic;
+  text-decoration: none;
+  color: #837256;
+}
+
+.error p > a:hover {
+  text-shadow: 0 0 3px #8b4d1a;
+}
+
+.error p img {
+  vertical-align: bottom;
+}

@@ -1,0 +1,16 @@
+{
+  "name": "jsreport-server",
+  "main": "server.js",
+  "scripts": {
+    "start_report": "node server.js",
+    "jsreport": "jsreport"
+  },
+  "jsreport": {
+    "entryPoint": "server.js"
+  },
+  "dependencies": {
+    "@jsreport/jsreport-cli": "^3.2.3",
+    "@jsreport/nodejs-client": "^3.0.0",
+    "jsreport": "^3.11.2"
+  }
+}

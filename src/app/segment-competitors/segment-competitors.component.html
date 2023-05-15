@@ -1,0 +1,85 @@
+<div id="body-wrapper">
+
+    <h1 i18n>Segment Competitor Management</h1>
+    <div><a routerLink="/category/{{segment[0]?.categoryid}}" i18n>&lt; Back to segment list</a></div>
+    <h2>{{ segment[0]?.languages[language].name }}</h2>
+
+    <div>
+        <mat-card fxFlex="35">
+            <mat-card-content>
+                <mat-toolbar>
+                    <span i18n>Segment Competitors (drag to reorder)</span>
+                </mat-toolbar>
+
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>&nbsp;</th>
+                                <th valign="top" style="border-right:1px solid #eee" i18n>skate<br />order</th>
+                                <th valign="top" style="border-right:1px solid #eee" i18n>group</th>
+                                <th valign="top" style="border-right:1px solid #eee" i18n>warmup<br />group</th>
+                                <th valign="top" style="border-right:1px solid #eee" i18n>name</th>
+                                <th valign="top" i18n>sc#</th>
+                            </tr>
+                        </thead>
+                        <tbody cdkDropList (cdkDropListDropped)="drop($event)">
+                            <tr *ngIf="competitors?.length === 0">
+                                <td colspan="5" i18n>No records</td>
+                            </tr>
+                            <tr *ngFor="let comp of competitors" cdkDrag cdkDragLockAxis="y" class="draggableItem"
+                                id="{{comp.competitorentryid}}">
+                                <td class="col-xs">
+                                    <span class="drag-handle">
+                                        <span class="material-icons">
+                                            drag_handle
+                                        </span>
+                                    </span>
+                                </td>
+                                <td class="col-sm">{{comp.sortorder}}</td>
+                                <td class="col-sm">{{comp.subgroup}}</td>
+                                <td class="col-sm">{{comp.warmupgroup}}</td>
+                                <td class="col-md name">{{comp.sc_name}}</td>
+                                <td class="col-md">{{comp.sc_scnum}}</td>
+                                <td *ngIf="runEventToggle; else segEdit">
+                                    <span style="color:#ddd" i18n>delete</span>
+                                </td>
+                                <ng-template #segEdit>
+                                    <td>
+                                        <a [routerLink]="" (click)="deleteEntry(comp.competitorentryid)" i18n>delete</a>
+                                    </td>
+                                </ng-template>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+                
+            </mat-card-content>
+
+        </mat-card>
+
+        <mat-card fxFlex="35">
+            <mat-card-content>
+
+                <h2 i18n>Start Order Assigments</h2>
+                <button class="mat-flat" mat-flat-button color="primary" (click)="randomStart()" i18n>Random Order</button>
+                &nbsp;&nbsp;&nbsp;
+                <button class="mat-flat" mat-flat-button color="primary" (click)="reverseStart()" i18n>Reverse Order</button>
+                &nbsp;&nbsp;&nbsp;
+                <button class="mat-flat" mat-flat-button color="primary" (click)="prevStart()" i18n>Copy Previous Segment</button>
+                &nbsp;&nbsp;&nbsp;
+                <button class="mat-flat" mat-flat-button color="primary" (click)="prevRankingStart()" i18n>Get Previous By Rank</button>
+                &nbsp;&nbsp;&nbsp;
+                <button class="mat-flat" mat-flat-button color="primary" (click)="pdGroup()" i18n>Assign Pattern Dance Groups</button>
+                &nbsp;&nbsp;&nbsp;
+                <button class="mat-flat" mat-flat-button color="primary" (click)="pdCylceGroup()" i18n>Cycle Pattern Dance Groups</button>
+                &nbsp;&nbsp;&nbsp;
+                <button class="mat-flat" mat-flat-button color="primary" (click)="setWarmupGroups()" i18n>Assign Warmup Groups</button>
+            </mat-card-content>
+        </mat-card>
+
+
+    </div>
+
+</div>

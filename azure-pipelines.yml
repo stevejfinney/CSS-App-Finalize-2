@@ -1,0 +1,211 @@
+# Node.js Express Web App to Linux on Azure
+# Build a Node.js Express app and deploy it to Azure as a Linux web app.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+pr:
+  - main
+
+variables:
+  # Azure Resource Manager connection created during pipeline creation
+  azureSubscription: '49bfa86a-fc41-4453-9125-3f1d4730a69e'
+
+  # Web app name
+  webAppName: 'sc-css'
+
+  # Environment name
+  environmentName: 'sc-css'
+
+  # Agent VM image name
+  vmImageName: 'ubuntu-latest'
+
+stages:
+  - stage: Build
+    displayName: Build stage
+    jobs:
+      - job: Build
+        displayName: Build
+        pool:
+          vmImage: $(vmImageName)
+
+        # Node server setup
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '14.x'
+            displayName: 'Install Node.js'
+
+          # Firewall rule creation to allow ip address of virtual machine
+          - task: PowerShell@2
+            displayName: 'Creating firewall rule'
+            inputs:
+              targetType: 'inline'
+              script: |
+                Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force
+                $secPass = ConvertTo-SecureString -String "wq98Q~t0Yntd_R-YgBWMnzPBpHIq7jnL~X7O1cL." -AsPlainText -Force
+                $pscredential = New-Object -TypeName System.Management.Automation.PSCredential("4881b33b-1d92-4a2a-ad53-befe129cddc7",$secPass)
+                $HostedIPAddress = Invoke-RestMethod http://ipinfo.io/json | Select -exp ip
+                Connect-AzAccount -ServicePrincipal -Credential $pscredential -Tenant "8d0ac5fd-9b51-4d16-ab34-ebdad8f3e554"
+                New-AzSqlServerFirewallRule -ResourceGroupName "CSS2" -ServerName "skatecanadacss" -FirewallRuleName "TestingPipeline" -StartIpAddress $HostedIPAddress -EndIpAddress $HostedIPAddress
+
+          # installing npm packages for production
+          - script: |
+              npm install --production
+            displayName: 'Npm install Production'
+
+          # installing global dependecies for Angular
+          - script: |
+              npm i -g typescript@4.1.5
+              npm install -g @angular/cli@11.2.6
+              npm i -g  @angular/compiler@11.2.7
+              npm i -g @angular/compiler-cli@11.2.7
+              npm i - g @angular-devkit/build-angular@~0.1102.6
+              npm i -g  @angular/core@11.2.7
+              npm i -g  @angular/common@11.2.7
+            displayName: 'Global depedencies for Angular'
+
+          # Creating .env file compatible with production server
+          - task: PowerShell@2
+            inputs:
+              targetType: 'inline'
+              script: |
+                New-Item -Path ".\" -Name ".env.dev" -ItemType "file" -Value "APP_ENV=dev `r`nAPP_PORT=3000 `r`n#CLOUD_API_URL=http://localhost:4000 `r`nCLOUD_API_URL=https://cssdataapi-prod.azurewebsites.net `r`nSECRET_KEY=T3hrGyap^a-3&b3z `r`nCLOUD_API_SECRET=YMD3pBuAERuD `r`nISONLINE=true `r`nAZURE_CLIENT_ID=2c973c1d-63ae-42bc-8e00-97c53461aa3e `r`nAZURE_TENANT_ID=8d0ac5fd-9b51-4d16-ab34-ebdad8f3e554 `r`nAZURE_CLIENT_SECRET=qIo8Q~R1sCxxDq96uHNRx8tDATe5FhjdvGPdXbY2 `r`nAZURE_RESOURCE_GROUP_NAME='CSS2' `r`nAZURE_ACCOUNT_NAME='cssvideosystem' `r`nAZURE_STORAGE_ACCOUNT_NAME='cssvideostreaming' `r`nAZURE_STORAGE_ACCOUNT_ACCESS_KEY='A42UD9FbobViz2klVG5ZJewfVqdRBP9WWfEgs64w2yUC/pTRDLsYwWt3j5jcVckWu9SPlo1GTODBI88S4wpzaw==' `r`nAZURE_SUBSCRIPTION_ID='82d96e18-d0c7-4e26-83f9-cf0b814e18e6' `r`nAZURE_TRANSFORM_NAME='competitionFootage'" -Force
+            displayName: 'Production : env file '
+
+          # creating dist folder for serving static angular app
+          - script: |
+              ng build --prod --localize
+            condition: succeededOrFailed()
+            displayName: 'Npm build'
+
+          # creating a zip file of folder
+          - task: ArchiveFiles@2
+            inputs:
+              rootFolderOrFile: './'
+              includeRootFolder: false
+              archiveType: 'zip'
+              archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+              replaceExistingArchive: true
+            displayName: 'Creating zip file of production folder'
+
+          # installing npm packages for dev dependencies
+          - script: |
+              npm install
+            displayName: 'Npm install'
+
+          # Running automated browser tests
+          - script: |
+              npm run mock_test --if-present
+            condition: succeededOrFailed()
+            displayName: 'Automated browser tests'
+
+          # publishing report in xml file
+          - task: PublishTestResults@2
+            condition: succeededOrFailed()
+            inputs:
+              testResultsFormat: 'JUnit'
+              testResultsFiles: '**/e2e/results/pro_test_result.xml'
+            displayName: 'Publishing xml report for browser tests'
+
+          # Running unit and component level tests for angular
+          - script: |
+              npm run front --if-present
+            condition: succeededOrFailed()
+            displayName: 'Tests for Angular'
+
+          # publishing report in xml file
+          - task: PublishTestResults@2
+            condition: succeededOrFailed()
+            inputs:
+              testResultsFormat: 'JUnit'
+              testResultsFiles: '**/TESTS-*.xml'
+              failTaskOnFailedTests: true
+            displayName: 'Publishing xml file for Angular test'
+
+          # Running tests for node API
+          - script: |
+              npm run test --if-present
+            condition: succeededOrFailed()
+            displayName: 'Test for node Api'
+
+          # publishing report in xml file
+          - task: PublishTestResults@2
+            condition: succeededOrFailed()
+            inputs:
+              testResultsFormat: 'JUnit'
+              testResultsFiles: '**/test-results.xml'
+              failTaskOnFailedTests: true
+            displayName: 'Publishing xml report for api'
+
+          # publishing zip file to artifact
+          - task: PublishBuildArtifacts@1
+            inputs:
+              PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+              ArtifactName: 'drop'
+              publishLocation: 'Container'
+            displayName: 'Preparing artifact for deploy on server'
+
+          # creating env file for local version
+          - task: PowerShell@2
+            inputs:
+              targetType: 'inline'
+              script: |
+                New-Item -Path ".\" -Name ".env.dev" -ItemType "file" -Value "APP_ENV=dev `r`nAPP_PORT=80 `r`n#CLOUD_API_URL=http://localhost:4000 `r`nCLOUD_API_URL=https://cssdataapi-prod.azurewebsites.net `r`nSECRET_KEY=T3hrGyap^a-3&b3z `r`nCLOUD_API_SECRET=YMD3pBuAERuD `r`nISONLINE=false `r`nAZURE_CLIENT_ID=2c973c1d-63ae-42bc-8e00-97c53461aa3e `r`nAZURE_TENANT_ID=8d0ac5fd-9b51-4d16-ab34-ebdad8f3e554 `r`nAZURE_CLIENT_SECRET=qIo8Q~R1sCxxDq96uHNRx8tDATe5FhjdvGPdXbY2 `r`nAZURE_RESOURCE_GROUP_NAME='CSS2' `r`nAZURE_ACCOUNT_NAME='cssvideosystem' `r`nAZURE_STORAGE_ACCOUNT_NAME='cssvideostreaming' `r`nAZURE_STORAGE_ACCOUNT_ACCESS_KEY='A42UD9FbobViz2klVG5ZJewfVqdRBP9WWfEgs64w2yUC/pTRDLsYwWt3j5jcVckWu9SPlo1GTODBI88S4wpzaw==' `r`nAZURE_SUBSCRIPTION_ID='82d96e18-d0c7-4e26-83f9-cf0b814e18e6' `r`nAZURE_TRANSFORM_NAME='competitionFootage'" -Force
+            displayName: 'Local: env file '
+
+          # generating Exe file of project
+          - script: |
+              npm run target_file
+              npm run exe_create
+            displayName: 'Creating exe file'
+
+          # Creating zip file generated exe file
+          - task: ArchiveFiles@2
+            inputs:
+              rootFolderOrFile: './css-win.exe'
+              includeRootFolder: false
+              archiveType: 'zip'
+              archiveFile: '$(Build.ArtifactStagingDirectory)/local.zip'
+              replaceExistingArchive: true
+            displayName: 'Making zip file of exe file'
+
+          # pushing zip file to artifact
+          - task: PublishBuildArtifacts@1
+            inputs:
+              PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+              ArtifactName: 'drop'
+              publishLocation: 'Container'
+            displayName: 'Putting zip file to artifact'
+
+          # Removing firewall rule which was created before
+          - task: PowerShell@2
+            condition: succeededOrFailed()
+            displayName: 'Removing firewall rule'
+            inputs:
+              targetType: 'inline'
+              script: |
+                Remove-AzSqlServerFirewallRule -FirewallRuleName "TestingPipeline" -ResourceGroupName "CSS2" -ServerName "skatecanadacss"
+
+  - stage: Deploy
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+    displayName: Deploy stage
+    dependsOn: Build
+    jobs:
+      - deployment: Deploy
+        displayName: Deploy
+        environment: $(environmentName)
+        pool:
+          vmImage: $(vmImageName)
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - task: AzureWebApp@1
+                  displayName: 'Azure Web App Deploy: sc-css'
+                  inputs:
+                    azureSubscription: $(azureSubscription)
+                    appType: webAppLinux
+                    appName: $(webAppName)
+                    runtimeStack: 'NODE|16-lts'
+                    package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
+                    startUpCommand: 'npm run start:production'

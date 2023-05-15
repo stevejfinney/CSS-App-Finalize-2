@@ -1,0 +1,126 @@
+/* CSS for program component dialog box */
+.judgescreen_programcomponents mat-card {
+  background-color: #000080;
+}
+.judgescreen_programcomponents .fieldset_devide {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 5px;
+}
+.judgescreen_programcomponents legend {
+  color: red;
+  font-size: 20px;
+  font-weight: 500px;
+}
+.judgescreen_programcomponents .top_bottom_margin {
+  margin-left: 20px;
+  padding: 5px;
+}
+.judgescreen_programcomponents .top_bottom_margin1 {
+  padding: 5px;
+}
+.judgescreen_programcomponents .mat-button {
+  display: inline-block;
+  color: black;
+  width: 50%;
+  height: 50%;
+  margin-left: 30px;
+  background-color: yellow;
+  align-items: center;
+}
+
+.judgescreen_programcomponents .w-30 {
+  width: 10%;
+  background-color: khaki;
+  font-weight: 600;
+  font-size: 20px;
+  color: blue !important;
+  margin-right: 30px;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.judgescreen_programcomponents .w-70 {
+  width: 70%;
+  line-height: 27px;
+  background-color: khaki;
+  font-weight: 600;
+  font-size: 20px;
+  color: blue !important;
+  margin-right: 30px;
+  text-align: center;
+  margin-top: 10px;
+}
+.judgescreen_programcomponents .w-50 {
+  width: 50%;
+}
+.judgescreen_programcomponents .w-40 {
+  width: 40%;
+}
+.judgescreen_programcomponents .w-100 {
+  width: 100%;
+}
+.judgescreen_programcomponents .w-25 {
+  width: 20%;
+  font-size: 20px;
+  margin-left: 10px;
+}
+.judgescreen_programcomponents .w-15 {
+  margin-top: 10px;
+  width: 25%;
+  border-radius: 2px solid black;
+  padding: 5px;
+}
+
+::ng-deep.cdk-global-overlay-wrapper {
+  justify-content: end !important;
+}
+
+.judgescreen_programcomponents .competitor_input_type2 {
+  background-color: #ffffc0;
+  width: 60px;
+  color: #000080;
+  height: 35px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 20px;
+}
+.judgescreen_programcomponents .button_value {
+  width: 100%;
+  justify-content: space-evenly;
+  height: 35px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 10px;
+  color: #000080;
+  border-radius: 10px solid black;
+}
+.judgescreen_programcomponents .decimal_click {
+  margin-left: 12px;
+  width: 100%;
+  justify-content: space-evenly;
+  height: 40px;
+  font-weight: bold;
+  font-size: 20px;
+  color: #000080;
+}
+
+.judgescreen_programcomponents .submit {
+  background-color: khaki;
+  margin-top: 20px;
+  width: auto;
+  padding: 3px 15px;
+  font-size: 20px;
+  font-weight: 500px;
+  border-radius: 30px;
+}
+.judgescreen_programcomponents .w-80 {
+  width: 100%;
+  margin-right: 5px;
+  display: flex;
+  justify-content: end;
+}
+.judgescreen_programcomponents .highlight,
+.judgescreen_programcomponents .highlight1 {
+  background: skyblue;
+}

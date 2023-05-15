@@ -1,0 +1,126 @@
+/* CSS for panel violation dialog box */
+.referee_violation .mat-card {
+  background-color: #000080;
+  height: 92%;
+  overflow-y: scroll;
+}
+
+
+.referee_violation .mat-card ::-webkit-scrollbar { 
+  display: none; 
+}
+
+.referee_violation legend {
+  color: red;
+  font-size: 20px;
+  font-weight: 500px;
+}
+.referee_violation .w-50 {
+  width: 50%;
+  text-align: center;
+}
+.referee_violation .top_bottom_margin {
+  margin-left: 5px;
+  padding: 5px;
+  margin-top: 5px;
+}
+.referee_violation .fieldset_devide {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 5px;
+}
+.referee_violation .w-30 {
+  width: 40%;
+  background-color: khaki;
+  font-weight: 600;
+  font-size: 20px;
+  color: blue !important;
+  margin-right: 20px;
+  text-align: center;
+  margin-top: 10px;
+  padding-top: 20px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  height: 45px;
+  border-radius: 5px solid black;
+  margin-right: 30px;
+  text-align: center;
+  justify-content: center;
+}
+
+.referee_violation .w-15 {
+  width: 40%;
+  background-color: khaki;
+  font-weight: 600;
+  font-size: 20px;
+  margin-top: 10px;
+  color: blue !important;
+  height: 65px;
+  align-items: center;
+  vertical-align: middle;
+}
+.referee_violation .w-50 {
+  width: 50%;
+}
+.referee_violation .w-5 {
+  width: 5%;
+  text-align: center;
+}
+
+::ng-deep.cdk-global-overlay-wrapper {
+  justify-content: end !important;
+}
+.referee_violation .mat-option {
+  background-color: khaki;
+}
+.referee_violation .w-80 {
+  margin-right: 5px;
+  display: flex;
+  justify-content: end;
+}
+.referee_violation .submit {
+  background-color: khaki;
+  margin-top: 30px;
+  width: auto;
+  padding: 3px 15px;
+  font-size: 20px;
+  font-weight: 500px;
+  border-radius: 30px;
+}
+.referee_violation .sp_action_container{
+  text-align: center;
+  margin: 10px 0px;
+  height:240px;
+  overflow-y: scroll;
+  
+}
+.referee_violation .button_score{
+  background-color:#d9cf75;
+  width:7%;
+  height:45px;
+  color:#211200;
+  margin-top: 10px;
+}
+.referee_violation .top_bottom_margin
+{
+  margin: 4px 0px;
+}
+.referee_violation .bonus_title
+{
+  background-color: #e0e0e0;
+  padding: 0px auto;
+  font-weight: 590;
+  width: 100px;
+  font-size: 14px;
+  color: #211200 !important ; 
+}
+.referee_violation .competitor_input_type2{
+  background-color: khaki;
+  width: 60px;
+  color: #000080;
+  font-weight: bold;
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 10px;
+
+}

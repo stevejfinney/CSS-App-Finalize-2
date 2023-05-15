@@ -1,0 +1,71 @@
+<meta charset="UTF-8" />
+
+<style>
+    {#asset /reportStyle.css @encoding=utf8}
+</style>
+
+<div class="report-box">
+ <div style="height: 19%;">
+           <table  class="infoHeader" cellpadding="0" cellspacing="0">
+        <tr class="top">
+            <td width="50%">
+                <img class="event-logo" src="{{asset "/sclogo.png" "dataURI"}}" style="margin-right:20px;" />
+                {{#if logoDataURI}} <!-- Check first if a logo on the internet was supplied -->
+                    <img class="event-logo" src="{{logoDataURI}}" />
+                {{/if}}
+            </td>
+               <td width="50%" style="vertical-align:middle top:0px;">
+                <div class="detail-box">
+                    {{eventenname}}<br />
+                    {{eventlocation}}<br />
+                    {{formatDate startdate}} - {{formatDate enddate}}</br>
+                    <span>{{discenname}} - Report Card </span></br>
+                    {{defenname}}
+                    {{discenname}}
+                    <br />
+                    {{catenname}}
+                    {{segenname}}
+                </div>
+            </td> 
+        </tr>
+        </table>
+    </div>
+    <hr style="color: #000000; background-color: #000000; height: 2px; border: none;">
+    
+    <div style="height: 68%;">
+      <div class="assessment-section">
+        <div class="block-title">ELEMENT ASSESSMENT</div>
+        <div class="assessment-details">
+           BLOCK SILVER
+        </div>
+        <div class="assessment-details">
+            BLOCK SILVER
+        </div>
+        <div class="assessment-details">
+            BLOCK SILVER
+        </div>
+    </div>
+
+    <div class="assessment-section">
+        <div class="block-title">PROGRAM COMPONENT ASSESSMENT</div>
+        <div class="assessment-details">
+           SKATING SKILLS - GOLD
+        </div>
+        <div class="assessment-details">
+         SKATING SKILLS - GOLD
+        </div>
+    </div>
+
+    <div class="assessment-section">
+        <div class="block-title">OVERALL ASSESSMENT</div>
+        <div class="assessment-details">
+            <div class="overall-title">CompetitorName</div>
+            <button class="overall-assessment">GOLD</button>
+        </div>
+    </div>
+      
+    </div>
+
+     {{#if revised}}<span class="revised">{{localize "revised" "/langs"}}</span> - {{/if}}{{timeStamp}}
+    <span class="endOfReport">-- {{localize "endOfReport" "/langs"}} --</span>
+</div>

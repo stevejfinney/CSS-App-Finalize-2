@@ -1,0 +1,95 @@
+<p>
+    <mat-toolbar color="primary">
+        <!--button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+            <mat-icon>menu</mat-icon>
+        </button-->
+
+        <span *ngIf="(OnlineStatus$ | async) as OnlineStatus">
+            <span *ngIf="OnlineStatus == 'offline'">
+                OFFLINE&nbsp;
+            </span>
+        </span>
+        <span *ngIf="(OnlineStatus$ | async) as OnlineStatus">
+            <span *ngIf="OnlineStatus == 'online'">
+                ONLINE&nbsp;
+            </span>
+        </span>
+
+        <span i18n>CSS</span>
+        <span class="example-spacer"></span>
+        
+        <span *ngIf="(OnlineStatus$ | async) as OnlineStatus">
+            <span *ngIf="OnlineStatus == 'online'">
+                <span class="mat-item">
+                    <button mat-button [routerLink]='["/dashboard"]' *ngIf="isLoggedIn" i18n>Dashboard</button>
+                </span>
+            </span>
+
+            <span *ngIf="OnlineStatus == 'offline'">
+                <span class="mat-item">
+                    <button mat-button [routerLink]='["/dashboard"]' i18n>Dashboard</button>
+                </span>
+            </span>
+        </span>
+        
+        <span *ngIf="(OnlineStatus$ | async) as OnlineStatus">
+            <span *ngIf="OnlineStatus == 'offline'">
+                <span class="mat-item">
+                    <button mat-button [routerLink]='["/admin"]' i18n>DB Admin</button>
+                </span>
+            </span>
+        </span>
+        
+        <span *ngIf="(OnlineStatus$ | async) as OnlineStatus">
+            <span *ngIf="OnlineStatus == 'online'">
+                <span class="mat-item">
+                    <button mat-button [routerLink]='["/event"]' *ngIf="isLoggedIn" i18n>Event Management</button>
+                </span>
+            </span>
+
+            <span *ngIf="OnlineStatus == 'offline'">
+                <span class="mat-item">
+                    <button mat-button [routerLink]='["/event"]' i18n>Event Management</button>
+                </span>
+            </span>
+        </span>
+        
+
+        <span class="mat-item" *ngIf="isLoggedIn">
+            <button mat-button *ngIf="(UserName$ | async) as UserName">{{UserName | uppercase}}
+                <mat-icon>person</mat-icon>
+            </button>
+        </span>
+
+       
+        <span class="mat-item" *ngIf="isLoggedIn">
+            <button mat-button (click)="onLogout()" i18n>Logout
+                <mat-icon>logout</mat-icon>
+            </button>
+        </span>
+
+        <span class="mat-item" *ngIf="!isLoggedIn">
+            <button mat-button [routerLink]='["/login"]' i18n>Login
+                <mat-icon>login</mat-icon>
+            </button>
+        </span>
+
+        <span class="spacer"></span>
+        <ng-container>
+            <mat-icon>
+                language
+            </mat-icon>
+            <button mat-button [matMenuTriggerFor]="menu">
+                {{siteLanguage}}
+                <mat-icon>arrow_drop_down</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <a mat-menu-item href="{{url_en}}">English</a>
+                <a mat-menu-item href="{{url_fr}}">Français</a>
+               
+            </mat-menu>
+        </ng-container>
+
+
+    </mat-toolbar>
+</p>

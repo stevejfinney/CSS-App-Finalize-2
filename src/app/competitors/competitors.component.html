@@ -1,0 +1,105 @@
+<div id="body-wrapper">
+
+    <h1 i18n>Competitor Management</h1>
+    <div><a routerLink="/category/{{categoryid}}" i18n>&lt; Back to segment list</a></div>
+    <h2>{{ category[0]?.languages[language].progname }} {{ category[0]?.languages[language].discname }} {{
+        category[0]?.languages[language].catdefname }}
+        <span *ngIf="category[0]?.startdate"><br />({{ category[0]?.startdate | date:'longDate' }} - {{
+            category[0]?.enddate | date:'longDate' }})</span>
+    </h2>
+
+    <div>
+        <mat-card fxFlex="35">
+            <mat-card-content>
+                <h2 i18n>Current Competitors (delete at segment level)</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th i18n>SC#</th>
+                            <th i18n>Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngIf="competitors?.length === 0">
+                            <td colspan="2" i18n>No records</td>
+                        </tr>
+                        <tr *ngFor="let comp of competitors">
+                            <td class="col-sm">{{comp.sc_scnum}}</td>
+                            <td class="col-md">{{comp.sc_name}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <div style="display:none;">
+        <mat-card fxFlex="35">
+            <mat-card-content>
+                <mat-toolbar>
+                    <span i18n>Add Competitor</span>
+                </mat-toolbar>
+
+                <form (ngSubmit)="addCompetitorToCategory()" name="competitorForm" [formGroup]="competitorForm">
+
+                    <div style="display:block;">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label i18n>Category ID</mat-label>
+                            <input formControlName="categoryid" matInput readonly />
+                        </mat-form-field>
+                    </div>
+
+                    <div style="display:block;">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label i18n>Competitor ID</mat-label>
+                            <input formControlName="competitorid" matInput readonly />
+                        </mat-form-field>
+                    </div>
+
+                    <button type="submit" class="mat-flat" mat-flat-button color="primary" i18n>Submit Changes</button>
+
+                </form>
+
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <div>
+        <mat-card fxFlex="35">
+            <mat-card-content>
+
+                <mat-form-field>
+                    <mat-icon matPrefix>search</mat-icon>
+                    <input matInput placeholder="Search by Full Name or SC#" autocomplete="off" #reference>
+                    <mat-icon matSuffix (click)="reference.value=''">cancel</mat-icon>
+                </mat-form-field>
+                <button type="submit" class="mat-flat" [class.spinner]="loading" [disabled]="loading" mat-flat-button
+                    color="primary" (click)="applyFilter(reference.value)" i18n>Search Competitors</button>
+
+                <mat-table [dataSource]="dataSource">
+
+                    <ng-container matColumnDef="new_teamid">
+                        <mat-header-cell *matHeaderCellDef i18n>SC#</mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.new_teamid}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="sc_scnum">
+                        <mat-header-cell *matHeaderCellDef i18n>SC#</mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.sc_scnum}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="sc_name">
+                        <mat-header-cell *matHeaderCellDef i18n>Name</mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.sc_name}} </mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+                    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="getRecord(row)"></mat-row>
+
+                </mat-table>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+</div>

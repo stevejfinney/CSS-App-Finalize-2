@@ -1,0 +1,60 @@
+<meta charset="UTF-8" />
+
+<style>
+    {#asset /reportStyle.css @encoding=utf8}
+</style>
+
+<div class="report-box">
+    <table class="infoHeader" cellpadding="0" cellspacing="0">
+        <tr class="top">
+            <td width="33%">
+                <img class="event-logo" src="{{asset "/sclogo.png" "dataURI"}}" style="margin-right:20px;" />
+                {{#if logoDataURI}} <!-- Check first if a logo on the internet was supplied -->
+                    <img class="event-logo" src="{{logoDataURI}}" />
+                {{/if}}
+            </td>
+            <td width="33%" style="text-align:center;">
+               {{defenname}}
+                {{discenname}}
+                <br />
+                {{catenname}}
+                {{segenname}}              
+            
+                <h1>{{localize "startingOrderReportTitle" "/langs"}}</h1>
+                {{#if revised}}<span class="revised">{{localize "revised" "/langs"}}</span> - {{/if}}{{timeStamp}}
+            </td>
+            <td width="33%" style="vertical-align:middle;">
+                <div class="detail-box">
+                    <strong>{{eventenname}}</strong><br />
+                    {{eventlocation}}<br />
+                    {{formatDate startdate}} - {{formatDate enddate}}
+                </div>
+            </td>     
+        </tr>
+    </table>
+    <table class="list" cellpadding="0" cellspacing="0">
+        <thead>
+            <tr><td><div class="header-space"></div></td></tr>
+            <tr class="heading">
+                <td>#</td>
+                <td>{{localize "competitorName" "/langs"}}</td>
+                <td>{{localize "section" "/langs"}}</td>
+        </thead>
+        <tbody>
+            {{#each competitors}}
+            <tr class="item">
+                <td>
+                    {{sortorder}}
+                </td>
+                <td>
+                    {{sc_name}}
+                </td>
+                <td>
+                    {{sc_club}}
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <span class="endOfReport">-- {{localize "endOfReport" "/langs"}} --</span>
+</div>

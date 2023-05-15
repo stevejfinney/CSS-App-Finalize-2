@@ -1,0 +1,953 @@
+<div class="grid_container" *ngIf="user_access==true">
+
+    <mat-tab-group mat-stretch-tabs dynamicHeight #tabRef>
+
+        <!-- Current Skater Tab -->
+        <mat-tab class="mat-tab-labels" label="Current Skater">
+
+            <div class="current_skater_container">
+
+                <button *ngIf="on_join_data.hasOwnProperty('segmentid')" mat-raised-button class="segment_name">{{
+                    on_join_data["segmentid"]["categoryid"]["definitionid"]["sc_name"]}} -
+                    {{on_join_data["segmentid"]["definitionid"]["sc_name"]}}</button>
+
+
+                <button class="current_skater_select" mat-raised-button (click)="current_skater()">Current
+                    Skater</button>
+
+                <div class="fieldset_devide h-95">
+
+                    <div class="w-50">
+
+                        <div style="height:95%;">
+
+                            <fieldset class="margin_top margin_right h-95">
+
+                                <div class="top-left">
+
+                                    <div style="height: 98%;">
+
+                                        <button mat-raised-button class="top_skater">Top - Skater</button>
+
+                                        <div class="family_container">
+
+                                            <div class="fieldset_devide">
+
+                                                <div class="w-49">
+
+                                                    <div class="element_container">
+
+                                                        <table id="current_data" mat-table
+                                                            [dataSource]="TopSkaterDataSource">
+
+                                                            <tr class="mat-row" *matNoDataRow>
+
+                                                                <td class="mat-cell" colspan="9999" i18n>
+
+                                                                    No data Available
+                                                                </td>
+
+                                                            </tr>
+
+
+                                                            <ng-container matColumnDef="element">
+                                                                <th mat-header-cell *matHeaderCellDef i18n>Code</th>
+                                                                <td mat-cell *matCellDef="let element">
+                                                                    {{element.element}}
+                                                                </td>
+                                                            </ng-container>
+
+                                                            <ng-container matColumnDef="base">
+                                                                <th mat-header-cell *matHeaderCellDef i18n> Base </th>
+                                                                <td mat-cell *matCellDef="let element"> {{element.base}}
+                                                                </td>
+                                                            </ng-container>
+
+
+                                                            <ng-container matColumnDef="GOE">
+                                                                <th mat-header-cell *matHeaderCellDef i18n> GOE </th>
+                                                                <td mat-cell *matCellDef="let element"> {{element.GOE}}
+                                                                </td>
+                                                            </ng-container>
+
+
+                                                            <ng-container matColumnDef="score">
+                                                                <th mat-header-cell *matHeaderCellDef i18n> Score </th>
+                                                                <td mat-cell *matCellDef="let element">
+                                                                    {{element.score}}
+                                                                </td>
+                                                            </ng-container>
+
+
+                                                            <tr mat-header-row
+                                                                *matHeaderRowDef="TopSkaterdisplayedColumns"></tr>
+
+                                                            <tr mat-row
+                                                                *matRowDef="let row; columns: TopSkaterdisplayedColumns;">
+                                                            </tr>
+
+                                                        </table>
+
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="w-48">
+
+                                                    <div class="left_right_top">
+
+                                                        <div class="pc_container">
+
+                                                            <table id="pc_data" mat-table [dataSource]="PCdatasource">
+
+                                                                <tr class="mat-row" *matNoDataRow>
+
+                                                                    <td class="mat-cell" colspan="9999" i18n>
+
+                                                                        No data Available
+                                                                    </td>
+
+                                                                </tr>
+
+                                                                <ng-container matColumnDef="pc_name">
+                                                                    <th mat-header-cell *matHeaderCellDef i18n>
+                                                                        Name
+                                                                    </th>
+                                                                    <td mat-cell *matCellDef="let element">
+                                                                        {{element.pc_name}} </td>
+                                                                </ng-container>
+
+                                                                <ng-container matColumnDef="pc_value">
+                                                                    <th mat-header-cell *matHeaderCellDef i18n>
+                                                                        Value
+                                                                    </th>
+                                                                    <td mat-cell *matCellDef="let element">
+                                                                        {{element.pc_value}} </td>
+                                                                </ng-container>
+
+                                                                <tr mat-header-row
+                                                                    *matHeaderRowDef="PCdisplayedColumns">
+                                                                </tr>
+
+                                                                <tr mat-row
+                                                                    *matRowDef="let row; columns: PCdisplayedColumns;">
+                                                                </tr>
+
+                                                            </table>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="left_right_bottom">
+
+
+                                                        <!-- SCore summary  -->
+
+
+                                                        <div style="height: 95%; padding: 5px;">
+
+                                                            <div style="height: 48%; padding: 2px;text-align: center;">
+                                                                <div style=" display: flex;
+                                                        			justify-content: center;
+                                                        			align-items: center;
+                                                        			height: 100%">
+                                                                    <div>
+                                                                        <div>
+                                                                            <span
+                                                                                style="font-size: 13px;color:#000080;font-weight: 500;">
+                                                                                POS.</span>
+                                                                        </div>
+                                                                        <div>
+                                                                            <button mat-button
+                                                                                style="background-color: #e0e0e0; min-width: auto;color:#211200; line-height: 28px;">12</button>&nbsp;
+                                                                        </div>
+
+                                                                    </div>&nbsp;
+
+                                                                    <div>
+                                                                        <div>
+                                                                            <span
+                                                                                style="font-size: 13px;color:#000080;font-weight: 500;">
+                                                                                TES</span>
+                                                                        </div>
+                                                                        <div>
+                                                                            <button mat-button
+                                                                                style="background-color: #e0e0e0; min-width: auto;color:#211200; line-height: 28px;">12.08</button>&nbsp;
+                                                                        </div>
+
+                                                                    </div>&nbsp;
+
+                                                                    <div>
+                                                                        <div>
+                                                                            <span
+                                                                                style="font-size: 13px;color:#000080;font-weight: 500;">
+                                                                                PCS</span>
+                                                                        </div>
+                                                                        <div>
+                                                                            <button mat-button
+                                                                                style="background-color: #e0e0e0; min-width: auto;color:#211200; line-height: 28px;">12.08</button>&nbsp;
+                                                                        </div>
+
+                                                                    </div>&nbsp;
+
+                                                                    <div>
+                                                                        <div>
+                                                                            <span
+                                                                                style="font-size: 13px;color:#000080;font-weight: 500;">
+                                                                                Seg. Score</span>
+                                                                        </div>
+                                                                        <div>
+                                                                            <button mat-button
+                                                                                style="background-color: #e0e0e0; min-width: auto;color:#211200; line-height: 28px;">12.08</button>&nbsp;
+                                                                        </div>
+
+                                                                    </div>
+
+
+                                                                </div>
+                                                            </div>
+                                                            <div style="height: 48%;padding: 2px;text-align: center;">
+                                                                <div style=" display: flex;
+                                                        			justify-content: center;
+                                                        			align-items: center;
+                                                        			height: 100%">
+                                                                    <div>
+                                                                        <div>
+                                                                            <span
+                                                                                style="font-size: 13px;color:#000080;font-weight: 500;">
+                                                                                Rank</span>
+                                                                        </div>
+                                                                        <div>
+                                                                            <button mat-button
+                                                                                style="background-color: #e0e0e0; min-width: auto;color:#211200; line-height: 28px;">12</button>&nbsp;
+                                                                        </div>
+
+                                                                    </div>&nbsp;
+
+                                                                    <div>
+                                                                        <div>
+                                                                            <span
+                                                                                style="font-size: 13px;color:#000080;font-weight: 500;">
+                                                                                Cat. Score</span>
+                                                                        </div>
+                                                                        <div>
+                                                                            <button mat-button
+                                                                                style="background-color: #e0e0e0; min-width: auto;color:#211200; line-height: 28px;">12.08</button>&nbsp;
+                                                                        </div>
+
+                                                                    </div>&nbsp;
+
+                                                                    <div>
+                                                                        <div>
+                                                                            <span
+                                                                                style="font-size: 13px;color:#000080;font-weight: 500;">
+                                                                                Done </span>
+                                                                        </div>
+                                                                        <div>
+                                                                            <button mat-button
+                                                                                style="background-color: #e0e0e0; min-width: auto;color:#211200; line-height: 28px;">Yes</button>&nbsp;
+                                                                        </div>
+
+                                                                    </div>&nbsp;
+
+                                                                    <div>
+                                                                        <div>
+                                                                            <span
+                                                                                style="font-size: 13px;color:#000080;font-weight: 500;">
+                                                                                No. </span>
+                                                                        </div>
+                                                                        <div>
+                                                                            <button mat-button
+                                                                                style="background-color: #e0e0e0; min-width: auto;color:#211200; line-height: 28px;">12</button>&nbsp;
+                                                                        </div>
+
+                                                                    </div>&nbsp;
+
+                                                                    <div>
+                                                                        <div>
+                                                                            <span
+                                                                                style="font-size: 13px;color:#000080;font-weight: 500;">
+                                                                                Sub. </span>
+                                                                        </div>
+                                                                        <div>
+                                                                            <button mat-button
+                                                                                style="background-color: #e0e0e0; min-width: auto;color:#211200; line-height: 28px;">12</button>&nbsp;
+                                                                        </div>
+
+                                                                    </div>&nbsp;
+
+
+
+                                                                </div>
+                                                            </div>
+
+
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+
+
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                                <!-- <div class="middle-left" style="background-color: #211200;">
+                                    <monitor_official_summary></monitor_official_summary>
+                                </div> -->
+
+                                <div class="bottom-left">
+
+                                    <div class="element_container_bottom">
+
+                                        <table id="bottom_table_data" mat-table
+                                            [dataSource]="CategoryRankingdatasource">
+
+                                            <tr class="mat-row" *matNoDataRow>
+
+                                                <td class="mat-cell" colspan="9999" i18n>
+
+                                                    No data Available
+                                                </td>
+
+                                            </tr>
+
+                                            <ng-container matColumnDef="number">
+                                                <th mat-header-cell *matHeaderCellDef i18n>No.</th>
+                                                <td mat-cell *matCellDef="let element"> {{element.number}}
+                                                </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="skater_name">
+                                                <th mat-header-cell *matHeaderCellDef i18n>Name</th>
+                                                <td mat-cell *matCellDef="let element">
+                                                    {{element.skater_name}}
+                                                </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="segment_1">
+                                                <th mat-header-cell *matHeaderCellDef i18n>Seg.</th>
+                                                <td mat-cell *matCellDef="let element">
+                                                    {{element.segment_1}}
+                                                </td>
+                                            </ng-container>
+                                            <ng-container matColumnDef="segment1">
+                                                <th mat-header-cell *matHeaderCellDef i18n>#1</th>
+                                                <td mat-cell *matCellDef="let element">
+                                                    {{element.segment1}}
+                                                </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="segment_2">
+                                                <th mat-header-cell *matHeaderCellDef i18n>Seg.</th>
+                                                <td mat-cell *matCellDef="let element">
+                                                    {{element.segment_2}}
+                                                </td>
+                                            </ng-container>
+                                            <ng-container matColumnDef="segment2">
+                                                <th mat-header-cell *matHeaderCellDef i18n>#2</th>
+                                                <td mat-cell *matCellDef="let element">
+                                                    {{element.segment2}}
+                                                </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="current">
+                                                <th mat-header-cell *matHeaderCellDef i18n>Current</th>
+                                                <td mat-cell *matCellDef="let element">
+                                                    {{element.current}}
+                                                </td>
+                                            </ng-container>
+
+                                            <tr mat-header-row *matHeaderRowDef="CategoryRankingdisplayedColumns"></tr>
+
+                                            <tr mat-row *matRowDef="let row; columns: CategoryRankingdisplayedColumns;">
+                                            </tr>
+
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+
+
+                    </div>
+
+                    <div class="w-50">
+
+                        <div style="height:95%;">
+
+                            <fieldset class="margin_top margin_right h-95">
+
+                                <div class="top-left-right">
+
+                                    <div style="height: 98%;">
+
+                                        <button *ngIf=" on_join_data.hasOwnProperty('segmentid')" mat-raised-button
+                                            (click)="prevButtonClick()" [disabled]="current_skater_index == 1"
+                                            class="prenex_skater">
+                                            <mat-icon>arrow_back</mat-icon>
+                                        </button>
+                                        <button mat-raised-button class="current_skater">
+                                            <div *ngIf=" current_skater_data.hasOwnProperty('skater_data')">
+                                                {{current_skater_data["skater_data"]["sc_name"]}}
+                                            </div>
+                                            <div *ngIf=" !current_skater_data.hasOwnProperty('skater_data')">
+                                                No Skater Loaded..</div>
+                                        </button>
+
+                                        <button *ngIf=" on_join_data.hasOwnProperty('segmentid')" mat-raised-button
+                                            (click)="nextButtonClick()"
+                                            [disabled]="current_skater_index ==  on_join_data['segmentid']['competitors'].length"
+                                            class="prenex_skater">
+
+                                            <mat-icon>arrow_forward</mat-icon>
+                                        </button>
+
+                                        <div class="family_container">
+
+                                            <div class="fieldset_devide">
+
+
+                                                <div class="w-49">
+
+                                                    <div class="element_container">
+
+                                                        <table id="current_data" mat-table
+                                                            [dataSource]="CurrentSkaterDataSource">
+
+                                                            <tr class="mat-row" *matNoDataRow>
+
+                                                                <td class="mat-cell" colspan="9999" i18n>
+
+                                                                    No data Available
+                                                                </td>
+
+                                                            </tr>
+
+
+                                                            <ng-container matColumnDef="element">
+                                                                <th mat-header-cell *matHeaderCellDef i18n>Code</th>
+                                                                <td mat-cell *matCellDef="let element">
+                                                                    {{element.element}}
+                                                                </td>
+                                                            </ng-container>
+
+                                                            <ng-container matColumnDef="base">
+                                                                <th mat-header-cell *matHeaderCellDef i18n> Base </th>
+                                                                <td mat-cell *matCellDef="let element"> {{element.base}}
+                                                                </td>
+                                                            </ng-container>
+
+
+                                                            <ng-container matColumnDef="GOE">
+                                                                <th mat-header-cell *matHeaderCellDef i18n> GOE </th>
+                                                                <td mat-cell *matCellDef="let element"> {{element.GOE}}
+                                                                </td>
+                                                            </ng-container>
+
+
+                                                            <ng-container matColumnDef="score">
+                                                                <th mat-header-cell *matHeaderCellDef i18n> Score </th>
+                                                                <td mat-cell *matCellDef="let element">
+                                                                    {{element.score}}
+                                                                </td>
+                                                            </ng-container>
+
+
+                                                            <tr mat-header-row
+                                                                *matHeaderRowDef="CurrentSkaterdisplayedColumns">
+                                                            </tr>
+
+                                                            <tr mat-row
+                                                                *matRowDef="let row; columns: CurrentSkaterdisplayedColumns;">
+                                                            </tr>
+
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="w-48">
+
+                                                    <div class="left_right_top">
+
+                                                        <div class="pc_container">
+
+                                                            <table id="pc_data" mat-table [dataSource]="PCdatasource">
+
+                                                                <tr class="mat-row" *matNoDataRow>
+
+                                                                    <td class="mat-cell" colspan="9999" i18n>
+
+                                                                        No data Available
+                                                                    </td>
+
+                                                                </tr>
+
+                                                                <ng-container matColumnDef="pc_name">
+                                                                    <th mat-header-cell *matHeaderCellDef i18n>
+                                                                        Name
+                                                                    </th>
+                                                                    <td mat-cell *matCellDef="let element">
+                                                                        {{element.pc_name}} </td>
+                                                                </ng-container>
+
+                                                                <ng-container matColumnDef="pc_value">
+                                                                    <th mat-header-cell *matHeaderCellDef i18n>
+                                                                        Value
+                                                                    </th>
+                                                                    <td mat-cell *matCellDef="let element">
+                                                                        {{element.pc_value}} </td>
+                                                                </ng-container>
+
+                                                                <tr mat-header-row
+                                                                    *matHeaderRowDef="PCdisplayedColumns">
+                                                                </tr>
+
+                                                                <tr mat-row
+                                                                    *matRowDef="let row; columns: PCdisplayedColumns;">
+                                                                </tr>
+
+                                                            </table>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- <fieldset class="bottom_fieldset"> -->
+                                                    <div class="left_right_bottom">
+
+                                                        <div style="height: 95%; padding: 5px;">
+
+                                                            <div style="height: 32%; padding: 2px;text-align: center;">
+                                                                <div style=" display: flex;
+                                                        			justify-content: center;
+                                                        			align-items: center;
+                                                        			height: 100%">
+                                                                    <div>
+                                                                        <div>
+                                                                            <span
+                                                                                style="font-size: 13px;color:#000080;font-weight: 500;">
+                                                                                POS.</span>
+                                                                        </div>
+                                                                        <div>
+                                                                            <button mat-button
+                                                                                style="background-color: #e0e0e0; min-width: auto;color:#211200; line-height: 28px;">12</button>&nbsp;
+                                                                        </div>
+
+                                                                    </div>&nbsp;
+
+                                                                    <div>
+                                                                        <div>
+                                                                            <span
+                                                                                style="font-size: 13px;color:#000080;font-weight: 500;">
+                                                                                TES</span>
+                                                                        </div>
+                                                                        <div>
+                                                                            <button mat-button
+                                                                                style="background-color: #e0e0e0; min-width: auto;color:#211200; line-height: 28px;">12.08</button>&nbsp;
+                                                                        </div>
+
+                                                                    </div>&nbsp;
+
+                                                                    <div>
+                                                                        <div>
+                                                                            <span
+                                                                                style="font-size: 13px;color:#000080;font-weight: 500;">
+                                                                                PCS</span>
+                                                                        </div>
+                                                                        <div>
+                                                                            <button mat-button
+                                                                                style="background-color: #e0e0e0; min-width: auto;color:#211200; line-height: 28px;">12.08</button>&nbsp;
+                                                                        </div>
+
+                                                                    </div>&nbsp;
+
+                                                                    <div>
+                                                                        <div>
+                                                                            <span
+                                                                                style="font-size: 13px;color:#000080;font-weight: 500;">
+                                                                                Seg. Score</span>
+                                                                        </div>
+                                                                        <div>
+                                                                            <button mat-button
+                                                                                style="background-color: #e0e0e0; min-width: auto;color:#211200; line-height: 28px;">12.08</button>&nbsp;
+                                                                        </div>
+
+                                                                    </div>
+
+
+                                                                </div>
+                                                            </div>
+                                                            <div style="height: 32%;padding: 2px;text-align: center;">
+                                                                <div style=" display: flex;
+                                                        			justify-content: center;
+                                                        			align-items: center;
+                                                        			height: 100%">
+                                                                    <div>
+                                                                        <div>
+                                                                            <span
+                                                                                style="font-size: 13px;color:#000080;font-weight: 500;">
+                                                                                Rank</span>
+                                                                        </div>
+                                                                        <div>
+                                                                            <button mat-button
+                                                                                style="background-color: #e0e0e0; min-width: auto;color:#211200; line-height: 28px;">12</button>&nbsp;
+                                                                        </div>
+
+                                                                    </div>&nbsp;
+
+                                                                    <div>
+                                                                        <div>
+                                                                            <span
+                                                                                style="font-size: 13px;color:#000080;font-weight: 500;">
+                                                                                Cat. Score</span>
+                                                                        </div>
+                                                                        <div>
+                                                                            <button mat-button
+                                                                                style="background-color: #e0e0e0; min-width: auto;color:#211200; line-height: 28px;">12.08</button>&nbsp;
+                                                                        </div>
+
+                                                                    </div>&nbsp;
+
+                                                                    <div>
+                                                                        <div>
+                                                                            <span
+                                                                                style="font-size: 13px;color:#000080;font-weight: 500;">
+                                                                                Done </span>
+                                                                        </div>
+                                                                        <div>
+                                                                            <button mat-button
+                                                                                style="background-color: #e0e0e0; min-width: auto;color:#211200; line-height: 28px;">Yes</button>&nbsp;
+                                                                        </div>
+
+                                                                    </div>&nbsp;
+
+                                                                    <div>
+                                                                        <div>
+                                                                            <span
+                                                                                style="font-size: 13px;color:#000080;font-weight: 500;">
+                                                                                No. </span>
+                                                                        </div>
+                                                                        <div>
+                                                                            <button mat-button
+                                                                                style="background-color: #e0e0e0; min-width: auto;color:#211200; line-height: 28px;">12</button>&nbsp;
+                                                                        </div>
+
+                                                                    </div>&nbsp;
+
+                                                                    <div>
+                                                                        <div>
+                                                                            <span
+                                                                                style="font-size: 13px;color:#000080;font-weight: 500;">
+                                                                                Sub. </span>
+                                                                        </div>
+                                                                        <div>
+                                                                            <button mat-button
+                                                                                style="background-color: #e0e0e0; min-width: auto;color:#211200; line-height: 28px;">12</button>&nbsp;
+                                                                        </div>
+
+                                                                    </div>&nbsp;
+
+
+
+                                                                </div>
+                                                            </div>
+                                                            <!-- <div style="height: 33%;padding: 2px;text-align: center;">
+                                                                <div style=" display: flex;
+                                                        			justify-content: center;
+                                                        			align-items: center;
+                                                        			height: 100%">
+                                                                    <div>
+                                                                        <div>
+                                                                            <span
+                                                                                style="font-size: 13px;color:#000080;font-weight: 500;">
+                                                                                Point-1 </span>
+                                                                        </div>
+                                                                        <div>
+                                                                            <button mat-button
+                                                                                style="background-color: #e0e0e0; min-width: auto;color:#211200; line-height: 28px;">200.00</button>&nbsp;
+                                                                        </div>
+
+                                                                    </div>&nbsp;
+
+                                                                    <div>
+                                                                        <div>
+                                                                            <span
+                                                                                style="font-size: 13px;color:#000080;font-weight: 500;">
+                                                                                Point-2</span>
+                                                                        </div>
+                                                                        <div>
+                                                                            <button mat-button
+                                                                                style="background-color: #e0e0e0; min-width: auto;color:#211200; line-height: 28px;">100.22</button>&nbsp;
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                    <div>
+                                                                        <div>
+                                                                            <span
+                                                                                style="font-size: 13px;color:#000080;font-weight: 500;">
+                                                                                Point-3 </span>
+                                                                        </div>
+                                                                        <div>
+                                                                            <button mat-button
+                                                                                style="background-color: #e0e0e0; min-width: auto;color:#211200; line-height: 28px;">120.23</button>&nbsp;
+                                                                        </div>
+
+                                                                    </div>
+
+
+
+
+                                                                </div>
+                                                            </div> -->
+
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="middle-left" style="background-color: #211200;">
+                                    <monitor_official_summary></monitor_official_summary>
+                                </div>
+
+
+
+                                <div class="bottom-left-right">
+
+                                    <div class="element_container_bottom">
+
+                                        <table id="bottom_table_data" mat-table [dataSource]="SegmentRankingdatasource">
+
+                                            <tr class="mat-row" *matNoDataRow>
+
+                                                <td class="mat-cell" colspan="9999" i18n>
+
+                                                    No data Available
+                                                </td>
+
+                                            </tr>
+
+                                            <ng-container matColumnDef="number">
+                                                <th mat-header-cell *matHeaderCellDef i18n>No.</th>
+                                                <td mat-cell *matCellDef="let element">
+                                                    {{ element.number }}
+                                                </td>
+                                            </ng-container>
+                                            <ng-container matColumnDef="name">
+                                                <th mat-header-cell *matHeaderCellDef i18n>Name</th>
+                                                <td mat-cell *matCellDef="let element">
+                                                    {{ element.name }}
+                                                </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="TECS">
+                                                <th mat-header-cell *matHeaderCellDef i18n>TECS</th>
+                                                <td mat-cell *matCellDef="let element">
+                                                    {{ element.TECS }}
+                                                </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="PCS">
+                                                <th mat-header-cell *matHeaderCellDef i18n>PCS</th>
+                                                <td mat-cell *matCellDef="let element">{{ element.PCS }}</td>
+                                            </ng-container>
+
+
+                                            <tr mat-header-row *matHeaderRowDef="SegmentRankingdisplayedColumns"></tr>
+                                            <tr mat-row *matRowDef="let row; columns: SegmentRankingdisplayedColumns">
+                                            </tr>
+
+
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </mat-tab>
+
+
+        <!-- Ranking Tab -->
+        <mat-tab class="mat-tab-labels" label=" Category Ranking">
+
+            <div class="ranking_container">
+
+                <!-- <button *ngIf="on_join_data.hasOwnProperty('segmentid')" mat-raised-button class="segment_name">{{
+                    on_join_data["segmentid"]["categoryid"]["definitionid"]["sc_name"]}} -
+                    {{on_join_data["segmentid"]["definitionid"]["sc_name"]}}</button> -->
+
+                <button mat-raised-button class="segment_name">Free Program</button>
+
+                <div class="table_container">
+                    <div class="element_container">
+                        <table id="element_table" matSort mat-table [dataSource]="CategoryRankingdatasource"
+                            #TableOneSort="matSort">
+
+                            <tr class="mat-row" *matNoDataRow>
+
+                                <td class="mat-cell" colspan="9999" i18n>
+
+                                    No data Available
+                                </td>
+
+                            </tr>
+                            <ng-container matColumnDef="number">
+                                <th mat-header-cell *matHeaderCellDef i18n>No.</th>
+                                <td mat-cell *matCellDef="let element"> {{element.number}}
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="skater_name">
+                                <th mat-header-cell *matHeaderCellDef i18n>Name</th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{element.skater_name}}
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="segment_1">
+                                <th mat-header-cell *matHeaderCellDef i18n>Seg.</th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{element.segment_1}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="segment1">
+                                <th mat-header-cell *matHeaderCellDef i18n>#1</th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{element.segment_1}}
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="segment_2">
+                                <th mat-header-cell *matHeaderCellDef i18n>Seg.</th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{element.segment_2}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="segment2">
+                                <th mat-header-cell *matHeaderCellDef i18n>#2</th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{element.segment_2}}
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="current">
+                                <th mat-header-cell *matHeaderCellDef i18n>Current</th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{element.current}}
+                                </td>
+                            </ng-container>
+
+                            <tr mat-header-row *matHeaderRowDef="CategoryRankingdisplayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: CategoryRankingdisplayedColumns"></tr>
+                        </table>
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+        </mat-tab>
+
+        <!-- Segment Ranking Tab -->
+        <mat-tab class="mat-tab-labels" label="Segment Ranking">
+
+            <div class="ranking_container">
+                <!-- 
+                <button *ngIf="on_join_data.hasOwnProperty('segmentid')" mat-raised-button class="segment_name">{{
+                    on_join_data["segmentid"]["categoryid"]["definitionid"]["sc_name"]}} -
+                    {{on_join_data["segmentid"]["definitionid"]["sc_name"]}}</button> -->
+
+                <button mat-raised-button class="segment_name">Free program</button>
+
+                <div class="table_container">
+                    <div class="element_container">
+                        <table id="element_table" matSort mat-table [dataSource]="SegmentRankingdatasource"
+                            #TableOneSort="matSort">
+
+                            <tr class="mat-row" *matNoDataRow>
+
+                                <td class="mat-cell" colspan="9999" i18n>
+
+                                    No data Available
+                                </td>
+
+                            </tr>
+                            <ng-container matColumnDef="number">
+                                <th mat-header-cell *matHeaderCellDef i18n>No.</th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{ element.number }}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="name">
+                                <th mat-header-cell *matHeaderCellDef i18n>Name</th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{ element.name }}
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="TECS">
+                                <th mat-header-cell *matHeaderCellDef i18n>TECS</th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{ element.TECS }}
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="PCS">
+                                <th mat-header-cell *matHeaderCellDef i18n>PCS</th>
+                                <td mat-cell *matCellDef="let element">{{ element.PCS }}</td>
+                            </ng-container>
+
+
+                            <tr mat-header-row *matHeaderRowDef="SegmentRankingdisplayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: SegmentRankingdisplayedColumns"></tr>
+                        </table>
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+        </mat-tab>
+
+    </mat-tab-group>
+</div>
+
+<!-- Error Message Page  -->
+<div class="grid-container" *ngIf="user_access==false"
+    style="background: #fff url('assets/texture.jpg') repeat 0 0;margin-top: -15px;;">
+    <div class="error">
+        <div class="wrapper">
+            <div class="box">
+                <p>Sorry, Event is not started!</p>
+                <p><a href="/dashboard">Please, go back this way.</a></p>
+            </div>
+        </div>
+
+    </div>
+
+</div>

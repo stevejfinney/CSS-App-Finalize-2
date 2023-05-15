@@ -1,0 +1,529 @@
+<div class="grid_container" *ngIf="user_access==true">
+
+    <mat-tab-group mat-stretch-tabs dynamicHeight #tabRef>
+
+        <!-- Welcome Tab -->
+        <mat-tab class="mat-tab-labels" label="Welcome">
+
+            <div class="welcome_container">
+                <h1>Ladies and Gentlemen, Welcome.</h1>
+                <h1>Mesdames et messieurs, bienvenue.</h1>
+                <p>This event is the&nbsp; <span *ngIf="on_join_data.hasOwnProperty('segmentid')"> {{
+                        on_join_data["segmentid"]["categoryid"]["definitionid"]["sc_name"]}} -
+                        {{on_join_data["segmentid"]["definitionid"]["sc_name"]}}</span>
+                </p>
+                <p class="french_name">Nous commencerons la competition</p>
+
+            </div>
+
+        </mat-tab>
+
+
+        <!-- official Tab -->
+        <mat-tab class="mat-tab-labels" label="Officials">
+
+            <div class="official_container">
+                <button *ngIf="on_join_data.hasOwnProperty('segmentid')" mat-raised-button class="segment_name">{{
+                    on_join_data["segmentid"]["categoryid"]["definitionid"]["sc_name"]}} -
+                    {{on_join_data["segmentid"]["definitionid"]["sc_name"]}}</button>
+                <button mat-raised-button class="segment_name">The
+                    officials for this event are/ les officiels
+                    sontles
+                    suivants</button>
+
+                <div class="table_container">
+                    <div class="element_container">
+                        <table id="element_table" matSort mat-table [dataSource]="dataSourceOfficial"
+                            #TableOneSort="matSort">
+
+                            <tr class="mat-row" *matNoDataRow>
+
+                                <td class="mat-cell" colspan="9999" i18n>
+
+                                    No data Available
+                                </td>
+
+                            </tr>
+
+                            <ng-container matColumnDef="number">
+                                <th mat-header-cell *matHeaderCellDef i18n>No.</th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{ element.number }}
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="official_role">
+                                <th mat-header-cell *matHeaderCellDef i18n>Official_Role</th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{ element.official_role }}
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="name">
+                                <th mat-header-cell *matHeaderCellDef i18n>Name</th>
+                                <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+                            </ng-container>
+
+                            <tr mat-header-row *matHeaderRowDef="displayedColumnsOfficial"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumnsOfficial"></tr>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+        </mat-tab>
+
+        <!-- Group Tab -->
+        <mat-tab class="mat-tab-labels" label="Group">
+
+            <div class="group_container">
+
+                <button *ngIf="on_join_data.hasOwnProperty('segmentid')" mat-raised-button class="segment_name">{{
+                    on_join_data["segmentid"]["categoryid"]["definitionid"]["sc_name"]}} -
+                    {{on_join_data["segmentid"]["definitionid"]["sc_name"]}}</button>
+
+                <div class="fieldset_divider">
+
+                    <div class="w-20">
+                        <div class="table_container">
+                            <div class="element_container">
+                                <table id="element_table" mat-table matSort [dataSource]="dataSourceGroup"
+                                    #TableTwoSort="matSort">
+
+                                    <ng-container matColumnDef="group_name">
+                                        <th mat-header-cell *matHeaderCellDef i18n>Group Data</th>
+                                        <td mat-cell *matCellDef="let element" [ngClass]="{
+                                            border: element.group_competitors.includes(live_skater_data['competitorentryid']) == true
+                                          }">
+                                            Group {{ element.group_name }}
+                                        </td>
+                                    </ng-container>
+
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumnsGroup"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: displayedColumnsGroup"
+                                        (click)="group_click(row)" [ngClass]="{
+                                            highlight: selectedIndex == row.group_name
+                                                }"></tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-60">
+                        <div class="table_container">
+                            <div class="element_container">
+                                <table id="element_table" mat-table matSort [dataSource]="dataSourceGroupDescription"
+                                    #TableTwoSort="matSort">
+                                    <ng-container matColumnDef="number">
+                                        <th mat-header-cell *matHeaderCellDef i18n> No.</th>
+                                        <td mat-cell *matCellDef="let element" [ngClass]="{
+                                            border: element.competitorentryid == live_skater_data['competitorentryid']
+                                          }">
+                                            {{ element.number }}
+                                        </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="Province_name">
+                                        <th mat-header-cell *matHeaderCellDef i18n>Province Name</th>
+                                        <td mat-cell *matCellDef="let element" [ngClass]="{
+                                            border: element.competitorentryid == live_skater_data['competitorentryid']
+                                          }">
+                                            {{element.Province_name == null ? '---' : element.Province_name}}
+
+                                        </td>
+
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="competitor_name">
+                                        <th mat-header-cell *matHeaderCellDef i18n>Competitior Name</th>
+                                        <td mat-cell *matCellDef="let element" [ngClass]="{
+                                            border: element.competitorentryid == live_skater_data['competitorentryid']
+                                          }">
+                                            {{element.competitor_name == null ? '---' : element.competitor_name}}
+                                        </td>
+                                    </ng-container>
+
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumnsGroupDescription"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: displayedColumnsGroupDescription">
+                                    </tr>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </mat-tab>
+
+        <!-- Call to Ice Tab -->
+        <mat-tab class="mat-tab-labels" label="Call to Ice">
+
+            <div class="calltoice_container">
+
+                <div class="fieldset_divider">
+                    <div class="w-22">
+
+
+                        <button mat-raised-button class="segment_name"
+                            *ngIf=" skater_data.hasOwnProperty('skater_data')">{{skater_data["skater_data"]["sc_name"]}}</button>
+                        <button mat-raised-button class="segment_name"
+                            *ngIf=" !skater_data.hasOwnProperty('skater_data')">No Skater Loaded..</button>
+
+
+                        <div class="table_container">
+                            <div class="element_container">
+                                <table id="element_table" matSort mat-table [dataSource]="dataSourceCallToIce"
+                                    #TableOneSort="matSort">
+                                    <ng-container matColumnDef="number">
+                                        <th mat-header-cell *matHeaderCellDef i18n> No. </th>
+                                        <td mat-cell *matCellDef="let element" [ngClass]="{
+                                            border: element['competitor_entry'] == live_skater_data['competitorentryid']
+                                          }">
+
+                                            {{ element.number }}
+                                        </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="status">
+                                        <th mat-header-cell *matHeaderCellDef i18n>Status</th>
+                                        <td mat-cell *matCellDef="let element" [ngClass]="{
+                                            border: element['competitor_entry'] == live_skater_data['competitorentryid']
+                                          }">
+                                            {{element.status == null ? '---' : element.status}}
+
+                                        </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="competitor_name">
+                                        <th mat-header-cell *matHeaderCellDef i18n>Competitor Name</th>
+                                        <td mat-cell *matCellDef="let element" [ngClass]="{
+                                            border: element['competitor_entry'] == live_skater_data['competitorentryid']
+                                          }">
+                                            {{element.competitor_name == null ? '---' : element.competitor_name}}
+
+                                        </td>
+                                    </ng-container>
+
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumnsCallToIce"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: displayedColumnsCallToIce" [ngClass]="{
+                                            highlight: row['active'] == true
+                                          }"></tr>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-80">
+                        <button *ngIf=" on_join_data.hasOwnProperty('segmentid')" mat-raised-button
+                            (click)="prevButtonClick()"
+                            [ngClass]="{prenex_skater: current_skater_index != 1, prenex_skater1: current_skater_index == 1}"
+                            [disabled]="current_skater_index == 1">
+                            <mat-icon>arrow_back</mat-icon>
+                        </button>
+                        <button class="segment_name1" mat-raised-button (click)="current_skater()">Current
+                            Skater</button>
+
+                        <button *ngIf=" on_join_data.hasOwnProperty('segmentid')" mat-raised-button
+                            (click)="nextButtonClick()"
+                            [ngClass]="{prenex_skater: current_skater_index !=  on_join_data['segmentid']['competitors'].length, prenex_skater1: current_skater_index ==  on_join_data['segmentid']['competitors'].length}"
+                            [disabled]="current_skater_index ==  on_join_data['segmentid']['competitors'].length"
+                            class="prenex_skater">
+                            <mat-icon>arrow_forward</mat-icon>
+                        </button>
+
+
+                        <fieldset>
+                            <legend style="color:red;">Call To Ice</legend>
+                            <h1 style="text-align: center;">On the Ice&nbsp;/&nbsp;Representing </h1>
+                            <br>
+                            <span>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;</span>
+                            <button *ngIf=" skater_data.hasOwnProperty('skater_data')" mat-raised-button
+                                class="segment_name">{{skater_data['skater_data']['sc_name']}}</button>
+                            <button *ngIf=" !skater_data.hasOwnProperty('skater_data')" mat-raised-button
+                                class="segment_name">No Skater Data</button>
+
+                            <br>
+                            <span style="font-size: 20px; font-weight: bolder;">From</span>
+                            <button *ngIf=" skater_data.hasOwnProperty('skater_data')" mat-raised-button
+                                class="segment_name">
+                                {{skater_data['skater_data']['sc_club'] == null ? '---' :
+                                skater_data['skater_data']['sc_club']}}
+
+                            </button>
+                            <button *ngIf=" !skater_data.hasOwnProperty('skater_data')" mat-raised-button
+                                class="segment_name">No Skater Data</button>
+                            <br>
+                            <span>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;</span>
+                            <button *ngIf=" skater_data.hasOwnProperty('skater_data')" mat-raised-button
+                                class="segment_name">
+                                {{skater_data['skater_data']['sc_section'] == null ? '---' :
+                                skater_data['skater_data']['sc_section']}}
+
+                            </button>
+                            <button *ngIf=" !skater_data.hasOwnProperty('skater_data')" mat-raised-button
+                                class="segment_name">No Skater Data</button>
+
+                        </fieldset>
+                        <br>
+                        <br>
+                        <br><br>
+
+                        <fieldset>
+                            <legend style="color:red;">Appel à la glace</legend>
+                            <h1 style="text-align: center;">Sur la glace&nbsp;/&nbsp;Représenter </h1>
+                            <br>
+                            <span>&nbsp; &nbsp;&nbsp;</span>
+                            <button *ngIf=" skater_data.hasOwnProperty('skater_data')" mat-raised-button
+                                class="segment_name">{{skater_data['skater_data']['sc_name']}}</button>
+                            <button *ngIf=" !skater_data.hasOwnProperty('skater_data')" mat-raised-button
+                                class="segment_name">Pas de patineur
+                                Données</button>
+
+                            <br>
+                            <span style="font-size: 20px; font-weight: bolder;">De</span>
+                            <button *ngIf=" skater_data.hasOwnProperty('skater_data')" mat-raised-button
+                                class="segment_name">
+
+                                {{skater_data['skater_data']['sc_club'] == null ? '---' :
+                                skater_data['skater_data']['sc_club']}}
+
+                            </button>
+                            <button *ngIf=" !skater_data.hasOwnProperty('skater_data')" mat-raised-button
+                                class="segment_name">Pas de patineur
+                                Données</button>
+                            <br>
+                            <span>&nbsp; &nbsp;&nbsp;&nbsp;</span>
+                            <button *ngIf=" skater_data.hasOwnProperty('skater_data')" mat-raised-button
+                                class="segment_name">
+                                {{skater_data['skater_data']['sc_section'] == null ? '---' :
+                                skater_data['skater_data']['sc_section']}}
+
+                            </button>
+                            <button *ngIf=" !skater_data.hasOwnProperty('skater_data')" mat-raised-button
+                                class="segment_name">Pas de patineur
+                                Données</button>
+
+                        </fieldset>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </mat-tab>
+
+        <!-- Score Tab -->
+        <mat-tab class="mat-tab-labels" label="Score">
+
+            <div class="score_container">
+
+                <button *ngIf="on_join_data.hasOwnProperty('segmentid')" mat-raised-button class="segment_name">{{
+                    on_join_data["segmentid"]["categoryid"]["definitionid"]["sc_name"]}} -
+                    {{on_join_data["segmentid"]["definitionid"]["sc_name"]}}</button>
+
+                <fieldset>
+                    <legend style="color:red;">English</legend>
+                    <span>The Scores for &nbsp;</span>
+                    <button *ngIf=" !skater_data.hasOwnProperty('skater_data')" mat-raised-button
+                        class="score_button">No Data</button>
+                    <button *ngIf=" skater_data.hasOwnProperty('skater_data')" mat-raised-button
+                        class="score_button">{{skater_data['skater_data']['sc_name']}}</button>
+
+
+                    <span> &nbsp;From&nbsp;</span>
+
+
+                    <button *ngIf=" !skater_data.hasOwnProperty('skater_data')" mat-raised-button
+                        class="score_button">No Data</button>
+                    <button *ngIf="skater_data.hasOwnProperty('skater_data')" mat-raised-button class="score_button">
+                        {{skater_data['skater_data']['sc_section'] == null ? '---' :
+                        skater_data['skater_data']['sc_section']}}
+
+                    </button>
+
+                    <span>&nbsp;They/he/she have earned&nbsp;</span>
+
+
+                    <button *ngIf=" !skater_data.hasOwnProperty('skater_data')" mat-raised-button
+                        class="score_button">No Data</button>
+
+                    <button *ngIf=" skater_data.hasOwnProperty('skater_data')" mat-raised-button class="score_button">
+                        {{skater_data['score'] == null ? '---' : skater_data['score']}}
+
+                    </button>
+
+
+                    <span>&nbsp; Points. The total competition score is&nbsp; </span>
+
+
+                    <button mat-raised-button class="score_button">
+                        {{skater_data['category_score'] == null ? '---' : skater_data['category_score']}}
+
+                    </button>
+
+
+                    <span>&nbsp;Which puts them/him/her in&nbsp; </span>
+
+                    <button *ngIf=" !skater_data.hasOwnProperty('skater_data')" mat-raised-button
+                        class="score_button">No Data
+                    </button>
+
+                    <button *ngIf=" skater_data.hasOwnProperty('skater_data')" mat-raised-button class="score_button">
+                        {{skater_data['rank'] == null ? '---' : skater_data['rank']}}
+
+                    </button>
+
+                    <span>&nbsp;Place.&nbsp;</span>
+                </fieldset>
+                <br>
+                <br>
+                <br><br>
+
+
+                <fieldset>
+                    <legend style="color:red;">French</legend>
+                    <span>Les partitions pour &nbsp;</span>
+                    <button *ngIf=" !skater_data.hasOwnProperty('skater_data')" mat-raised-button
+                        class="score_button">Pas de données</button>
+                    <button *ngIf=" skater_data.hasOwnProperty('skater_data')" mat-raised-button
+                        class="score_button">{{skater_data['skater_data']['sc_name']}}</button>
+
+
+                    <span> &nbsp;De&nbsp;</span>
+
+
+                    <button *ngIf=" !skater_data.hasOwnProperty('skater_data')" mat-raised-button
+                        class="score_button">Pas de données</button>
+                    <button *ngIf="skater_data.hasOwnProperty('skater_data')" mat-raised-button class="score_button">
+                        {{skater_data['skater_data']['sc_section'] == null ? '---' :
+                        skater_data['skater_data']['sc_section']}}
+
+                    </button>
+
+                    <span>&nbsp;Ils / il / elle ont gagné&nbsp;</span>
+
+
+                    <button *ngIf=" !skater_data.hasOwnProperty('skater_data')" mat-raised-button
+                        class="score_button">Pas de données</button>
+
+                    <button *ngIf=" skater_data.hasOwnProperty('skater_data')" mat-raised-button class="score_button">
+                        {{skater_data['score'] == null ? '---' : skater_data['score']}}
+
+                    </button>
+
+
+                    <span>&nbsp; Points. Le score total de la compétition est&nbsp; </span>
+
+
+                    <button mat-raised-button class="score_button">
+                        {{skater_data['category_score'] == null ? '---' : skater_data['category_score']}}
+                    </button>
+
+
+                    <span>&nbsp;Ce qui les met dans&nbsp; </span>
+
+                    <button *ngIf=" !skater_data.hasOwnProperty('skater_data')" mat-raised-button
+                        class="score_button">Pas de données
+                    </button>
+
+                    <button *ngIf=" skater_data.hasOwnProperty('skater_data')" mat-raised-button class="score_button">
+                        {{skater_data['rank'] == null ? '---' : skater_data['rank']}}
+                    </button>
+
+                    <span>&nbsp;Place.&nbsp;</span>
+                </fieldset>
+
+            </div>
+
+        </mat-tab>
+
+        <!-- Ranking Tab -->
+        <mat-tab class="mat-tab-labels" label="Ranking">
+
+            <div class="ranking_container">
+
+                <button *ngIf="on_join_data.hasOwnProperty('segmentid')" mat-raised-button class="segment_name">{{
+                    on_join_data["segmentid"]["categoryid"]["definitionid"]["sc_name"]}} -
+                    {{on_join_data["segmentid"]["definitionid"]["sc_name"]}}</button>
+
+                <div class="table_container">
+                    <div class="element_container">
+                        <table id="element_table" matSort mat-table [dataSource]="dataSourceRanking"
+                            #TableOneSort="matSort">
+                            <ng-container matColumnDef="number">
+                                <th mat-header-cell *matHeaderCellDef i18n>Rank</th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{ element.number }}
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="competitor_name">
+                                <th mat-header-cell *matHeaderCellDef i18n>Competitor_Name</th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{ element.competitor_name }}
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="club">
+                                <th mat-header-cell *matHeaderCellDef i18n>Club</th>
+                                <td mat-cell *matCellDef="let element">
+
+                                    {{element.type == null ? '---' : element.type}}
+
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="province_name">
+                                <th mat-header-cell *matHeaderCellDef i18n>Province_Name</th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{element.province_name == null ? '---' : element.province_name}}
+
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="rank">
+                                <th mat-header-cell *matHeaderCellDef i18n>Cat. Score</th>
+                                <td mat-cell *matCellDef="let element"><span *ngIf="element.rank!=null">{{
+                                        element.rank}}</span>
+                                    <span *ngIf="element.rank==null">--</span>
+                                </td>
+                            </ng-container>
+
+                            <tr mat-header-row *matHeaderRowDef="displayedColumnsRanking"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumnsRanking"></tr>
+                        </table>
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+        </mat-tab>
+
+    </mat-tab-group>
+
+</div>
+
+<!-- Error Message Page  -->
+<div class="grid-container" *ngIf="user_access==false"
+    style="background: #fff url('assets/texture.jpg') repeat 0 0;margin-top: -15px;;">
+    <div class="error">
+        <div class="wrapper">
+            <div class="box">
+                <p>Sorry, Event is not started!</p>
+                <p><a href="/dashboard">Please, go back this way.</a></p>
+            </div>
+        </div>
+
+    </div>
+
+</div>

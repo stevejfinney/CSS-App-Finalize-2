@@ -1,0 +1,28 @@
+{
+    "name": "reportcard",
+    "engine": "handlebars",
+    "recipe": "chrome-pdf",
+    "shortid": "sYA3pdIAP",
+    "chrome": {
+        "printBackground": true,
+        "landscape": true,
+        "marginTop": "1cm",
+        "marginBottom": "2cm",
+        "marginRight": "1cm",
+        "marginLeft": "1cm"
+    },
+    "data": {
+        "shortid": "Hb-LkHJo8"
+    },
+    "creationDate": {
+        "$$date": 1681761694494
+    },
+    "modificationDate": {
+        "$$date": 1681762606843
+    },
+    "_id": "CwcdWsuQNAcgLo5W",
+    "$entitySet": "templates",
+    "localization": {
+        "language": "en"
+    }
+}

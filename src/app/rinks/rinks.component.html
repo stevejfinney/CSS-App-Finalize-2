@@ -1,0 +1,94 @@
+<h1 i18n>Rink Management</h1>
+<div>
+    <mat-card fxFlex="35">
+        <mat-card-content>
+            <mat-toolbar>
+                <span i18n>Rinks</span>
+            </mat-toolbar>
+
+            <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th i18n>name</th><th i18n>id</th><th i18n>feed</th><th>Injest URL</th><th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngIf= "rinks?.length === 0"><td colspan="5" i18n>No records</td></tr>
+                        <tr *ngFor="let rink of rinks">
+                            <td class="col-md">{{rink.name}}</td>
+                            <td class="col-md">{{rink.rinkid}}</td>
+                            <td class="col-md">{{rink.videofeed == 1 ? 'Y' : 'N'}}</td>
+                            <td class="col-md">
+                                <button *ngIf="rink.injest_url != null" (click)="copy_url(rink.injest_url)">
+                                    
+                                      Copy URL
+                                  </button>
+                                  <div *ngIf="rink.injest_url == null"> --- </div>
+
+                            </td>
+                            <td class="col-md">
+                                <a [routerLink]="" (click)="editRink(rink.rinkid)"  i18n>edit</a> | 
+                                <a [routerLink]="" (click)="deleteRink(rink.rinkid,eventid)"  [ngClass]="{link_disable: rink.islive == 1 || (processsing_rink_ids.includes(rink.rinkid) == true && (delete_rink == true || loadingSpinner == true )),spinner:delete_rink == true && processsing_rink_ids.includes(rink.rinkid) == true }" i18n>delete</a> 
+                                <div style="display:inline-block" [ngClass]="{hide:rink.videofeed == 0}" > |
+                                    <a [routerLink]="" (click)="start_event(rink)"  [ngClass]="{link_disable:rink.islive == 1 || loadingSpinner == true || processsing_rink_ids.includes(rink.rinkid) == true,spinner:loadingSpinner == true && (rink.islive == 0 || rink.islive == null) && processsing_rink_ids.includes(rink.rinkid) == true}" i18n>start</a> | 
+                                    <a [routerLink]="" (click)="end_event(rink)" [ngClass]="{link_disable:rink.islive == 0 || rink.islive == null || loadingSpinner == true || processsing_rink_ids.includes(rink.rinkid) == true,spinner:loadingSpinner == true && rink.islive == 1 && processsing_rink_ids.includes(rink.rinkid) == true}" i18n>end</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </mat-card-content>
+
+    </mat-card>
+    
+    
+</div>
+
+<div>
+    <mat-card fxFlex="35">
+        <mat-card-content>
+            <mat-toolbar>
+                <span i18n>Add / Edit Rink</span>
+            </mat-toolbar>
+
+            <form (ngSubmit)="updateRink()" name="rinkForm" [formGroup]="rinkForm">
+    
+                <div style="display:none;">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Rink ID</mat-label>
+                        <input formControlName="rinkid" matInput readonly />
+                    </mat-form-field>
+                </div>
+
+                <div style="display:none;">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Event ID</mat-label>
+                        <input formControlName="eventid" matInput readonly />
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label i18n>Rink Name</mat-label>
+                        <input formControlName="name" matInput required />
+                        <mat-error *ngIf="!rinkForm.controls['name'].valid" i18n>
+                            Please type a rink name
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div style="display:block;">
+                    <mat-checkbox [checked]="videofeedChecked" name="videofeed" matInput (change)="onChangeFeed($event)">Video feed at rink?</mat-checkbox>
+                </div>
+
+                <button type="submit" class="mat-flat" [disabled]="loadingSpinner || create_rink" [ngClass]="{spinner1:create_rink == true }"  mat-flat-button color="primary"  i18n>Submit Changes</button>
+
+            </form>
+        </mat-card-content>
+
+    </mat-card>
+
+</div>

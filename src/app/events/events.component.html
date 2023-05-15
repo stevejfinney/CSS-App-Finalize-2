@@ -1,0 +1,121 @@
+<div id="body-wrapper">
+
+    <h1 i18n>Event Management</h1>
+    <div>
+        <mat-card fxFlex="35">
+            <mat-card-content>
+                <mat-toolbar>
+                    <span i18n>Events List</span>
+                </mat-toolbar>
+
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th i18n>name</th>
+                                <th i18n>name (fr)</th>
+                                <th i18n>location</th>
+                                <th i18n>type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngIf="events?.length === 0">
+                                <td colspan="6" i18n>No records</td>
+                            </tr>
+                            <tr *ngFor="let event of events" class="event_list">
+                                <td>{{event.enname}}</td>
+                                <td>{{event.frname}}</td>
+                                <td>{{event.location}}</td>
+                                <td>{{event.languages[language].name}}</td>
+                                <td>
+                                    <a class="edit_event" [routerLink]="" (click)="eventForm('edit',event.eventid)"
+                                        i18n>edit</a> |
+                                    <a class="delete_event" [routerLink]="" (click)="deleteEvent(event.eventid)"
+                                        i18n>delete</a> |
+                                    <a routerLink="/event/{{event.eventid}}" i18n>manage</a>
+                                    <span *ngIf="isOnline"> | 
+                                    <a class="event_permission" routerLink="/event-permissions/{{event.eventid}}"
+                                        i18n>permissions</a>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+                <button class="mat-flat" mat-flat-button color="primary" (click)="eventForm('new',null)"
+                    id="create_event" i18n>Create New Event</button>
+            </mat-card-content>
+
+        </mat-card>
+
+
+    </div>
+
+    <!--div>
+    <mat-card fxFlex="35">
+        <mat-card-content>
+            <mat-toolbar>
+                <span i18n>Add / Edit Event</span>
+            </mat-toolbar>
+            <form (ngSubmit)="updateEvent()" name="eventForm" [formGroup]="eventForm">
+    
+                <div style="display:none;">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Event ID</mat-label>
+                        <input formControlName="eventid" matInput readonly />
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label i18n>Event Name</mat-label>
+                        <input formControlName="enname" matInput required />
+                        <mat-error *ngIf="!eventForm.controls['enname'].valid" i18n>
+                            Please type an event name
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label i18n>Event Name (French)</mat-label>
+                        <input formControlName="frname" matInput required />
+                        <mat-error *ngIf="!eventForm.controls['frname'].valid" i18n>
+                            Please type an event name
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label i18n>Event Location</mat-label>
+                        <input formControlName="location" matInput required />
+                        <mat-error *ngIf="!eventForm.controls['location'].valid" i18n>
+                            Please type an event location
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label i18n>Event Type</mat-label>
+                        <mat-select id="element_type" [(value)]="selectedClassValue" name="sc_skatingeventclassid"  required>
+                            <mat-option *ngFor="let class of eventClasses" [value]="class.sc_skatingeventclassid">
+                                {{class.languages[language].name}}
+                              </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="!eventForm.controls['sc_skatingeventclassid'].valid" i18n>
+                            Please select an event class
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <button type="submit" id="submit_changes" class="mat-flat" mat-flat-button color="primary" i18n>Submit Changes</button>
+                
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div-->
+
+</div>

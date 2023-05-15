@@ -1,0 +1,22 @@
+{
+    "name": "header-footer",
+    "engine": "handlebars",
+    "recipe": "chrome-pdf",
+    "creationDate": {
+        "$$date": 1676041022312
+    },
+    "modificationDate": {
+        "$$date": 1676041022312
+    },
+    "shortid": "k0jZNN-",
+    "_id": "pHamW37VScY5lB5B",
+    "chrome": {
+        "landscape": true,
+        "marginTop": "1cm",
+        "marginRight": "1cm",
+        "marginBottom": "0.5cm",
+        "marginLeft": "1cm",
+        "format": "Letter"
+    },
+    "$entitySet": "templates"
+}

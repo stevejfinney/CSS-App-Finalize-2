@@ -1,0 +1,56 @@
+<div id="body-wrapper">
+
+    <h1 i18n>Segment Officials Management</h1>
+    <div><a routerLink="/category/{{segment[0]?.categoryid}}" i18n>&lt; Back to segment list</a></div>
+    <h2>{{ segment[0]?.languages[language].name }}</h2>
+
+    <div>
+        <mat-card fxFlex="35">
+            <mat-card-content>
+                <mat-toolbar>
+                    <span i18n>Segment Officials</span>
+                </mat-toolbar>
+
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th i18n>sc#</th>
+                                <th i18n>name</th>
+                                <th i18n>role</th>
+                                <th i18n>position</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngIf="officials?.length === 0">
+                                <td colspan="5" i18n>No records</td>
+                            </tr>
+                            <tr *ngFor="let off of officials">
+                                <td class="col-md">{{off.sc_scnum}}</td>
+                                <td class="col-md">{{off.sc_fullname}}</td>
+                                <td class="col-md">{{off.languages[language].name}}</td>
+                                <td class="col-md">{{off.position == 0 ? '' : off.position}}</td>
+                                <td *ngIf="runEventToggle; else segEdit">
+                                    <span style="color:#ddd" i18n>change position</span> |
+                                    <span style="color:#ddd" i18n>delete</span>
+                                </td>
+                                <ng-template #segEdit>
+                                    <td>
+                                        <a [routerLink]="" (click)="changeEntry(off.officialassignmentid)" i18n>change
+                                            position</a> |
+                                        <a [routerLink]="" (click)="deleteEntry(off.officialassignmentid)"
+                                            i18n>delete</a>
+                                    </td>
+                                </ng-template>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+            </mat-card-content>
+
+        </mat-card>
+
+    </div>
+
+</div>

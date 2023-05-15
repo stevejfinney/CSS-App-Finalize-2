@@ -1,0 +1,159 @@
+<div>
+    <mat-card fxFlex="35">
+        <mat-card-content>
+            <mat-toolbar>
+                <span i18n>Add / Edit Segment</span>
+            </mat-toolbar>
+
+            <form (ngSubmit)="updateSegment()" name="segmentForm" [formGroup]="segmentForm">
+    
+                <div style="display:none;">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Segment ID</mat-label>
+                        <input formControlName="segmentid" matInput readonly />
+                    </mat-form-field>
+                </div>
+
+                <div style="display:none;">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Category ID</mat-label>
+                        <input formControlName="categoryid" matInput readonly />
+                    </mat-form-field>
+                </div>
+
+                <div style="display:none;">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Order</mat-label>
+                        <input formControlName="performanceorder" matInput readonly />
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label i18n>Segment Name</mat-label>
+                        <input formControlName="enname" matInput required />
+                        <mat-error *ngIf="!segmentForm.controls['enname'].valid" i18n>
+                            Please type a segment name
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label i18n>Segment Name (fr)</mat-label>
+                        <input formControlName="frname" matInput required />
+                        <mat-error *ngIf="!segmentForm.controls['frname'].valid" i18n>
+                            Please type a segment name
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                
+                <div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label i18n>Segment Type</mat-label>
+                        <mat-select [(value)]="selectedSegmentValue" name="definitionid" required (selectionChange)="onSegmentChange($event)">
+                            <mat-option>-- Select --</mat-option>
+                            <mat-option *ngFor="let seg of availSegments" [value]="seg.sc_skatingsegmentdefinitionsid">
+                                {{seg.languages[language].name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="!segmentForm.controls['definitionid'].valid" i18n>
+                            Please select a segment
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div *ngIf="viewDances">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label i18n>Dance</mat-label>
+                        <mat-select [(value)]="selectedPatternDanceValue" name="patterndanceid" (selectionChange)="onPatternDanceChange($event)">
+                            <mat-option>-- Select --</mat-option>
+                            <mat-option *ngFor="let pat of patternDances" [value]="pat.sc_skatingpatterndancedefinitionid">
+                                {{pat.languages[language].name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="!segmentForm.controls['patterndanceid'].valid" i18n>
+                            Dance?
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label i18n>Rink</mat-label>
+                        <mat-select [(value)]="selectedRinkValue" name="rinkid" required (selectionChange)="onRinkChange($event)">
+                            <mat-option>-- Select --</mat-option>
+                            <mat-option *ngFor="let rink of availRinks" [value]="rink.rinkid">
+                                {{rink.name}}
+                            </mat-option>
+                        </mat-select>
+                        <!--mat-error *ngIf="!segmentForm.controls['definitionid'].valid" i18n>
+                            Please select a rink
+                        </mat-error-->
+                    </mat-form-field>
+                    <!--a [routerLink]="" (click)="addRink(category[0]?.eventid)" i18n>Manage Rinks</a-->
+                </div>
+
+                
+
+                <div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label i18n>Max Number in Warmup</mat-label>
+                        <input formControlName="warmupgroupmaxsize" matInput type="number" min="0" required />
+                        <mat-error *ngIf="!segmentForm.controls['warmupgroupmaxsize'].valid" i18n>
+                            Please type a warmup number
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label i18n>WBP</mat-label>
+                        <mat-select [(value)]="selectedWbpValue" name="wellbalanced" required>
+                            <mat-option>-- Select --</mat-option>
+                            <mat-option value="yes" i18n>Yes</mat-option>
+                            <mat-option value="no" i18n>No</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="!segmentForm.controls['wellbalanced'].valid" i18n>
+                            WBP?
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div><h4 i18n>Review Time</h4>
+                    <mat-form-field class="full-width" appearance="outline" [style.width.px]="70">
+                        <input formControlName="reviewtimemins" matInput placeholder="m" type="number" min="0" max="10" required />
+                        <mat-error *ngIf="!segmentForm.controls['reviewtimemins'].valid" i18n>
+                            Please type a program time
+                        </mat-error>
+                    </mat-form-field>
+                    :
+                    <mat-form-field class="full-width" appearance="outline" [style.width.px]="70">
+                        <input formControlName="reviewtimesecs" matInput placeholder="s" type="number" min="0" max="59" required />
+                        <mat-error *ngIf="!segmentForm.controls['reviewtimesecs'].valid" i18n>
+                            Please type a program time
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label i18n>Enter a start and end date</mat-label>
+                        <mat-date-range-input  [formGroup]="segmentForm" [rangePicker]="picker">
+                          <input matStartDate formControlName="startdate" placeholder="Start date" required>
+                          <input matEndDate formControlName="enddate" placeholder="End date" required>
+                        </mat-date-range-input>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-date-range-picker  #picker></mat-date-range-picker>
+                      
+                    </mat-form-field>
+                </div>
+                
+                <button [disabled]="segmentActive" type="submit" class="mat-flat" mat-flat-button color="primary" i18n>Submit Changes</button>
+                &nbsp;
+                <button class="mat-flat" mat-flat-button mat-dialog-close color="primary" i18n>Cancel</button>
+            </form>
+
+        </mat-card-content>
+    </mat-card>
+</div>

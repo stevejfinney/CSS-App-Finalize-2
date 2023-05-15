@@ -1,0 +1,115 @@
+/* CSS for score-summary dialox box */
+.score_summary legend {
+  color: red;
+  font-size: 20px;
+  font-weight: 500px;
+}
+.score_summary .fieldset_devide {
+  display: flex;
+  flex-wrap: wrap;
+}
+.score_summary .field {
+  width: 100%;
+  margin: 5px;
+}
+.score_summary mat-title {
+  margin: 0px;
+}
+.score_summary mat-button {
+  padding: 10px;
+  margin: 5px;
+  line-height: 30px;
+  background-color: white;
+  border-radius: 30px;
+}
+.score_summary .segment_name {
+  margin-top: 20px;
+  width: 92%;
+  color: #000080;
+  display: inline-block;
+  height: 40px;
+  text-align: center;
+  margin-left: 10px;
+  font-size: 20px;
+  font-weight: 900px;
+  margin-bottom: 20px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.score_summary .top_bottom_margin {
+  margin-left: 20px;
+  padding: 5px;
+}
+
+/* CSS for program components */
+.score_summary .w-70 {
+  width: 70%;
+  background-color: khaki;
+  font-weight: 600;
+  font-size: 20px;
+  color: #000080 !important;
+  margin-right: 30px;
+  text-align: center;
+  margin-top: 5px;
+  border-radius: 10px solid red;
+}
+
+/* CSS for panel violations */
+.score_summary .w-30 {
+  width: 10%;
+  background-color: khaki;
+  font-weight: 600;
+  font-size: 20px;
+  color: #000080 !important;
+  margin-right: 30px;
+  text-align: center;
+  margin-top: 5px;
+}
+.score_summary .w-50 {
+  width: 50%;
+}
+
+.score_summary .cdk-global-scrollblock {
+  overflow-y: hidden;
+}
+
+::ng-deep.cdk-global-overlay-wrapper {
+  justify-content: end !important;
+  overflow-y: hidden !important;
+}
+
+.score_summary .competitor_input_type2 {
+  background-color: khaki;
+  width: 60px;
+  color: #000080;
+  height: 35px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 20px;
+}
+
+.score_summary .submit {
+  background-color: khaki;
+  margin-top: 20px;
+  color: #000080;
+  width: auto;
+  padding: 3px 15px;
+  font-size: 20px;
+  font-weight: 600px;
+  border-radius: 30px;
+}
+.score_summary .w-80 {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  margin-right: 5px;
+}
+.score_summary .scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+.score_summary .mat-card::-webkit-scrollbar {
+  display: none;
+}
+.score_summary .mat-dialog-container {
+  background-color: #000080 !important;
+  padding: 0px 0px 0px 0px !important;
+}

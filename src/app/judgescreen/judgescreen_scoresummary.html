@@ -1,0 +1,71 @@
+<div class="score_summary">
+    <div class="mat-dialog-container">
+        <div class="fieldset_devide">
+            <fieldset class="field">
+                <legend i18n>Score Summary</legend>
+                <div class="fieldset_devide">
+                    <div class="w-50">
+                        <button mat-button-raised class="segment_name">
+                            <div class="mat-title" i18n>Program Components</div>
+                        </button>
+
+                        <!-- Data from program components -->
+
+                        <div class="top_bottom_margin" *ngFor="let item of score_summary_pc; let i = index">
+                            <div class="fieldset_devide">
+                                <div class="w-70">
+                                    <label *ngIf="language == 'en'">
+                                        {{ score_summary_pc[i]["sc_pctype"]["sc_name"]| slice:0:25 }}
+                                    </label>
+
+                                    <label *ngIf="language == 'fr'">
+                                        {{ score_summary_pc[i]["sc_pctype"]["sc_frenchname"] | slice:0:25}}
+                                    </label>
+                                </div>
+                                <div class="w-30">
+                                    <input type="textBox" *ngIf="sampleData['programComponent'][i] != -1"
+                                        value="{{ sampleData['programComponent'][i] }}"
+                                        class="competitor_input_type2" />
+                                    <input type="textBox" *ngIf="sampleData['programComponent'][i] == -1" value=""
+                                        class="competitor_input_type2" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-50">
+                        <button mat-button-raised class="segment_name">
+                            <div class="mat-title" i18n>Panel Violations</div>
+                        </button>
+
+                        <div class="top_bottom_margin" *ngFor="let item of score_summary_pv; let i = index">
+                            <div class="fieldset_devide">
+                                <div class="w-70">
+                                    <label *ngIf="language == 'en'">
+                                        {{score_summary_pv[i]["sc_adjustmentdefinition"]["sc_name"]| slice:0:25}}
+                                    </label>
+
+                                    <label *ngIf="language == 'fr'">
+                                        {{score_summary_pv[i]["sc_adjustmentdefinition"]["sc_frenchname"]|
+                                        slice:0:25}}</label>
+                                </div>
+                                <div class="w-30">
+                                    <input type="textBox" *ngIf="sampleData['violationValue'][i] == 0"
+                                        class="competitor_input_type2" value="No" />
+                                    <input type="textBox" *ngIf="sampleData['violationValue'][i] == 1"
+                                        class="competitor_input_type2" value="Yes" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="w-80">
+                <button mat-dialog-close class="submit">
+                    <div class="mat-title" i18n>Close Summary</div>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

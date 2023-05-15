@@ -1,0 +1,70 @@
+<meta charset="UTF-8" />
+
+<style>
+    {#asset /reportStyle.css @encoding=utf8}
+</style>
+
+<div class="report-box">
+ <div style="height: 19%;">
+           <table  class="infoHeader" cellpadding="0" cellspacing="0">
+        <tr class="top">
+            <td width="33%">
+                <img class="event-logo" src="{{asset "/sclogo.png" "dataURI"}}" style="margin-right:20px;" />
+                {{#if logoDataURI}} <!-- Check first if a logo on the internet was supplied -->
+                    <img class="event-logo" src="{{logoDataURI}}" />
+                {{/if}}
+            </td>
+               <td width="33%" style="vertical-align:middle top:0px;">
+                <div class="detail-box">
+                    {{eventenname}}<br />
+                    {{eventlocation}}<br />
+                    {{formatDate startdate}} - {{formatDate enddate}}</br>
+                    <span>{{discenname}} - Summary Results</span></br>
+                    <h1 style="text-align:center">{{discenname}}</h1>
+                </div>
+            </td> 
+            <td width="33%" style="text-align:center;">
+                <img class="event-logo" src="{{asset "/sclogo.png" "dataURI"}}" style="margin-right:20px;" />
+                {{#if logoDataURI}} <!-- Check first if a logo on the internet was supplied -->
+                    <img class="event-logo" src="{{logoDataURI}}" />
+                {{/if}}      
+            </td>             
+        </tr>
+        </table>
+    </div>
+    <hr style="color: #000000; background-color: #000000; height: 2px; border: none;">
+    <div style="height: 68%;">
+        <div class="awards-section">
+        <div class="award-title"><u>GOLD AWARDS</u></div>
+        <div class="award-details">
+            <h5>  {{eventenname}} ---  {{eventlocation}}</h5>
+       
+        </div>
+    </div>
+
+    <div class="awards-section">
+        <div class="award-title"><u>SILVER AWARDS</u></div>
+        <div class="award-details">
+       <h5>  {{eventenname}} ---  {{eventlocation}}</h5>
+        </div>
+    </div>
+
+    <div class="awards-section">
+        <div class="award-title"><u>BRONZE AWARD</u>S</div>
+        <div class="award-details">
+      <h5>  {{eventenname}} ---  {{eventlocation}}</h5>
+        </div>
+    </div>
+
+    <div class="awards-section">
+        <div class="award-title"><u>MERIT AWARDS</u></div>
+        <div class="award-details">
+         <h5>  {{eventenname}} ---  {{eventlocation}}</h5>
+        </div>
+    </div>
+      
+    </div>
+
+     {{#if revised}}<span class="revised">{{localize "revised" "/langs"}}</span> - {{/if}}{{timeStamp}}
+    <span class="endOfReport">-- {{localize "endOfReport" "/langs"}} --</span>
+</div>

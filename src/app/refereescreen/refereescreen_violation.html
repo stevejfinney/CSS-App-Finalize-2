@@ -1,0 +1,75 @@
+<div class="referee_violation">
+    <div class="grid-container" >
+        <mat-card>
+            <fieldset>
+                <legend i18n>Panel Violation</legend>
+                <div class="fieldset_devide">
+                    <div class="w-50">
+                        <div class="top_bottom_margin" *ngFor="let item of score_summary_pv; let i = index">
+                            <div class="fieldset_devide">
+                                <div class="w-30">
+                                    <label *ngIf="language == 'en'">
+                                        {{ score_summary_pv[i].sc_adjustmentdefinition.sc_name | slice:0:25}}
+                                    </label>
+
+                                    <label *ngIf="language == 'fr'">
+                                        {{
+                                        score_summary_pv[i].sc_adjustmentdefinition.sc_frenchname | slice:0:25
+                                        }}
+                                    </label>
+                                </div>
+
+                                <div class="w-5"></div>
+                                <div class="w-15">
+                                    <mat-form-field appearance="fill">
+                                        <mat-select (selectionChange)="onOptionsSelected($event.value, i)"
+                                            value="{{ data['violationValue'][i] }}">
+                                            <mat-option value="0" i18n> No </mat-option>
+
+                                            <mat-option value="1" i18n> Yes </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="w-50">
+                        <div class="top_bottom_margin" *ngFor="let item of referee_pv ; let i = index">
+                            <div class="fieldset_devide">
+
+
+                                <div class="w-30">
+                                    <label *ngIf="language == 'en'">
+                                        {{referee_pv[i].sc_adjustmentdefinition.sc_name |
+                                        slice:0:25}}
+                                    </label>
+
+
+                                </div>
+
+                                <div class="w-5"></div>
+                                <div class="w-15">
+
+                                    <button mat-button (click)="violation_decrement(i, -1)"
+                                        class="button_score">-1</button>
+                                    <input matInput class="competitor_input_type2" readonly id="violation_value{{i}}"
+                                        value="{{ data['refereeViolationValue'][i] }}">
+                                    <button mat-button (click)="violation_decrement(i, +1)"
+                                        class="button_score">+1</button>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="w-80">
+                <button class="submit" mat-button mat-dialog-close i18n>Return</button>
+            </div>
+        </mat-card>
+    </div>
+</div>

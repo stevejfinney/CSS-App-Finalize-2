@@ -1,0 +1,28 @@
+<h1 mat-dialog-title> ----- Skater is Scored ---- </h1>
+<div mat-dialog-content>
+ 
+  <ul style="font-size: 16px">
+    <li>
+      <span>Name : </span> <span>{{output["name"]}}</span>
+    </li>
+    <li>
+        <span >Section : </span>   <span>{{output["section"] == null ? '---' : output["section"]}}</span>
+    </li>
+    <li>
+        <span >Segment Score : </span> <span>{{output["segment_score"]}}  </span>
+    </li>
+    <li>
+        <span >Segment Rank : </span><span>{{output["segment_rank"]}}  </span>
+     </li>
+    <li>
+        <span >Competition Score : </span>  <span>{{output["category_score"]}}  </span>
+     </li>
+     <li>
+        <span >Competition Rank  : </span> <span>{{output["category_rank"]}}  </span>
+     </li>
+  </ul>
+</div>
+
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Close</button>
+  </mat-dialog-actions>

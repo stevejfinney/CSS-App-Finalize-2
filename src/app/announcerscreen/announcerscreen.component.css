@@ -1,0 +1,552 @@
+/* ------------------CSS For mat-tab ------------------------------- */
+.grid_container {
+  /* background-color:#dee1e7; */
+  background-color: white;
+  height: 91.4vh;
+  width: 100%;
+}
+
+::ng-deep .mat-tab-list .mat-tab-label {
+  color: khaki;
+  background-color: #000080;
+  font-size: 20px;
+}
+
+::ng-deep .mat-tab-label-active {
+  color: red !important;
+  background-color: #000080;
+}
+
+/* --------------------------- Welcome CSS ------------------------------------------*/
+.welcome_container h1 {
+  color: #000080;
+  font-size: 400%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10%;
+  margin-bottom: -2%;
+}
+
+.welcome_container p {
+  color: #8787d5;
+  font-size: 300%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 9%;
+}
+
+.welcome_container .french_name {
+  color: #8787d5;
+  font-size: 300%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 6%;
+}
+
+.welcome_container span {
+  color: rgb(194, 93, 110);
+  font-size: 40px;
+}
+
+/* ----------------------------Official CSS ---------------------------------------------*/
+
+.official_container {
+  height: 85vh;
+}
+
+.official_container .segment_name {
+  background-color: khaki;
+  color: #000080;
+  width: 93%;
+  display: block;
+  height: 5%;
+  text-align: center;
+  font-size: 150%;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  margin-left: 3.5%;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.official_container .table_container {
+  /* height: 88%; */
+  height: 100%;
+  width: 104%;
+  margin-top: 5px;
+  text-align: center;
+}
+
+.official_container .table_container .element_container {
+  height: 100%;
+  width: 93%;
+  overflow-y: scroll;
+  /* background-color: #dee1e7; */
+  background-color: white;
+}
+
+.official_container .table_container .element_container::-webkit-scrollbar {
+  display: none !important;
+}
+
+.official_container .table_container .element_container table {
+  width: 100%;
+  margin-left: 3.5%;
+  background-color: #000080;
+  border-spacing: 0 8px !important;
+  cursor: pointer;
+}
+
+tr.mat-header-row {
+  height: 45px;
+}
+.official_container .table_container .element_container table .mat-header-cell {
+  font-weight: 500;
+  font-size: 20px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  padding: 3px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 16px 20px;
+  line-height: 20px;
+  width: 25vw;
+  background-color: white;
+}
+.official_container .table_container .element_container table td.mat-cell {
+  padding: 16px 20px;
+  border-bottom: 1px solid white;
+}
+
+.official_container .table_container .element_container table .mat-cell {
+  color: white;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  border-style: 2px solid white;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* ----------------------------Group CSS ---------------------------------------------*/
+
+.group_container {
+  height: 85vh;
+}
+
+.fieldset {
+  width: 90%;
+  margin-left: 2%;
+}
+.group_container .segment_name {
+  background-color: khaki;
+  color: #000080;
+  width: 96%;
+  display: block;
+  height: 5%;
+  text-align: center;
+  font-size: 150%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 2%;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.highlight,
+.highlight1 {
+  background: #9fc9f3;
+}
+.fieldset_divider {
+  height: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.w-20 {
+  width: 30%;
+  margin-left: 29px;
+}
+
+.w-60 {
+  width: 65.3%;
+  margin-left: 15px;
+}
+
+.table_container {
+  height: 98%;
+}
+
+.element_container {
+  /* height: 100%; */
+  height: 170%;
+  background-color: #000080;
+  overflow-y: scroll;
+}
+.element_container::-webkit-scrollbar {
+  display: none;
+}
+
+.w-20 table {
+  width: 100%;
+  background-color: #000080;
+  border-spacing: 0 5px !important;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.w-20 .mat-header-cell {
+  font-weight: 600;
+  font-size: 16px;
+  position: sticky;
+  top: 0px;
+  justify-content: center;
+  text-align: center;
+  z-index: 1;
+  background-color: rgb(235, 226, 226);
+}
+.w-20 td.mat-cell {
+  padding: 5px 15px;
+  border-bottom: 1px solid white !important;
+  border-bottom: none;
+  text-align: center;
+}
+
+.w-20 .mat-cell {
+  color: white;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 32px;
+  border-style: 2px solid white;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.w-60 table {
+  width: 100%;
+  background-color: #000080;
+  border-spacing: 0 5px !important;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.w-60 .mat-header-cell {
+  font-weight: 600;
+  font-size: 16px;
+  position: sticky;
+  top: 0px;
+  justify-content: center;
+  text-align: center;
+  z-index: 1;
+  background-color: rgb(235, 226, 226);
+}
+.w-60 td.mat-cell {
+  padding: 5px 15px;
+  border-bottom: 1px solid white;
+  /* border-bottom: none; */
+  text-align: center;
+}
+
+.w-60 .mat-cell {
+  color: white;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 32px;
+  border-style: 2px solid white;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* ----------------------------CalltoIce CSS ---------------------------------------------*/
+.calltoice_container {
+  height: 84.1vh;
+}
+
+.w-22 {
+  width: 40%;
+  margin-left: 29px;
+}
+.prenex_skater {
+  background-color: rgb(229, 221, 221);
+  color: #000080;
+  width: 5%;
+  height: 7%;
+  text-align: center;
+  font-size: 150%;
+  margin-left: 1%;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.prenex_skater1 {
+  background-color: gray;
+  color: #000080;
+  width: 5%;
+  height: 7%;
+  text-align: center;
+  font-size: 150%;
+  margin-left: 1%;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.w-22 .segment_name {
+  background-color: khaki;
+  color: #000080;
+  width: 98%;
+  height: 7%;
+  text-align: center;
+  font-size: 150%;
+  margin-bottom: 1.5%;
+  margin-left: 1.5%;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.segment_name1 {
+  background-color: khaki;
+  color: #000080;
+  width: 80%;
+  height: 7%;
+  text-align: center;
+  font-size: 150%;
+  margin-bottom: 1.5%;
+  margin-left: 1.5%;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.w-80 {
+  width: 55.6%;
+  margin-left: 25px;
+  margin-top: 10px;
+}
+
+.w-22 .table_container {
+  height: 97%;
+}
+
+.w-22 .element_container {
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.w-22 .element_container::-webkit-scrollbar {
+  display: none;
+}
+
+.w-22 table {
+  width: 100%;
+  background-color: #000080;
+  border-spacing: 0 5px !important;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.w-22 .mat-header-cell {
+  font-weight: 600;
+  font-size: 16px;
+  position: sticky;
+  top: 0px;
+  justify-content: center;
+  text-align: center;
+  z-index: 1;
+  background-color: rgb(235, 226, 226);
+}
+.w-22 td.mat-cell {
+  padding: 5px 15px;
+  /* border-bottom: 1px solid white; */
+  border-bottom: none;
+  text-align: center;
+}
+
+.w-22 .mat-cell {
+  color: white;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 32px;
+  border-style: 2px solid white;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.w-80 h1 {
+  color: gray;
+}
+
+.w-80 .segment_name {
+  background-color: khaki;
+  color: #000080;
+  width: 80%;
+  height: 7%;
+  text-align: center;
+  font-size: 150%;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  margin-left: 3.5%;
+  display: inline !important;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.border {
+  color: #3d9e54 !important;
+}
+
+/* ----------------------------Score CSS ---------------------------------------------*/
+
+.score_container {
+  height: 85vh;
+}
+
+span {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.score_container .segment_name {
+  background-color: khaki;
+  color: #000080;
+  width: 97%;
+  display: block;
+  height: 5%;
+  margin-left: 1%;
+  text-align: center;
+  font-size: 150%;
+  margin-bottom: 5px;
+  margin-top: 2px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.score_container .score_button {
+  background-color: khaki;
+  color: #000080;
+  width: 25%;
+  display: inline;
+  height: 5%;
+  text-align: center;
+  font-size: 150%;
+  margin-bottom: 5px;
+  margin-top: 2px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* ----------------------------Ranking CSS ---------------------------------------------*/
+
+.ranking_container {
+  height: 85vh;
+}
+
+.ranking_container .segment_name {
+  background-color: khaki;
+  color: #000080;
+  width: 96%;
+  display: block;
+  height: 5%;
+  text-align: center;
+  font-size: 150%;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  margin-left: 2%;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.ranking_container .table_container {
+  height: 97%;
+}
+
+.ranking_container .element_container {
+  height: 100%;
+  /* height: 170%; */
+  overflow-y: scroll;
+  background-color: white !important;
+}
+.ranking_container .element_container::-webkit-scrollbar {
+  display: none;
+}
+
+.ranking_container table {
+  width: 96%;
+  /* height: 100%; */
+  background-color: #000080;
+  border-spacing: 0 5px !important;
+  cursor: pointer;
+  margin-top: 5px;
+  margin-left: 2%;
+}
+
+.ranking_container .mat-header-cell {
+  font-weight: 600;
+  font-size: 16px;
+  position: sticky;
+  top: 0px;
+  justify-content: center;
+  text-align: center;
+  z-index: 1;
+  background-color: rgb(235, 226, 226);
+}
+.ranking_container td.mat-cell {
+  padding: 5px 15px;
+  /* border-bottom: 1px solid white; */
+  border-bottom: none;
+  text-align: center;
+}
+
+.ranking_container .mat-cell {
+  color: white;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 32px;
+  border-style: 2px solid white;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+::ng-deep .green-snackbar {
+  background: #3f7227;
+  color: #ffffff;
+}
+
+/* ------------------------------------  error message  css ---------------------------------------*/
+
+.error .wrapper {
+  color: #fff;
+  font: normal 100%/1.15 "Merriweather", serif;
+  position: relative;
+  max-width: 1298px;
+  height: 93%;
+  margin: 0 auto 0 auto;
+  background: transparent url("../../assets/wood-fence.png") no-repeat center
+    top 24em;
+}
+
+.error .box {
+  max-width: 70%;
+  min-height: 650px;
+  margin: 0 auto;
+  padding: 1em 1em;
+  text-align: center;
+  background: transparent url("../../assets/dog-family.jpg") no-repeat top 12em
+    center;
+}
+
+.error h1 {
+  margin: 0 0 2rem 0;
+  font-size: 8em;
+  text-shadow: 0 0 6px #8b4d1a;
+}
+
+.error p {
+  margin-bottom: 0.5em;
+  font-size: 1.75em;
+  color: #ea8a1a;
+}
+
+.error p:first-of-type {
+  margin-top: 1.5em;
+  text-shadow: none;
+}
+
+.error p > a {
+  border-bottom: 1px dashed #837256;
+  font-style: italic;
+  text-decoration: none;
+  color: #837256;
+}
+
+.error p > a:hover {
+  text-shadow: 0 0 3px #8b4d1a;
+}
+
+.error p img {
+  vertical-align: bottom;
+}

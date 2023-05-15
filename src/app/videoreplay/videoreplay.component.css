@@ -1,0 +1,329 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.material-icons
+{
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: pointer;
+}
+
+.video_display 
+{
+  height:100%;
+  width:100%;
+  margin: 0;
+}
+fieldset
+{
+  margin-top: 10px;
+}
+section
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 1.7%;
+    height: 100%;
+}
+
+.container
+{
+position: relative;
+width: 100%;
+height: 100%;
+justify-content: center;
+align-items: center;
+}
+
+
+
+.container #video_player
+{
+position: relative;
+width: 100%;
+height: 76%;
+border-radius: 5px;
+overflow: hidden;
+box-shadow: 0 0 5px rgba(255,255,255,0.24);
+display: flex;
+
+}
+
+.container .controls
+{
+position: relative;
+bottom: 0;
+/* padding: 12px 10px; */
+left: 0;
+right:0;
+height: 22%;
+width: 100%;
+background:#000080;
+/* box-shadow: 0 0 40px 10px rgb(0 0 0 / 25%);  */
+z-index: 3;
+transform: translateY(0%);
+transition: 0.3s;
+/* border: 1px solid white; */
+}
+
+.container #video_player #main-video
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    outline: none;
+}
+
+.controls .controls-list
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 99%;
+    height: 50px;
+    /* margin: 0px 2px 5px 2px; */
+}
+
+.controls .controls-list .controls-left,
+.controls .controls-list .controls-right
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.controls .controls-left .timer
+{
+    display: inline-block;
+    font-size: 14px;
+    white-space: nowrap;
+    color: #fff;
+    margin-left: 5px;
+    text-align: center;
+}
+
+.controls .icon
+{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    margin-left: 5px;
+    margin-right: 2px;
+}
+
+.controls .icon .material-icons 
+{
+    font-size: 65px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.controls .icon .material-icons.fast-rewind{
+    margin-left: -10px;
+}
+
+.controls .icon .material-icons.fast-rewind:active
+{
+    transition: 0.2s;
+    transform: rotate(-45deg);
+}
+
+.controls .icon .material-icons.fast-forward:active
+{
+    transition: 0.2s;
+    transform: rotate(45deg);
+}
+
+.controls .icon .volume_range
+{
+
+    -webkit-appearance: none;
+    appearance: none;
+    width: 0px;
+    height: 3px;
+    background: #fff;
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    transition: 0.4s;
+
+}
+
+.controls .icon .volume_range::-webkit-slider-thumb
+{
+
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    background: #fff;
+    color: #fff;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.controls .icon .volume_range
+{
+    display: inline-block;
+    width: 60px;
+}
+
+.controls .icon .volume_range::-webkit-slider-thumb
+{
+    opacity: 1;
+    pointer-events: auto;
+    transition: 0.5s;
+}
+
+.controls-right .icon .auto-play
+{
+    width: 30px;
+    height: 10px;
+    border-radius: 20px;
+    position: relative;
+    margin-right: 8px !important;
+    background: #b6b6b6;
+}
+
+.controls-right .icon .auto-play::before
+{
+    content: '\e034';
+    position: absolute;
+    left: -5px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 17px;
+    height: 17px;
+    line-height: 17px;
+    font-size: 14px;
+    background: #727272;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 50%;
+    font-family: "Material Icons";
+}
+
+.controls-right .icon .auto-play.active::before
+{
+    content: '\e037';
+    left: 15px;
+    font-family: "Material Icons";
+}
+
+.controls-right .icon .material-icons.settingsBtn
+{
+        font-size: 34px;
+        transition: 0.3s;
+}
+
+.controls-right .icon .settingsBtn.active
+{
+    transform: rotate(45deg);
+}
+
+.timer_display
+{
+    margin: 0px 10px;
+    background-color: #000080 ;
+    border:1px solid #e0e0e0;
+    line-height: 30px;
+    padding: auto;
+    color: #e0e0e0;
+}
+.current{
+    font-size: 15px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#fieldset_timer > legend{
+    width:90px;
+}
+
+#toggle_timer{
+  background-color: white; 
+  border: none;
+  color: #000080;
+  padding: 2px 5px; 
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+  width:110px;  
+}
+.custom_timer{
+  
+   width:200px;
+   border-radius: 8px;  
+}
+.custom_timer_display
+{
+    padding: 1px 10px;
+    width:200px;
+    font-size: 16px;
+    color: #000080 !important;
+    text-decoration: none;
+}
+
+#element_clip{
+  background-color: white; 
+  border: none;
+  color: #000080;
+  padding: 2px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+  width:350px;
+}
+#Cancel_clip{
+  background-color: white; 
+  border: none;
+  color: #000080;
+  padding: 2px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+  width:100px;
+}
+
+
+
+
+.mt-6
+{
+    margin-top: 6px;
+}
+
+#controls_removess{
+    display:none;
+}
+
+.hide{
+    display: none !important;
+  }

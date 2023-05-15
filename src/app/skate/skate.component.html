@@ -1,0 +1,30 @@
+<div id="current_skater">
+    <h2>Current Skater:</h2>
+    <div>
+        Name: <span id="current_skater_name">{{competitor[0]?.skatername}}</span>
+        <br />
+        Club: <span id="current_skater_club">{{competitor[0]?.clubname}}</span>
+    </div>
+    <div><button class="mat-flat" mat-flat-button color="primary" (click)='startSkate()'
+            style="width:120px">{{startSkateText}}</button></div>
+    <div>
+        Skate Timer: {{skateTimeLeft | formatTime}}
+        <br />
+        <button class="mat-flat" mat-flat-button color="primary" (click)='startSkateTimer()'
+            style="width:80px">{{startSkateTimerText}}</button>
+        &nbsp;
+        <button class="mat-flat" mat-flat-button color="primary" (click)='resetSkateTimer()'
+            style="width:80px">reset</button>
+    </div>
+    <div>
+        Review Timer: {{reviewTimeLeft | formatTime}}
+        <br />
+        <button class="mat-flat" mat-flat-button color="primary" (click)='startReviewTimer()'
+            style="width:80px">{{startReviewText}}</button>
+        &nbsp;
+        <button class="mat-flat" mat-flat-button color="primary" (click)='resetReviewTimer()'
+            style="width:80px">reset</button>
+    </div>
+
+    <!-- <button class="mat-flat" mat-flat-button color="primary" (click)='joinRoom()' style="width:80px">test initialization</button> -->
+</div>

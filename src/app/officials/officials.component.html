@@ -1,0 +1,182 @@
+<div id="body-wrapper">
+
+    <h1 i18n>Officials Management</h1>
+    <div><a routerLink="/category/{{categoryid}}" i18n>&lt; Back to segment list</a></div>
+    <h2>{{ category[0]?.languages[language].progname }} {{ category[0]?.languages[language].discname }} {{
+        category[0]?.languages[language].catdefname }}
+        <span *ngIf="category[0]?.startdate"><br />({{ category[0]?.startdate | date:'longDate' }} - {{
+            category[0]?.enddate | date:'longDate' }})</span>
+    </h2>
+
+    <div>
+        <mat-card fxFlex="35">
+            <mat-card-content>
+                <h2 i18n>Current Officials (delete at segment level)</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th i18n>SC#</th>
+                            <th i18n>Name</th>
+                            <th i18n>Role</th>
+                            <th i18n>Position</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngIf="officials?.length === 0">
+                            <td colspan="2" i18n>No records</td>
+                        </tr>
+                        <tr *ngFor="let off of officials">
+                            <td class="col-sm">{{off.sc_scnum}}</td>
+                            <td class="col-md">{{off.sc_fullname}}</td>
+                            <td class="col-md">{{off.languages[language].name}}</td>
+                            <td class="col-md">{{off.position == 0 ? '' : off.position}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <div>
+        <mat-card fxFlex="35">
+            <mat-card-content>
+                <mat-toolbar>
+                    <span i18n>Add Official</span>
+                </mat-toolbar>
+
+                <form (ngSubmit)="addOfficialToCategory()" name="officialForm" [formGroup]="officialForm">
+
+                    <div style="display:none;">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Category ID</mat-label>
+                            <input formControlName="categoryid" matInput readonly />
+                        </mat-form-field>
+                    </div>
+
+                    <div style="display:none;">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Official ID</mat-label>
+                            <input formControlName="officialid" matInput readonly />
+                        </mat-form-field>
+                    </div>
+
+                    <div style="display:block;">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label i18n>Official</mat-label>
+                            <input formControlName="officialname" matInput readonly />
+                        </mat-form-field>
+                    </div>
+
+                    <div style="display:block;">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label i18n>Role</mat-label>
+                            <mat-select [(value)]="selectedOfficialRole" name="officialrole" required
+                                (selectionChange)="onRoleChange($event)">
+                                <mat-option i18n>-- Select --</mat-option>
+                                <mat-option *ngFor="let role of officialRoles" [value]="role.sc_skatingofficialroleid">
+                                    {{role.languages[language].name}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="!officialForm.controls['officialrole'].valid" i18n>
+                                Please select a role
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div style="display:block;">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label i18n>Position (Judge Only)</mat-label>
+                            <mat-select [(value)]="selectedOfficialPosition" name="officialposition" required
+                                (selectionChange)="onPositionChange($event)" [disabled]="disablePosition">
+                                <mat-option>-- Select --</mat-option>
+                                <mat-option [value]="1">1</mat-option>
+                                <mat-option [value]="2">2</mat-option>
+                                <mat-option [value]="3">3</mat-option>
+                                <mat-option [value]="4">4</mat-option>
+                                <mat-option [value]="5">5</mat-option>
+                                <mat-option [value]="6">6</mat-option>
+                                <mat-option [value]="7">7</mat-option>
+                                <mat-option [value]="8">8</mat-option>
+                                <mat-option [value]="9">9</mat-option>
+                                <mat-option [value]="10">10</mat-option>
+                                <mat-option [value]="11">11</mat-option>
+                                <mat-option [value]="12">12</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="!officialForm.controls['officialposition'].valid" i18n>
+                                Please select a role
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div style="display:block;">
+                        <mat-checkbox [checked]="includescoreChecked" name="includescore" matInput
+                            (change)="onChangeInclude($event)">Include Score in Result Calculation?</mat-checkbox>
+                    </div>
+
+                    <button type="submit" class="mat-flat" mat-flat-button color="primary" i18n>Submit Changes</button>
+
+                </form>
+
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <div>
+        <mat-card fxFlex="35">
+            <mat-card-content>
+
+                <mat-form-field>
+                    <mat-icon matPrefix>search</mat-icon>
+                    <input matInput placeholder="Search by Full Name or SC#" autocomplete="off" #reference>
+                    <mat-icon matSuffix (click)="reference.value=''">cancel</mat-icon>
+                </mat-form-field>
+                <button type="submit" class="mat-flat" mat-flat-button color="primary" [class.spinner]="loadingSpinner"
+                    [disabled]="loadingSpinner" (click)="applyFilter(reference.value)" i18n>Search Officials</button>
+
+                    &nbsp;&nbsp;&nbsp;
+                <button type="submit" class="mat-flat" mat-flat-button color="primary" (click)="handleUserStop()" i18n>Cancel Search</button>
+
+                <h3>Local Source</h3>
+                <div>{{localMessage}}</div>
+                <mat-table [dataSource]="dataSourceLocal" *ngIf="dataSourceLocal?.length > 0">
+
+                    <ng-container matColumnDef="sc_scnum">
+                        <mat-header-cell *matHeaderCellDef i18n>SC#</mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.sc_scnum}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="sc_fullname">
+                        <mat-header-cell *matHeaderCellDef i18n>Name</mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.sc_fullname}} </mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+                    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="getRecord(row)"></mat-row>
+
+                </mat-table>
+
+                <h3>External Source</h3>
+                <div>{{onlineMessage}}</div>
+                <mat-table [dataSource]="dataSource" *ngIf="dataSource?.length > 0">
+
+                    <ng-container matColumnDef="sc_scnum">
+                        <mat-header-cell *matHeaderCellDef i18n>SC#</mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.sc_scnum}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="sc_fullname">
+                        <mat-header-cell *matHeaderCellDef i18n>Name</mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.sc_fullname}} </mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+                    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="getRecord(row)"></mat-row>
+
+                </mat-table>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+</div>

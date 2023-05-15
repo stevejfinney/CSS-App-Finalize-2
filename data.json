@@ -1,0 +1,997 @@
+	{
+	"competitorentryid": "c61a4ad4-216e-445e-8a81-23b922acda97",
+	"segmentid": {
+		"segment_id": "b46d5a4f-968e-4ea8-8088-0411be4ff2ae",
+		"categoryid": {
+			"categoryid": "0e9d7050-23ab-4ac6-bed2-47b85616ce9c",
+			"eventid": {
+				"eventid": "d91cf036-720f-4adf-869e-efb76d7d472d",
+				"sc_skatingeventclassid": "C7128610-76CF-EB11-BACC-000D3A98B441",
+				"isoffline": "",
+				"enname": "Judge Event",
+				"endescription": "Judge Event Description in English",
+				"frname": "Jugement de l'événement",
+				"frdescription": "Juge Description de l'événement en français",
+				"startdate": "2021-12-15T05:00:00.000Z",
+				"enddate": "2021-12-17T05:00:00.000Z",
+				"createdon": "2021-12-14T16:37:48.068Z",
+				"modifiedon": "2021-12-14T16:37:48.068Z"
+			},
+			"enname": "Judge Category group in English",
+			"endescription": "Judge category description",
+			"frname": "Juge Catégorie groupe en français",
+			"frdescription": " Description de la catégorie de juge",
+			"definitionid": {
+				"sc_skatingcategorydefinationid": "0DCF8D1D-047E-EB11-A812-000D3A99AB84",
+				"sc_scoringmethod": "947960000",
+				"sc_skatingdisciplinedefinition": {
+					"sc_skatingdisciplinedefinitionid": "FFD1028E-EF7D-EB11-A812-000D3A99AB84",
+					"sc_name": "Free Skating",
+					"sc_frenchname": "Style libre"
+				},
+				"sc_parentprogram": {
+					"sc_programsid": "BD597B1D-5180-EB11-A812-000D3A8D72D1",
+					"sc_program_key": "Adult/Adulte",
+					"sc_programname": "Adult",
+					"sc_description_fr": "",
+					"sc_description": "DRAFT",
+					"sc_programname_fr": "Adulte"
+				},
+				"sc_skatingdisciplinedefinationname": "",
+				"sc_name": "Bronze",
+				"sc_frenchname": "Bronze",
+				"sc_parentprogramname": ""
+			},
+			"sortorder": "",
+			"status": "Ready",
+			"hasreadysegments": "N",
+			"hascompetitors": "N",
+			"hasofficials": "N",
+			"startdate": "2021-12-15T05:00:00.000Z",
+			"enddate": "2021-12-16T05:00:00.000Z",
+			"createdon": "2021-12-14T16:39:21.747Z",
+			"modifiedon": "2021-12-14T16:39:21.747Z"
+		},
+		"definitionid": {
+			"sc_skatingsegmentdefinitionsid": "D6A9A81F-3680-EB11-A812-000D3A8D72D1",
+			"sc_elementconfiguration": {
+				"sc_skatingelementconfigurationid": "CC6BA014-4F92-EB11-B1AC-000D3A147681",
+				"sc_mode": "947960000",
+				"sc_name": "Free Program - STAR 10 - Adult Bronze/Silver/Gold - Singles",
+				"elements": 
+				[
+					{
+						"sc_skatingelementconfiguration_sc_skatiid": "DB4C0043-4F92-EB11-B1AC-000D3A147681",
+						"sc_skatingelementconfigurationid": "CC6BA014-4F92-EB11-B1AC-000D3A147681",
+						"sc_skatingelementdefinitionid": {
+							"sc_skatingelementdefinitionid": "7C347C16-9C90-EB11-B1AC-000D3A1B1808",
+							"sc_starratingtype": 947960000,
+							"sc_flying": 0,
+							"sc_change": 0,
+							"sc_valueadjustmentv": 0,
+							"sc_throw": 0,
+							"sc_family": {
+								"sc_skatingelementfamilyid": "114648BF-9B90-EB11-B1AC-000D3A1BBD52",
+								"sc_familytype": {
+									"sc_skatingelementfamilytypeid": "7BFAB449-4C8B-EB11-A812-000D3A8DCA86",
+									"sc_name": "Jump",
+									"sc_frenchname": "",
+                                    "sc_order":"",
+                                    "sc_modifiers":"947960004"
+								},
+								"sc_code": "",
+								"sc_name": "Waltz",
+								"sc_internalnote": "",
+								"sc_frenchname": "",
+                                 "sc_order":""
+							},
+							"sc_longname": "Waltz Jump Downgraded",
+							"sc_longnamefrench": "Saut de valse déclassé",
+							"sc_goevalueminus5": 0.0,
+							"sc_goevalueminus4": 0.0,
+							"sc_goevalueminus3": 0.0,
+							"sc_goevalueminus2": 0.0,
+							"sc_goevalueminus1": 0.0,
+							"sc_basevalue": 0.0,
+							"sc_goevalue1": 0.0,
+							"sc_goevalue2": 0.0,
+							"sc_goevalue3": 0.0,
+							"sc_goevalue4": 0.0,
+							"sc_goevalue5": 0.0,
+							"sc_takeoffflag": "",
+							"sc_familyname": "",
+							"sc_patterndancecode": "",
+							"sc_elementcodecalculated": "",
+							"sc_abbreviatedname": "Waltz Jump",
+							"sc_synchrocombination": "",
+							"sc_level": 1,
+							"sc_abbreviatednamefrench": "Saut de valse",
+							"sc_rotationflag": "<<",
+							"sc_elementcode": "1W<<"
+						}
+					},
+					{
+						"sc_skatingelementconfiguration_sc_skatiid": "DF4C0043-4F92-EB11-B1AC-000D3A147681",
+						"sc_skatingelementconfigurationid": "CC6BA014-4F92-EB11-B1AC-000D3A147681",
+						"sc_skatingelementdefinitionid": {
+							"sc_skatingelementdefinitionid": "76347C16-9C90-EB11-B1AC-000D3A1B1808",
+							"sc_starratingtype": 947960000,
+							"sc_flying": 0,
+							"sc_change": 0,
+							"sc_valueadjustmentv": 0,
+							"sc_throw": 0,
+							"sc_family": {
+								"sc_skatingelementfamilyid": "114648BF-9B90-EB11-B1AC-000D3A1BBD52",
+								"sc_familytype": {
+									"sc_skatingelementfamilytypeid": "7BFAB449-4C8B-EB11-A812-000D3A8DCA86",
+									"sc_name": "Jump",
+									"sc_frenchname": "",
+                                    "sc_order":"",
+                                    "sc_modifiers":""
+								},
+								"sc_code": "",
+								"sc_name": "Waltz",
+								"sc_internalnote": "",
+								"sc_frenchname": "",
+                                "sc_order":""
+							},
+							"sc_longname": "Waltz Jump Downgraded",
+							"sc_longnamefrench": "Saut de valse déclassé",
+							"sc_goevalueminus5": 0,
+							"sc_goevalueminus4": 0,
+							"sc_goevalueminus3": 0,
+							"sc_goevalueminus2": 0,
+							"sc_goevalueminus1": 0,
+							"sc_basevalue": 0,
+							"sc_goevalue1": 0,
+							"sc_goevalue2": 0,
+							"sc_goevalue3": 0,
+							"sc_goevalue4": 0,
+							"sc_goevalue5": 0,
+							"sc_takeoffflag": "",
+							"sc_familyname": "",
+							"sc_patterndancecode": "",
+							"sc_elementcodecalculated": "",
+							"sc_abbreviatedname": "Waltz Jump",
+							"sc_synchrocombination": "",
+							"sc_level": "1",
+							"sc_abbreviatednamefrench": "Saut de valse",
+							"sc_rotationflag": "<<",
+							"sc_elementcode": "1Tw<<"
+						}
+					},
+					{
+						"sc_skatingelementconfiguration_sc_skatiid": "094D0043-4F92-EB11-B1AC-000D3A147681",
+						"sc_skatingelementconfigurationid": "CA6CA4C7-1193-EB11-B1AC-000D3A15199C",
+						"sc_skatingelementdefinitionid": {
+							"sc_skatingelementdefinitionid": "36347C16-9C90-EB11-B1AC-000D3A1B1808",
+							"sc_starratingtype": 947960000,
+							"sc_flying": 0,
+							"sc_change": 0,
+							"sc_valueadjustmentv": 0,
+							"sc_throw": 0,
+							"sc_family": {
+								"sc_skatingelementfamilyid": "234648BF-9B90-EB11-B1AC-000D3A1BBD52",
+								"sc_familytype": {
+									"sc_skatingelementfamilytypeid": "2FFA4157-4C8B-EB11-A812-000D3A8DCA86",
+									"sc_name": "Twist",
+									"sc_frenchname": ""
+								},
+								"sc_code": "",
+								"sc_name": "Double Twist",
+								"sc_internalnote": "",
+								"sc_frenchname": ""
+							},
+							"sc_longname": "Double Twist Level 3 Downgraded",
+							"sc_longnamefrench": "Double Twist niveau 3 déclassé",
+							"sc_goevalueminus5": -0.75,
+							"sc_goevalueminus4": -0.6,
+							"sc_goevalueminus3": -0.45,
+							"sc_goevalueminus2": -0.3,
+							"sc_goevalueminus1": -0.15,
+							"sc_basevalue": 1.5,
+							"sc_goevalue1": 0.15,
+							"sc_goevalue2": 0.3,
+							"sc_goevalue3": 0.45,
+							"sc_goevalue4": 0.6,
+							"sc_goevalue5": 0.75,
+							"sc_takeoffflag": "",
+							"sc_familyname": "",
+							"sc_patterndancecode": "",
+							"sc_elementcodecalculated": "",
+							"sc_abbreviatedname": "2 Twist 3",
+							"sc_synchrocombination": "",
+							"sc_level": 3,
+							"sc_abbreviatednamefrench": "2 Twist 3",
+							"sc_rotationflag": "<<",
+							"sc_elementcode": "2Tw3<<"
+						}
+					},
+					{
+						"sc_skatingelementconfiguration_sc_skatiid": "1E370A44-1393-EB11-B1AC-000D3A15199C",
+						"sc_skatingelementconfigurationid": "CA6CA4C7-1193-EB11-B1AC-000D3A15199C",
+						"sc_skatingelementdefinitionid": {
+							"sc_skatingelementdefinitionid": "48347C16-9C90-EB11-B1AC-000D3A1B1808",
+							"sc_starratingtype": 947960000,
+							"sc_flying": 0,
+							"sc_change": 0,
+							"sc_valueadjustmentv": 0,
+							"sc_throw": 0,
+							"sc_family": {
+								"sc_skatingelementfamilyid": "274648BF-9B90-EB11-B1AC-000D3A1BBD52",
+								"sc_familytype": {
+									"sc_skatingelementfamilytypeid": "2FFA4157-4C8B-EB11-A812-000D3A8DCA86",
+									"sc_name": "Twist",
+									"sc_frenchname": ""
+								},
+								"sc_code": "",
+								"sc_name": "Quadruple Twist",
+								"sc_internalnote": "",
+								"sc_frenchname": ""
+							},
+							"sc_longname": "Quadruple Twist Level 2 Downgraded",
+							"sc_longnamefrench": "Quadruple Twist niveau 2 déclassé",
+							"sc_goevalueminus5": -2.7,
+							"sc_goevalueminus4": -2.16,
+							"sc_goevalueminus3": -1.62,
+							"sc_goevalueminus2": -1.08,
+							"sc_goevalueminus1": -0.54,
+							"sc_basevalue": 5.4,
+							"sc_goevalue1": 0.54,
+							"sc_goevalue2": 1.08,
+							"sc_goevalue3": 1.62,
+							"sc_goevalue4": 2.16,
+							"sc_goevalue5": 2.7,
+							"sc_takeoffflag": "",
+							"sc_familyname": "",
+							"sc_patterndancecode": "",
+							"sc_elementcodecalculated": "",
+							"sc_abbreviatedname": "4 Twist 2",
+							"sc_synchrocombination": "",
+							"sc_level": 2,
+							"sc_abbreviatednamefrench": "4 Twist 2",
+							"sc_rotationflag": "<<",
+							"sc_elementcode": "4Tw2<<"
+						}
+					},
+					{
+						"sc_skatingelementconfiguration_sc_skatiid": "3284024A-1393-EB11-B1AC-000D3A15199C",
+						"sc_skatingelementconfigurationid": "CA6CA4C7-1193-EB11-B1AC-000D3A15199C",
+						"sc_skatingelementdefinitionid": {
+							"sc_skatingelementdefinitionid": "20347C16-9C90-EB11-B1AC-000D3A1B1808",
+							"sc_starratingtype": 947960000,
+							"sc_flying": 0,
+							"sc_change": 0,
+							"sc_valueadjustmentv": 0,
+							"sc_throw": 0,
+							"sc_family": {
+								"sc_skatingelementfamilyid": "274648BF-9B90-EB11-B1AC-000D3A1BBD52",
+								"sc_familytype": {
+									"sc_skatingelementfamilytypeid": "2FFA4157-4C8B-EB11-A812-000D3A8DCA86",
+									"sc_name": "Twist",
+									"sc_frenchname": ""
+								},
+								"sc_code": "",
+								"sc_name": "Quadruple Twist",
+								"sc_internalnote": "",
+								"sc_frenchname": ""
+							},
+							"sc_longname": "Quadruple Twist Level 3",
+							"sc_longnamefrench": "Quadruple Twist niveau 3",
+							"sc_goevalueminus5": -3.8,
+							"sc_goevalueminus4": -3.04,
+							"sc_goevalueminus3": -2.28,
+							"sc_goevalueminus2": -1.52,
+							"sc_goevalueminus1": -0.76,
+							"sc_basevalue": 7.6,
+							"sc_goevalue1": 0.76,
+							"sc_goevalue2": 1.52,
+							"sc_goevalue3": 2.28,
+							"sc_goevalue4": 3.04,
+							"sc_goevalue5": 3.8,
+							"sc_takeoffflag": "",
+							"sc_familyname": "",
+							"sc_patterndancecode": "",
+							"sc_elementcodecalculated": "",
+							"sc_abbreviatedname": "4 Twist 3",
+							"sc_synchrocombination": "",
+							"sc_level": 3,
+							"sc_abbreviatednamefrench": "4 Twist 3",
+							"sc_rotationflag": "",
+							"sc_elementcode": "4Tw3"
+						}
+					},
+					{
+						"sc_skatingelementconfiguration_sc_skatiid": "82DC9D1B-1493-EB11-B1AC-000D3A15199C",
+						"sc_skatingelementconfigurationid": "CA6CA4C7-1193-EB11-B1AC-000D3A15199C",
+						"sc_skatingelementdefinitionid": {
+							"sc_skatingelementdefinitionid": "38337C16-9C90-EB11-B1AC-000D3A1B1808",
+							"sc_starratingtype": 947960000,
+							"sc_flying": 0,
+							"sc_change": 0,
+							"sc_valueadjustmentv": 0,
+							"sc_throw": 1,
+							"sc_family": {
+								"sc_skatingelementfamilyid": "134648BF-9B90-EB11-B1AC-000D3A1BBD52",
+								"sc_familytype": {
+									"sc_skatingelementfamilytypeid": "7BFAB449-4C8B-EB11-A812-000D3A8DCA86",
+									"sc_name": "Jump",
+									"sc_frenchname": ""
+								},
+								"sc_code": "",
+								"sc_name": "Toe Loop",
+								"sc_internalnote": "",
+								"sc_frenchname": ""
+							},
+							"sc_longname": "Throw Single Toe Loop",
+							"sc_longnamefrench": "Simple boucle piquée lancée",
+							"sc_goevalueminus5": -0.55,
+							"sc_goevalueminus4": -0.44,
+							"sc_goevalueminus3": -0.33,
+							"sc_goevalueminus2": -0.22,
+							"sc_goevalueminus1": -0.11,
+							"sc_basevalue": 1.1,
+							"sc_goevalue1": 0.11,
+							"sc_goevalue2": 0.22,
+							"sc_goevalue3": 0.33,
+							"sc_goevalue4": 0.44,
+							"sc_goevalue5": 0.55,
+							"sc_takeoffflag": "",
+							"sc_familyname": "",
+							"sc_patterndancecode": "",
+							"sc_elementcodecalculated": "",
+							"sc_abbreviatedname": "Throw 1 Toe Loop",
+							"sc_synchrocombination": "",
+							"sc_level": 1,
+							"sc_abbreviatednamefrench": "1 Boucle piquée lancée",
+							"sc_rotationflag": "",
+							"sc_elementcode": "1TTh"
+						}
+					},
+					{
+						"sc_skatingelementconfiguration_sc_skatiid": "93DC9D1B-1493-EB11-B1AC-000D3A15199C",
+						"sc_skatingelementconfigurationid": "CA6CA4C7-1193-EB11-B1AC-000D3A15199C",
+						"sc_skatingelementdefinitionid": {
+							"sc_skatingelementdefinitionid": "62337C16-9C90-EB11-B1AC-000D3A1B1808",
+							"sc_starratingtype": 947960000,
+							"sc_flying": 0,
+							"sc_change": 0,
+							"sc_valueadjustmentv": 0,
+							"sc_throw": 1,
+							"sc_family": {
+								"sc_skatingelementfamilyid": "1B4648BF-9B90-EB11-B1AC-000D3A1BBD52",
+								"sc_familytype": {
+									"sc_skatingelementfamilytypeid": "7BFAB449-4C8B-EB11-A812-000D3A8DCA86",
+									"sc_name": "Jump",
+									"sc_frenchname": ""
+								},
+								"sc_code": "",
+								"sc_name": "Lutz",
+								"sc_internalnote": "",
+								"sc_frenchname": ""
+							},
+							"sc_longname": "Throw Single Lutz Quarter",
+							"sc_longnamefrench": "Simple lutz lancé quart",
+							"sc_goevalueminus5": -0.7,
+							"sc_goevalueminus4": -0.56,
+							"sc_goevalueminus3": -0.42,
+							"sc_goevalueminus2": -0.28,
+							"sc_goevalueminus1": -0.14,
+							"sc_basevalue": 1.4,
+							"sc_goevalue1": 0.14,
+							"sc_goevalue2": 0.28,
+							"sc_goevalue3": 0.42,
+							"sc_goevalue4": 0.56,
+							"sc_goevalue5": 0.7,
+							"sc_takeoffflag": "",
+							"sc_familyname": "",
+							"sc_patterndancecode": "",
+							"sc_elementcodecalculated": "",
+							"sc_abbreviatedname": "Throw 1 Lutz",
+							"sc_synchrocombination": "",
+							"sc_level": 1,
+							"sc_abbreviatednamefrench": "1 Lutz lancé",
+							"sc_rotationflag": "q",
+							"sc_elementcode": "1LzThq"
+						}
+					},
+					{
+						"sc_skatingelementconfiguration_sc_skatiid": "CBDC9D1B-1493-EB11-B1AC-000D3A15199C",
+						"sc_skatingelementconfigurationid": "CA6CA4C7-1193-EB11-B1AC-000D3A15199C",
+						"sc_skatingelementdefinitionid": {
+							"sc_skatingelementdefinitionid": "90337C16-9C90-EB11-B1AC-000D3A1B1808",
+							"sc_starratingtype": 947960000,
+							"sc_flying": 0,
+							"sc_change": 0,
+							"sc_valueadjustmentv": 0,
+							"sc_throw": 1,
+							"sc_family": {
+								"sc_skatingelementfamilyid": "194648BF-9B90-EB11-B1AC-000D3A1BBD52",
+								"sc_familytype": {
+									"sc_skatingelementfamilytypeid": "7BFAB449-4C8B-EB11-A812-000D3A8DCA86",
+									"sc_name": "Jump",
+									"sc_frenchname": ""
+								},
+								"sc_code": "",
+								"sc_name": "Flip",
+								"sc_internalnote": "",
+								"sc_frenchname": ""
+							},
+							"sc_longname": "Throw Double Flip Downgraded",
+							"sc_longnamefrench": "Double flip lancé déclassé",
+							"sc_goevalueminus5": -0.7,
+							"sc_goevalueminus4": -0.56,
+							"sc_goevalueminus3": -0.42,
+							"sc_goevalueminus2": -0.28,
+							"sc_goevalueminus1": -0.14,
+							"sc_basevalue": 1.4,
+							"sc_goevalue1": 0.14,
+							"sc_goevalue2": 0.28,
+							"sc_goevalue3": 0.42,
+							"sc_goevalue4": 0.56,
+							"sc_goevalue5": 0.7,
+							"sc_takeoffflag": "",
+							"sc_familyname": "",
+							"sc_patterndancecode": "",
+							"sc_elementcodecalculated": "",
+							"sc_abbreviatedname": "Throw 2 Flip",
+							"sc_synchrocombination": "",
+							"sc_level": 2,
+							"sc_abbreviatednamefrench": "2 Flip lancé",
+							"sc_rotationflag": "<<",
+							"sc_elementcode": "2FTh<<"
+						}
+					},
+					{
+						"sc_skatingelementconfiguration_sc_skatiid": "C96BFA36-80FB-EB11-94EF-0022482372E4",
+						"sc_skatingelementconfigurationid": "EE789404-9C91-EB11-B1AC-000D3A147681",
+						"sc_skatingelementdefinitionid": {
+							"sc_skatingelementdefinitionid": "C8367C16-9C90-EB11-B1AC-000D3A1B1808",
+							"sc_starratingtype": 947960000,
+							"sc_flying": 1,
+							"sc_change": 1,
+							"sc_valueadjustmentv": 1,
+							"sc_throw": 0,
+							"sc_family": {
+								"sc_skatingelementfamilyid": "4B4648BF-9B90-EB11-B1AC-000D3A1BBD52",
+								"sc_familytype": {
+									"sc_skatingelementfamilytypeid": "9B7EF150-4C8B-EB11-A812-000D3A8DCA86",
+									"sc_name": "Spin",
+									"sc_frenchname": ""
+								},
+								"sc_code": "",
+								"sc_name": "Upright",
+								"sc_internalnote": "",
+								"sc_frenchname": ""
+							},
+							"sc_longname": "Flying Change Foot Upright Spin Level B V",
+							"sc_longnamefrench": "Pirouette sautée debout avec changement de pied niveau B V",
+							"sc_goevalueminus5": -0.57,
+							"sc_goevalueminus4": -0.45,
+							"sc_goevalueminus3": -0.34,
+							"sc_goevalueminus2": -0.23,
+							"sc_goevalueminus1": -0.11,
+							"sc_basevalue": 1.13,
+							"sc_goevalue1": 0.11,
+							"sc_goevalue2": 0.23,
+							"sc_goevalue3": 0.34,
+							"sc_goevalue4": 0.45,
+							"sc_goevalue5": 0.57,
+							"sc_takeoffflag": "",
+							"sc_familyname": "",
+							"sc_patterndancecode": "",
+							"sc_elementcodecalculated": "",
+							"sc_abbreviatedname": "Fly Ch Ft Upright B V",
+							"sc_synchrocombination": "",
+							"sc_level": 0,
+							"sc_abbreviatednamefrench": "Sautée Ch debout B V",
+							"sc_rotationflag": "",
+							"sc_elementcode": "FCUSpBV"
+						}
+					},
+					{
+						"sc_skatingelementconfiguration_sc_skatiid": "008B1125-80FB-EB11-94EF-0022482372E4",
+						"sc_skatingelementconfigurationid": "EE789404-9C91-EB11-B1AC-000D3A147681",
+						"sc_skatingelementdefinitionid": {
+							"sc_skatingelementdefinitionid": "48357C16-9C90-EB11-B1AC-000D3A1B1808",
+							"sc_starratingtype": 947960000,
+							"sc_flying": 0,
+							"sc_change": 0,
+							"sc_valueadjustmentv": 0,
+							"sc_throw": 0,
+							"sc_family": {
+								"sc_skatingelementfamilyid": "194648BF-9B90-EB11-B1AC-000D3A1BBD52",
+								"sc_familytype": {
+									"sc_skatingelementfamilytypeid": "7BFAB449-4C8B-EB11-A812-000D3A8DCA86",
+									"sc_name": "Jump",
+									"sc_frenchname": ""
+								},
+								"sc_code": "",
+								"sc_name": "Flip",
+								"sc_internalnote": "",
+								"sc_frenchname": ""
+							},
+							"sc_longname": "Triple Flip Downgraded",
+							"sc_longnamefrench": "Triple flip déclassé",
+							"sc_goevalueminus5": -0.9,
+							"sc_goevalueminus4": -0.72,
+							"sc_goevalueminus3": -0.54,
+							"sc_goevalueminus2": -0.36,
+							"sc_goevalueminus1": -0.18,
+							"sc_basevalue": 1.8,
+							"sc_goevalue1": 0.18,
+							"sc_goevalue2": 0.36,
+							"sc_goevalue3": 0.54,
+							"sc_goevalue4": 0.72,
+							"sc_goevalue5": 0.9,
+							"sc_takeoffflag": "",
+							"sc_familyname": "",
+							"sc_patterndancecode": "",
+							"sc_elementcodecalculated": "",
+							"sc_abbreviatedname": "3 Flip",
+							"sc_synchrocombination": "",
+							"sc_level": 3,
+							"sc_abbreviatednamefrench": "3 Flip",
+							"sc_rotationflag": "<<",
+							"sc_elementcode": "3F<<"
+						}
+					},
+					{
+						"sc_skatingelementconfiguration_sc_skatiid": "207D3BAF-9D91-EB11-B1AC-000D3A147681",
+						"sc_skatingelementconfigurationid": "EE789404-9C91-EB11-B1AC-000D3A147681",
+						"sc_skatingelementdefinitionid": {
+							"sc_skatingelementdefinitionid": "E6367C16-9C90-EB11-B1AC-000D3A1B1808",
+							"sc_starratingtype": 947960000,
+							"sc_flying": 1,
+							"sc_change": 1,
+							"sc_valueadjustmentv": 1,
+							"sc_throw": 0,
+							"sc_family": {
+								"sc_skatingelementfamilyid": "4D4648BF-9B90-EB11-B1AC-000D3A1BBD52",
+								"sc_familytype": {
+									"sc_skatingelementfamilytypeid": "9B7EF150-4C8B-EB11-A812-000D3A8DCA86",
+									"sc_name": "Spin",
+									"sc_frenchname": ""
+								},
+								"sc_code": "",
+								"sc_name": "Sit",
+								"sc_internalnote": "",
+								"sc_frenchname": ""
+							},
+							"sc_longname": "Flying Change Foot Sit Spin Level 3 V",
+							"sc_longnamefrench": "Pirouette sautée assise avec changement de pied niveau 3 V",
+							"sc_goevalueminus5": -0.98,
+							"sc_goevalueminus4": -0.78,
+							"sc_goevalueminus3": -0.59,
+							"sc_goevalueminus2": -0.39,
+							"sc_goevalueminus1": -0.2,
+							"sc_basevalue": 1.95,
+							"sc_goevalue1": 0.2,
+							"sc_goevalue2": 0.39,
+							"sc_goevalue3": 0.59,
+							"sc_goevalue4": 0.78,
+							"sc_goevalue5": 0.98,
+							"sc_takeoffflag": "",
+							"sc_familyname": "",
+							"sc_patterndancecode": "",
+							"sc_elementcodecalculated": "",
+							"sc_abbreviatedname": "Fly Ch Ft Sit 3 V",
+							"sc_synchrocombination": "",
+							"sc_level": 3,
+							"sc_abbreviatednamefrench": "Sautée Ch assise 3 V",
+							"sc_rotationflag": "",
+							"sc_elementcode": "FCSSp3V"
+						}
+					},
+					{
+						"sc_skatingelementconfiguration_sc_skatiid": "59BEA61E-9D91-EB11-B1AC-000D3A147681",
+						"sc_skatingelementconfigurationid": "EE789404-9C91-EB11-B1AC-000D3A147681",
+						"sc_skatingelementdefinitionid": {
+							"sc_skatingelementdefinitionid": "06367C16-9C90-EB11-B1AC-000D3A1B1808",
+							"sc_starratingtype": 947960000,
+							"sc_flying": 1,
+							"sc_change": 0,
+							"sc_valueadjustmentv": 1,
+							"sc_throw": 0,
+							"sc_family": {
+								"sc_skatingelementfamilyid": "4B4648BF-9B90-EB11-B1AC-000D3A1BBD52",
+								"sc_familytype": {
+									"sc_skatingelementfamilytypeid": "9B7EF150-4C8B-EB11-A812-000D3A8DCA86",
+									"sc_name": "Spin",
+									"sc_frenchname": ""
+								},
+								"sc_code": "",
+								"sc_name": "Upright",
+								"sc_internalnote": "",
+								"sc_frenchname": ""
+							},
+							"sc_longname": "Flying Upright Spin No Value V",
+							"sc_longnamefrench": "Pirouette sautée debout aucune valeur V",
+							"sc_goevalueminus5": 0,
+							"sc_goevalueminus4": 0,
+							"sc_goevalueminus3": 0,
+							"sc_goevalueminus2": 0,
+							"sc_goevalueminus1": 0,
+							"sc_basevalue": 0,
+							"sc_goevalue1": 0,
+							"sc_goevalue2": 0,
+							"sc_goevalue3": 0,
+							"sc_goevalue4": 0,
+							"sc_goevalue5": 0,
+							"sc_takeoffflag": "",
+							"sc_familyname": "",
+							"sc_patterndancecode": "",
+							"sc_elementcodecalculated": "",
+							"sc_abbreviatedname": "Fly Upright NV V",
+							"sc_synchrocombination": "",
+							"sc_level": "",
+							"sc_abbreviatednamefrench": "Sautée debout auc. val. V",
+							"sc_rotationflag": "",
+							"sc_elementcode": "FUSpV"
+						}
+					},
+					{
+						"sc_skatingelementconfiguration_sc_skatiid": "735468E5-1293-EB11-B1AC-000D3A15199C",
+						"sc_skatingelementconfigurationid": "CA6CA4C7-1193-EB11-B1AC-000D3A15199C",
+						"sc_skatingelementdefinitionid": {
+							"sc_skatingelementdefinitionid": "7E327C16-9C90-EB11-B1AC-000D3A1B1808",
+							"sc_starratingtype": 947960000,
+							"sc_flying": 0,
+							"sc_change": 0,
+							"sc_valueadjustmentv": 0,
+							"sc_throw": 0,
+							"sc_family": {
+								"sc_skatingelementfamilyid": "F34548BF-9B90-EB11-B1AC-000D3A1BBD52",
+								"sc_familytype": {
+									"sc_skatingelementfamilytypeid": "F1F94157-4C8B-EB11-A812-000D3A8DCA86",
+									"sc_name": "Lift",
+									"sc_frenchname": ""
+								},
+								"sc_code": "",
+								"sc_name": "Lift Group 2",
+								"sc_internalnote": "",
+								"sc_frenchname": ""
+							},
+							"sc_longname": "Lift Group 2 Level 4",
+							"sc_longnamefrench": "Levée groupe 2 niveau 4",
+							"sc_goevalueminus5": -1.55,
+							"sc_goevalueminus4": -1.24,
+							"sc_goevalueminus3": -0.93,
+							"sc_goevalueminus2": -0.62,
+							"sc_goevalueminus1": -0.31,
+							"sc_basevalue": 3.1,
+							"sc_goevalue1": 0.31,
+							"sc_goevalue2": 0.62,
+							"sc_goevalue3": 0.93,
+							"sc_goevalue4": 1.24,
+							"sc_goevalue5": 1.55,
+							"sc_takeoffflag": "",
+							"sc_familyname": "",
+							"sc_patterndancecode": "",
+							"sc_elementcodecalculated": "",
+							"sc_abbreviatedname": "2 Lift 4",
+							"sc_synchrocombination": "",
+							"sc_level": 4,
+							"sc_abbreviatednamefrench": "2 Levée 4",
+							"sc_rotationflag": "",
+							"sc_elementcode": "2Li4"
+						}
+					}
+					
+				
+				]
+			},
+			"sc_parentcategory": "0DCF8D1D-047E-EB11-A812-000D3A99AB84",
+			"sc_totalsegmentfactor": "1.0",
+			"sc_elementconfigurationname": "",
+			"sc_parentcategoryname": "",
+			"sc_name": "Free Program",
+			"sc_frenchname": "Programme libre",
+			"sc_order": "",
+			"sc_reviewtime": "150",
+			"sc_programtime": "160",
+			"sc_warmuptime": "300",
+			"sc_programhalftime": "",
+			"sc_warmupgroupmaximumsize": "8",
+		
+        
+            "programcomponents": [
+			
+				{
+					"sc_skatingprogramcomponentdefinitionid": "0CAD8442-757F-EB11-A812-000D3A8D72D1",
+					"sc_pctype": {
+						"sc_skatingprogramcomponenttypeid": "E3CB08CB-E780-EB11-A812-0022481D88FB",
+						"sc_name": "Transitions",
+						"sc_frenchname": "Transitions"
+					},
+					"sc_parentsegment": "60D85536-757F-EB11-A812-000D3A8D72D1",
+					"sc_name": "PC-105205",
+					"sc_pointvalue": "0.8"
+				},
+				{
+					"sc_skatingprogramcomponentdefinitionid": "04CE8148-757F-EB11-A812-000D3A8D72D1",
+					"sc_pctype": {
+						"sc_skatingprogramcomponenttypeid": "5F6D1AD2-E780-EB11-A812-0022481D88FB",
+						"sc_name": "Performance",
+						"sc_frenchname": "Performance"
+					},
+					"sc_parentsegment": "B420E1CF-627F-EB11-A812-000D3A8D72D1",
+					"sc_name": "PC-105206",
+					"sc_pointvalue": "0.8"
+				},
+				{
+					"sc_skatingprogramcomponentdefinitionid": "10CE8148-757F-EB11-A812-000D3A8D72D1",
+					"sc_pctype": {
+						"sc_skatingprogramcomponenttypeid": "7B6D1AD2-E780-EB11-A812-0022481D88FB",
+						"sc_name": "Composition",
+						"sc_frenchname": "Composition"
+					},
+					"sc_parentsegment": "60D85536-757F-EB11-A812-000D3A8D72D1",
+					"sc_name": "PC-105207",
+					"sc_pointvalue": "0.8"
+				},
+				{
+					"sc_skatingprogramcomponentdefinitionid": "F871E54E-757F-EB11-A812-000D3A8D72D1",
+					"sc_pctype": {
+						"sc_skatingprogramcomponenttypeid": "21CC63D8-E780-EB11-A812-0022481D88FB",
+						"sc_name": "Interpretation",
+						"sc_frenchname": "Interprétation"
+					},
+					"sc_parentsegment": "60D85536-757F-EB11-A812-000D3A8D72D1",
+					"sc_name": "PC-105208",
+					"sc_pointvalue": "0.8"
+				}
+
+						
+				
+					
+			],
+			"bonuses_deduction": [{
+						"sc_skatingadjustmentassociationid": "C8B7DB0A-9782-EB11-A812-000D3A8D72D1",
+						"sc_segmentdefinition": "2E0E9C4E-717F-EB11-A812-000D3A8D72D1",
+						"sc_adjustmentdefinition": {
+							"sc_skatingadjustmentdefinitionid": "9FA85D93-4281-EB11-A812-000D3A8D72D1",
+							"sc_group": "947960001",
+							"sc_type": "947960000",
+							"sc_name": "Costume and Prop Violation",
+							"sc_frenchname": "Infraction aux règlements sur les costumes et les accessoires"
+						},
+						"sc_maximumapplications": "",
+						"sc_name": "SAA-1275",
+						"sc_pointvalue": "-0.2",
+						"sc_segmentdefinitionname": "",
+						"sc_adjustmentdefinitionname": "",
+						"sc_order": ""
+					},
+					
+					{
+						"sc_skatingadjustmentassociationid": "E34A9EE8-A782-EB11-A812-000D3A8D72D1",
+						"sc_segmentdefinition": "2E0E9C4E-717F-EB11-A812-000D3A8D72D1",
+						"sc_adjustmentdefinition": {
+							"sc_skatingadjustmentdefinitionid": "742E632D-4381-EB11-A812-000D3A8D72D1",
+							"sc_group": "947960001",
+							"sc_type": "947960000",
+							"sc_name": "Music Requirements",
+							"sc_frenchname": "Infraction aux exigences sur la musique"
+						},
+						"sc_maximumapplications": "",
+						"sc_name": "SAA-1279",
+						"sc_pointvalue": "-0.4",
+						"sc_segmentdefinitionname": "",
+						"sc_adjustmentdefinitionname": "",
+						"sc_order": ""
+					},
+				{
+					"sc_skatingadjustmentassociationid": "32E8966D-F385-EB11-A812-000D3A1DA2D9",
+					"sc_segmentdefinition": "D6A9A81F-3680-EB11-A812-000D3A8D72D1",
+					"sc_adjustmentdefinition": {
+						"sc_skatingadjustmentdefinitionid": "F08C438C-F680-EB11-A812-0022481D88FB",
+						"sc_group": "947960001",
+						"sc_type": "947960002",
+						"sc_name": "Program Time",
+						"sc_frenchname": "Durée du programme"
+					},
+					"sc_maximumapplications": "",
+					"sc_name": "SAA-1908",
+					"sc_pointvalue": "-0.5",
+					"sc_segmentdefinitionname": "",
+					"sc_adjustmentdefinitionname": "",
+					"sc_order": ""
+				},
+				{
+					"sc_skatingadjustmentassociationid": "26C7AB73-F385-EB11-A812-000D3A1DA2D9",
+					"sc_segmentdefinition": "D6A9A81F-3680-EB11-A812-000D3A8D72D1",
+					"sc_adjustmentdefinition": {
+						"sc_skatingadjustmentdefinitionid": "FA7CCD24-4281-EB11-A812-000D3A8D72D1",
+						"sc_group": "947960001",
+						"sc_type": "947960002",
+						"sc_name": "Part of the Costume/Decoration Falls on the Ice",
+						"sc_frenchname": "Infraction aux exigences concernant le costume"
+					},
+					"sc_maximumapplications": "",
+					"sc_name": "SAA-1909",
+					"sc_pointvalue": "-0.5",
+					"sc_segmentdefinitionname": "",
+					"sc_adjustmentdefinitionname": "",
+					"sc_order": ""
+				},
+				{
+					"sc_skatingadjustmentassociationid": "E19E1D7A-F385-EB11-A812-000D3A1DA2D9",
+					"sc_segmentdefinition": "D6A9A81F-3680-EB11-A812-000D3A8D72D1",
+					"sc_adjustmentdefinition": {
+						"sc_skatingadjustmentdefinitionid": "B4CEDD45-4281-EB11-A812-000D3A8D72D1",
+						"sc_group": "947960001",
+						"sc_type": "947960002",
+						"sc_name": "Late Start",
+						"sc_frenchname": "Départ retardé"
+					},
+					"sc_maximumapplications": "",
+					"sc_name": "SAA-1910",
+					"sc_pointvalue": "-0.5",
+					"sc_segmentdefinitionname": "",
+					"sc_adjustmentdefinitionname": "",
+					"sc_order": ""
+				},
+				{
+					"sc_skatingadjustmentassociationid": "8F574A80-F385-EB11-A812-000D3A1DA2D9",
+					"sc_segmentdefinition": "D6A9A81F-3680-EB11-A812-000D3A8D72D1",
+					"sc_adjustmentdefinition": {
+						"sc_skatingadjustmentdefinitionid": "40D2865C-4281-EB11-A812-000D3A8D72D1",
+						"sc_group": "947960001",
+						"sc_type": "947960002",
+						"sc_name": "Interruption - up to 40 Seconds",
+						"sc_frenchname": "Interruption – jusqu’à 40 secondes"
+					},
+					"sc_maximumapplications": "",
+					"sc_name": "SAA-1911",
+					"sc_pointvalue": "-0.5",
+					"sc_segmentdefinitionname": "",
+					"sc_adjustmentdefinitionname": "",
+					"sc_order": ""
+				},
+				{
+					"sc_skatingadjustmentassociationid": "21B54F86-F385-EB11-A812-000D3A1DA2D9",
+					"sc_segmentdefinition": "D6A9A81F-3680-EB11-A812-000D3A8D72D1",
+					"sc_adjustmentdefinition": {
+						"sc_skatingadjustmentdefinitionid": "FBE3D574-4281-EB11-A812-000D3A8D72D1",
+						"sc_group": "947960001",
+						"sc_type": "947960002",
+						"sc_name": "Interruption - Three-minute Allowance",
+						"sc_frenchname": "Interruption - allocation de trois minutes"
+					},
+					"sc_maximumapplications": "",
+					"sc_name": "SAA-1912",
+					"sc_pointvalue": "-2.5",
+					"sc_segmentdefinitionname": "",
+					"sc_adjustmentdefinitionname": "",
+					"sc_order": ""
+				},
+				{
+					"sc_skatingadjustmentassociationid": "CF8B858D-F385-EB11-A812-000D3A1DA2D9",
+					"sc_segmentdefinition": "D6A9A81F-3680-EB11-A812-000D3A8D72D1",
+					"sc_adjustmentdefinition": {
+						"sc_skatingadjustmentdefinitionid": "9FA85D93-4281-EB11-A812-000D3A8D72D1",
+						"sc_group": "947960001",
+						"sc_type": "947960002",
+						"sc_name": "Costume and Prop Violation",
+						"sc_frenchname": "Infraction aux règlements sur les costumes et les accessoires"
+					},
+					"sc_maximumapplications": "",
+					"sc_name": "SAA-1913",
+					"sc_pointvalue": "-0.5",
+					"sc_segmentdefinitionname": "",
+					"sc_adjustmentdefinitionname": "",
+					"sc_order": ""
+				},
+				{
+					"sc_skatingadjustmentassociationid": "A4FF159A-F385-EB11-A812-000D3A1DA2D9",
+					"sc_segmentdefinition": "D6A9A81F-3680-EB11-A812-000D3A8D72D1",
+					"sc_adjustmentdefinition": {
+						"sc_skatingadjustmentdefinitionid": "3091ECB1-4281-EB11-A812-000D3A8D72D1",
+						"sc_group": "947960001",
+						"sc_type": "947960001",
+						"sc_name": "Illegal Element",
+						"sc_frenchname": "Élément interdit"
+					},
+					"sc_maximumapplications": "",
+					"sc_name": "SAA-1914",
+					"sc_pointvalue": "-1.0",
+					"sc_segmentdefinitionname": "",
+					"sc_adjustmentdefinitionname": "",
+					"sc_order": ""
+				},
+				{
+					"sc_skatingadjustmentassociationid": "0FEA9EA1-F385-EB11-A812-000D3A1DA2D9",
+					"sc_segmentdefinition": "D6A9A81F-3680-EB11-A812-000D3A8D72D1",
+					"sc_adjustmentdefinition": {
+						"sc_skatingadjustmentdefinitionid": "C03BF86A-F480-EB11-A812-0022481D88FB",
+						"sc_group": "947960001",
+						"sc_type": "947960001",
+						"sc_name": "Falls",
+						"sc_frenchname": "Chutes"
+					},
+					"sc_maximumapplications": "",
+					"sc_name": "SAA-1915",
+					"sc_pointvalue": "-0.5",
+					"sc_segmentdefinitionname": "",
+					"sc_adjustmentdefinitionname": "",
+					"sc_order": ""
+				}
+				
+			],
+			"well_balanced": [
+				{}
+			]
+		},
+		"enname": "Free Program",
+		"frname": "Programme libre",
+		"status": "",
+		"performanceorder": "0",
+		"programtime": "160",
+		"programhalftime": "0",
+		"warmuptime": "300",
+		"warmupnumber": "",
+		"warmupgroupmaxsize": "8",
+		"wellbalanced": "no",
+		"fallvalue": "0",
+		"reviewtime": "150",
+		"totalsegmentfactor": "1.0",
+		"createdon": "2021-12-14T16:39:21.766Z",
+		"modifiedon": "2021-12-14T16:39:21.766Z",
+		"pattern_dancedefination": {
+			"sc_skatingpatterndancedefinitionid": "",
+			"sc_name": "",
+			"sc_frenchname": "",
+			"sc_elementcodeprefix": ""
+		},
+		"offical": 
+			{
+				"officialassignmentid": "8706fca7-afec-4d6f-99b8-e7f1c8029895",
+				"segmentid": "40b3cb75-62f3-4c0b-b9fc-1129f91fae56",
+				"sc_officialid": {
+					"sc_officialid": "06cd16a3-c11e-eb11-a812-000d3a1b1808",
+					"sc_scnum": "06CD16A3LB",
+					"sc_fullname": "Laura Bergquist",
+					"sc_firstname": "Laura",
+					"sc_middlename": "",
+					"sc_lastname": "Bergquist",
+					"sc_email": "lbergquist1977@gmail.com",
+					"sc_homeorg": "Wynyard SC",
+					"sc_section": "SK",
+					"sc_registereduntil": "2021-08-31T00:00:00.000Z",
+					"createdon": "",
+					"modifiedon": ""
+				},
+				"role": "1991BC38-8782-EB11-A812-000D3A8D72D1",
+				"position": "1",
+				"createdon": "2021-12-15T19:31:56.380Z",
+				"modifiedon": "2021-12-15T19:31:56.380Z"
+			}
+		
+	},
+	"sc_competitorid": {
+		"sc_competitorid": "00a28ff3-a048-ec11-8c60-00224829ffa6",
+		"sc_scnum": "2003048242",
+		"sc_ststus": "0",
+		"sc_name": "Laurie Block",
+		"sc_competitortype": "Individual Skater / Patineur(euse) individuel",
+		"sc_club": "Calgary Synchronized SC",
+		"sc_region": "",
+		"sc_section": "AB/NT/NU",
+		"sc_biography": "",
+		"sc_account": "",
+		"sc_facebook": "",
+		"sc_instagram": "",
+		"sc_twitter": "",
+		"sc_synchrocategory": "",
+		"sc_trainingsite": "Calgary, AB",
+		"sc_competitorteam": "",
+		"createdon": "",
+		"modifiedon": ""
+	},
+	"createdon": "2021-12-14T16:40:42.467Z",
+	"modifiedon": "2021-12-14T16:40:42.467Z",
+	"sortorder": "0",
+	"warmupgroup": ""
+}
+	

@@ -1,0 +1,90 @@
+<div id="body-wrapper">
+
+    <h1 i18n>Event Permissions</h1>
+    <!--div><a routerLink="/event/{{ event[0]?.eventid }}">&lt; Back to event</a></div-->
+    <div><a id="back_to_event" routerLink="/event/" i18n>&lt; Back to event list</a></div>
+    <h2>{{ event[0]?.languages[language].name }} ({{ event[0]?.startdate | date:'longDate' }} - {{ event[0]?.enddate |
+        date:'longDate' }})</h2>
+
+
+    <div>
+        <mat-card fxFlex="35">
+            <mat-card-content>
+                <mat-toolbar>
+                    <span i18n>Permissions for </span><span>{{ event[0]?.languages[language].name }}</span>
+                </mat-toolbar>
+
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th i18n>name</th>
+                                <th i18n>contactid</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngIf="perms?.length === 0">
+                                <td colspan="5" i18n>No records</td>
+                            </tr>
+                            <tr *ngFor="let perm of perms" class="permission_list">
+                                <!--td>{{event.eventid}}</td-->
+                                <td>{{perm.dsname}}</td>
+                                <td>{{perm.dscontactid}}</td>
+                                <td><a class="permission_delete" [routerLink]=""
+                                        (click)="deletePerm(perm.eventid,perm.dspermissionsid)" i18n>delete</a></td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+            </mat-card-content>
+
+        </mat-card>
+
+
+    </div>
+
+
+    <div>
+        <mat-card fxFlex="35">
+            <mat-card-content>
+                <mat-toolbar>
+                    <span i18n>Add Permission</span>
+                </mat-toolbar>
+
+                <form id="ds_list" (ngSubmit)="updatePerms()" name="permsForm" [formGroup]="permsForm">
+
+                    <div style="display:none;">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Event ID</mat-label>
+                            <input formControlName="eventid" matInput readonly />
+                        </mat-form-field>
+                    </div>
+
+                    <div>
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label i18n>Data Specialists</mat-label>
+                            <!--input formControlName="sc_skatingeventclassid" matInput required /-->
+                            <mat-select id="ds_contactid" [(value)]="selectedValue" name="dscontactid" required
+                                (selectionChange)="updateDSText($event)">
+                                <mat-option *ngFor="let ds of specialists" [value]="ds.sc_dataspecialistid">
+                                    {{ds.sc_fullname}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="!permsForm.controls['dscontactid'].valid" i18n>
+                                Please select a data specialist
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+
+                    <button type="submit" id="permission_add" class="mat-flat" mat-flat-button color="primary"
+                        i18n>Submit Changes</button>
+
+                </form>
+
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+</div>

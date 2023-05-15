@@ -1,0 +1,92 @@
+.fieldset_devide {
+    display: flex;
+    height:87%;
+    
+  }
+
+  .w-40 {
+    width: 35%;
+  }
+
+  .w-60 {
+    width: 65%;
+  }
+
+  .w-30 {
+    width: 30%;
+    height: 100%;
+   
+  }
+
+  .w-70 {
+    width: 70%;
+    height: 100%;
+      
+  }
+
+
+  .parent 
+  {
+  
+    display: flex;
+  flex-direction: column;
+    height:100%;
+   
+ 
+  }
+
+  .class1
+  {
+    height:50%; 
+  }
+
+  .class2
+  {
+    height:50%;
+  }  
+  table {
+    width: 100%;
+  }
+
+  .element_container
+  {
+    height: 75%;
+    overflow-y: scroll;
+  }
+  .element_container::-webkit-scrollbar { 
+    display: none; 
+  }
+
+  ::ng-deep .mat-simple-snackbar{
+    justify-content: center !important;
+  }
+  
+  ::ng-deep .green-snackbar {
+    background: #3f7227;
+    color: #ffffff;
+  }
+
+
+  @keyframes spinner {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .spinner:before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    margin-left: 5px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    border-top-color: #000000;
+    animation: spinner 0.8s linear infinite;
+  }
+
+  .hide_me
+  {
+    display: none !important;
+  }

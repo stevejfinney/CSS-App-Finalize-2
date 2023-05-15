@@ -1,0 +1,71 @@
+<div id="body-wrapper">
+
+    <span *ngIf="(OnlineStatus$ | async) as OnlineStatus">
+        <span *ngIf="OnlineStatus == 'offline'">
+            <div>
+                Production DB Version: {{msgProdVersion}}<br />
+                Staging DB Version: {{msgStageVersion}}
+            </div>
+            <h1 id="title">{{title}}</h1>
+            <div><button (click)="checkDb()" id="check_db_exist" i18n>Check Database File Exists</button> Simply checks
+                that it exists<br />{{checkDbMsg}}</div>
+            <p><br /></p>
+            <div><button (click)="rebuildDb()" id="rebuild_db" i18n>Rebuild Database</button> Deletes current db, and
+                rebuilds structure only (no data)<br />{{rebuildDbMsg}}</div>
+            <p><br /></p>
+            <div><button (click)="updateDefinitions()" id="update_defination" i18n>Get Database Data</button> Downloads
+                all latest CSS data<br />{{updateDefinitionsMsg}}</div>
+            <p><br /></p>
+            <div><button (click)="checkDbVersion()" i18n>Check for new Database version</button> Compares
+                checksums<br />{{updateDbMsg}}</div>
+            <p><br /></p>
+        </span>
+        <span>
+            <h2>{{apiTitle}}</h2>
+            <p><br /></p>
+            <div><button (click)="configToTest()" i18n>Scoring config from dev to stage</button> Copy scoring
+                configuration to stage database</div>
+            <div>
+                {{testVersion}}<br />
+                <table *ngIf="configToTestRes?.length > 0">
+                    <tr>
+                        <th i18n>Table</th>
+                        <th i18n>Old record count</th>
+                        <th i18n>Records in source</th>
+                        <th i18n>New record count</th>
+                    </tr>
+                    <tr *ngFor="let res of configToTestRes">
+                        <td>{{res.tableName}}</td>
+                        <td>{{res.oldCount}}</td>
+                        <td>{{res.fromSource}}</td>
+                        <td>{{res.newCount}}</td>
+                    </tr>
+                </table>
+                {{configToTestErr}}
+            </div>
+            <p><br /></p>
+            <div><button (click)="testToProd()" i18n>Scoring config from stage to production</button> Copy stage to
+                production database</div>
+            <div>
+                {{prodVersion}}<br />
+                <table *ngIf="testToProdRes?.length > 0">
+                    <tr>
+                        <th i18n>Table</th>
+                        <th i18n>Old record count</th>
+                        <th i18n>Records in source</th>
+                        <th i18n>New record count</th>
+                    </tr>
+                    <tr *ngFor="let res2 of testToProdRes">
+                        <td>{{res2.tableName}}</td>
+                        <td>{{res2.oldCount}}</td>
+                        <td>{{res2.fromSource}}</td>
+                        <td>{{res2.newCount}}</td>
+                    </tr>
+                </table>
+                {{testToProdErr}}
+            </div>
+            <!--div><button (click)="updateSchema()">Update Schema</button> Updates db schema (will eventually save existing competition data)<br />{{updateSchemaMsg}}</div-->
+        </span>
+    </span>
+
+</div>

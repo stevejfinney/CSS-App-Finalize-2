@@ -1,0 +1,114 @@
+<mat-card>
+    <div class="fieldset_devide">
+        <div class="w-80">
+            <div>
+                <button class="top_bottom_margin">Judge</button>
+
+
+                <div *ngFor="let data1 of data.judgeGoeCount; let i = index" style="display: inline-block">
+                    <button *ngIf="data.judgePosition[i] == 1" [ngClass]="{
+                        button_index: data.judgeOnline[i] == 0,
+                        button_index_online: data.judgeOnline[i] == 1
+                            }">{{i +
+                        1}} </button>
+                </div>
+
+                <div *ngFor="let data2 of data.refGoeCount; let j = index" style="display: inline-block">
+                    <button *ngIf="data.refPosition[j] == 1" [ngClass]="{
+                        button_index: data.refOnline[j] == 0,
+                        button_index_online: data.refOnline[j] == 1
+                            }">R </button>
+                </div>
+
+            </div>
+
+            <div [ngClass]="{
+                        
+                hide: !skater_data.hasOwnProperty('skater_data')
+        
+                    }">
+                <button class="top_bottom_margin">GOE</button>
+
+                <div *ngFor="let data1 of data.judgeGoeCount; let i = index" style="display: inline-block">
+                    <button *ngIf="data.judgePosition[i] == 1" [ngClass]="{
+                        
+                        button_goe_done: data1 == data.dataSource && data1 != 0 ,
+                        button_goe: data1 < data.dataSource || data1 == 0
+
+                            }">{{data1}}</button>
+                </div>
+
+                <div *ngFor="let data2 of data.refGoeCount; let i = index" style="display: inline-block">
+                    <button *ngIf="data.refPosition[i] == 1" [ngClass]="{
+                        
+                        button_goe_done: data2 == data.dataSource && data2 != 0 ,
+                        button_goe: data2 < data.dataSource || data2 == 0
+
+                            }">{{data2}}</button>
+
+
+                </div>
+
+
+
+
+            </div>
+
+            <div [ngClass]="{
+                        
+                hide: !skater_data.hasOwnProperty('skater_data')
+        
+                    }">
+                <button class="top_bottom_margin">PC</button>
+
+                <div *ngFor="let data1 of data.judgePcCount; let i = index" style="display: inline-block">
+                    <button *ngIf="data.judgePosition[i] == 1" [ngClass]="{
+                        
+                        button_pc_done: data1 == data.programComponent.length && data1 != 0 ,
+                        button_pc: data1 < data.programComponent.length || data1 == 0
+
+                            }">{{data1}}</button>
+                </div>
+
+                <div *ngFor="let data2 of data.refPcCount; let i = index" style="display: inline-block">
+                    <button *ngIf="data.refPosition[i] == 1" [ngClass]="{
+                        
+                        button_pc_done: data2 == data.programComponent.length && data2 != 0 ,
+                        button_pc: data2 < data.programComponent.length || data2 == 0
+
+                            }">{{data2}}</button>
+                </div>
+
+            </div>
+
+
+
+        </div>
+        <div class="w-20">
+
+            <div [ngClass]="{
+                        
+                hide: !skater_data.hasOwnProperty('skater_data')
+        
+                    }">
+                <button class="els"># ELS</button>
+            </div>
+            <div [ngClass]="{
+                        
+                hide: !skater_data.hasOwnProperty('skater_data')
+        
+                    }">
+                <button class="els_button">{{data.dataSource}}</button>
+            </div>
+            <div [ngClass]="{
+                        
+                hide: !skater_data.hasOwnProperty('skater_data')
+        
+                    }">
+                <button class="els_button">{{data.programComponent.length}}</button>
+            </div>
+        </div>
+
+    </div>
+
+</mat-card>

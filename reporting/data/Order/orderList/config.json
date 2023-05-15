@@ -1,0 +1,31 @@
+{
+    "name": "orderList",
+    "engine": "handlebars",
+    "recipe": "chrome-pdf",
+    "shortid": "K-kr_LX8P",
+    "chrome": {
+        "printBackground": true,
+        "landscape": true,
+        "marginTop": "1 cm",
+        "marginRight": "1 cm",
+        "marginBottom": "1.5cm",
+        "marginLeft": "1cm"
+    },
+    "localization": {
+        "language": "en"
+    },
+    "scripts": [
+        {
+            "shortid": "HxWtCd_3m"
+        }
+    ],
+    "creationDate": {
+        "$$date": 1681237999998
+    },
+    "modificationDate": {
+        "$$date": 1681737704534
+    },
+    "_id": "ACNF4TnDAaj4lBRM",
+    "$entitySet": "templates",
+    "data": null
+}

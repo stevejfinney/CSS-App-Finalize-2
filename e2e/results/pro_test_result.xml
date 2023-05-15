@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites disabled="0" errors="0" failures="0" tests="5" time="21.5">
+ <testsuite name="Login functionality test" timestamp="2023-04-06T11:45:08" hostname="localhost" time="21.5" errors="0" tests="5" skipped="0" disabled="0" failures="0">
+  <testcase classname="Login functionality test" name="should have title and button text" time="5.526" />
+  <testcase classname="Login functionality test" name="should display an error message if user provide wrong credentials" time="4.985" />
+  <testcase classname="Login functionality test" name="should display an error message if user provide space as username" time="4.631" />
+  <testcase classname="Login functionality test" name="should display an error message if user provide space as username and password" time="4.043" />
+  <testcase classname="Login functionality test" name="should redirect the user to the dashboard page if they provided correct credentials" time="2.314" />
+ </testsuite>
+</testsuites>

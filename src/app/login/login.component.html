@@ -1,0 +1,59 @@
+<div id="body-wrapper">
+
+    <mat-card fxFlex="35">
+        <mat-card-content>
+            <mat-toolbar>
+                <span i18n>Computer Scoring System</span>
+            </mat-toolbar>
+            
+            <form (ngSubmit)="onLogin()" name="loginForm" [formGroup]="loginForm">
+
+                <div class="OfficialInput">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label id="lable_username" i18n>Username</mat-label>
+                        <input i18n-placeholder formControlName="username" matInput autocomplete="off"
+                            placeholder="Enter your Skate Canada Membership site username" required />
+                        <mat-error *ngIf="!loginForm.controls['username'].valid" i18n>
+                            You must enter a username
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label i18n>Password</mat-label>
+                        <input i18n-placeholder formControlName="password" matInput [type]=" hide ? 'password' : 'text'"
+                            placeholder="Enter the password" autocomplete="off" required />
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide Password'"
+                            [attr.aria-pressed]="hide">
+                            <mat-icon>
+                                {{hide ? 'visibility_off' : 'visibility'}}
+                            </mat-icon>
+                        </button>
+                        <mat-error *ngIf="!loginForm.controls['password'].valid" i18n>
+                            Password is required
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <button type="submit" class="mat-flat" [class.spinner]="loading" [disabled]="loading" mat-flat-button
+                    color="primary" i18n>Login</button>
+
+                <div id="form_response">{{ formResponse }}</div>
+
+                <div>
+                    <a href="https://members.skatecanada.ca/en-US/password-recovery/" target="_blank" i18n>Forgot
+                        Password?</a>
+                </div>
+            </form>
+
+            <!--
+            <button (click)="loginMsal()" *ngIf="!isLoggedInMsal()">login</button>
+            <button (click)="logoutMsal()" *ngIf="isLoggedInMsal()">logout</button>
+            <div *ngIf="isLoggedInMsal()">you are logged in</div>
+            <div *ngIf="!isLoggedInMsal()">you are logged out</div>
+            -->
+        </mat-card-content>
+    </mat-card>
+
+</div>

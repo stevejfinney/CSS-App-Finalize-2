@@ -1,0 +1,40 @@
+<h2 mat-dialog-title i18n>Standards Criteria</h2>
+
+<table>
+    <tbody>
+        <tr *ngIf= "standards?.length === 0"><td colspan="5" i18n>No records</td></tr>
+        <tr *ngFor="let dat of standards">
+            <td>
+                <table>
+                    <tr>
+                        <th colspan="10" align="left">{{dat.sc_name}}</th>
+                    </tr>
+                    <tr>
+                        <th i18n>criterion level</th>
+                        <th i18n>rule type</th> <!-- if this is count, then show count, if element, then element -->
+                        <th i18n>required rating</th>
+                        <ng-template [ngIf]="dat.sc_ruletype == 947960000 || dat.sc_ruletype == 947960002">
+                            <th i18n>count type</th>
+                            <th i18n>required count</th>
+                        </ng-template>
+                        <ng-template [ngIf]="dat.sc_ruletype == 947960001 || dat.sc_ruletype == 947960003">
+                            <th i18n>target element</th>
+                        </ng-template>
+                    </tr>
+                    <tr>
+                        <td>{{dat.sc_criterionlevel | formatCriterionLevel}}</td>
+                        <td>{{dat.sc_ruletype | formatRuleType}}</td>
+                        <td>{{dat.sc_targetrating | formatCriterionLevel}}</td>
+                        <ng-template [ngIf]="dat.sc_ruletype == 947960000 || dat.sc_ruletype == 947960002">
+                            <td>{{dat.sc_requiredcounttype | formatCountType}}</td>
+                            <td>{{dat.sc_requiredcount}}</td>
+                        </ng-template>
+                        <ng-template [ngIf]="dat.sc_ruletype == 947960001 || dat.sc_ruletype == 947960003">
+                            <td>{{dat.languages[language].name}}</td>
+                        </ng-template>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>

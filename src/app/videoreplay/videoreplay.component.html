@@ -1,0 +1,331 @@
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+
+<div class="video_display">
+    <section>
+
+        <div class="container">
+
+            <div id="video_player">
+
+                <video id="main-video" class="azuremediaplayer amp-default-skin">
+
+                </video>
+            </div>
+
+            <fieldset id="fieldset_timer">
+                <legend style="color: white;margin-top: 20px;    text-align: -webkit-center;width:120px"> Time
+                    :&nbsp;<span class="current1">0:00
+                    </span>
+                </legend>
+
+
+                <div class="controls" id="controls">
+
+                    <div class="controls-list" [ngClass]="{
+                        hide: role_id == '3B732AFD-FDA6-EC11-983F-00224825E0C8'
+                      }">
+
+                        <div class="controls-left">
+
+                            <!-- Element Clip Button -->
+                            <span class="icon">
+                                <button mat-raised-button id="element_clip" (click)="clip_captured()"
+                                    *ngIf=" role_id == '49E9C4A5-1EA9-EC11-983F-002248267FC3'">Element Clip</button>
+                                <button mat-raised-button id="element_clip" (click)="clip_captured()"
+                                    style="pointer-events: none;display: none;"
+                                    *ngIf=" role_id != '49E9C4A5-1EA9-EC11-983F-002248267FC3'">Element
+                                    Clip</button>
+                            </span>
+
+                            <!-- Cancel Button -->
+                            <span class="icon">
+                                <button mat-raised-button id="Cancel_clip" (click)="cancel_last()"
+                                    *ngIf=" role_id == '49E9C4A5-1EA9-EC11-983F-002248267FC3'">Cancel</button>
+                                <button mat-raised-button id="Cancel_clip" (click)="cancel_last()"
+                                    style="pointer-events: none;display: none"
+                                    *ngIf=" role_id != '49E9C4A5-1EA9-EC11-983F-002248267FC3'">Cancel</button>
+                            </span>
+                        </div>
+
+                        <!-- Time Button -->
+                        <div class="controls-right">
+
+                            <span class="icon">
+
+                                <button mat-raised-button id="toggle_timer" (click)="toggleTime()"
+                                    *ngIf=" role_id == '49E9C4A5-1EA9-EC11-983F-002248267FC3'">Timer</button>
+
+                                <button mat-raised-button id="toggle_timer" (click)="toggleTime()"
+                                    style="pointer-events: none;display: none"
+                                    *ngIf=" role_id != '49E9C4A5-1EA9-EC11-983F-002248267FC3'">Timer</button>
+
+                            </span>
+
+                            &nbsp;
+                            <div class="custom_timer">
+
+                                <button *ngIf=" role_id == '49E9C4A5-1EA9-EC11-983F-002248267FC3'" mat-raised-button
+                                    class="custom_timer_display">
+                                    <span class="current_custom_timer">0:00</span>
+                                    &nbsp;
+                                    <span id="current_custom_timer_end"
+                                        class="current_custom_timer_end">0:00</span></button>
+
+                                <button *ngIf=" role_id != '49E9C4A5-1EA9-EC11-983F-002248267FC3'" mat-raised-button
+                                    class="custom_timer_display" style="pointer-events: none;display: none ">
+                                    <span class="current_custom_timer">0:00</span>
+                                    &nbsp;
+                                    <span id="current_custom_timer_end"
+                                        class="current_custom_timer_end">0:00</span></button>
+
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="mt-6"><span>&nbsp;</span></div>
+                    <div class="controls-list">
+
+
+                        <div class="controls-left">
+
+                            <span class="icon"
+                                *ngIf=" role_id == '49E9C4A5-1EA9-EC11-983F-002248267FC3' || role_id == '3B732AFD-FDA6-EC11-983F-00224825E0C8'">
+
+                                <img src="assets/live.png" class="material-icons" width="110px" id="go_live"
+                                    (click)="goLive()" alt="0.25x">
+                            </span>
+
+                            <span class="icon"
+                                *ngIf=" role_id != '49E9C4A5-1EA9-EC11-983F-002248267FC3' && role_id != '3B732AFD-FDA6-EC11-983F-00224825E0C8'">
+
+                                <img src="assets/live.png" class="material-icons" style="width:140; margin-top: -85px;"
+                                    id="go_live" (click)="goLive()" alt="0.25x">
+                            </span>
+
+                            <span class="icon"
+                                *ngIf=" role_id == '49E9C4A5-1EA9-EC11-983F-002248267FC3'  || role_id == '3B732AFD-FDA6-EC11-983F-00224825E0C8'">
+
+                                <i style="font-size:65" class="material-icons fast-rewind"
+                                    (click)="seek(-10)">replay_10</i>
+
+                            </span>
+
+                            <span class="icon"
+                                *ngIf=" role_id != '49E9C4A5-1EA9-EC11-983F-002248267FC3'  && role_id != '3B732AFD-FDA6-EC11-983F-00224825E0C8'">
+
+                                <i style="font-size:80; margin-top: -85px;" class="material-icons fast-rewind"
+                                    (click)="seek(-10)">replay_10</i>
+
+                            </span>
+                            <span class="icon"
+                                *ngIf=" role_id == '49E9C4A5-1EA9-EC11-983F-002248267FC3'  || role_id == '3B732AFD-FDA6-EC11-983F-00224825E0C8'">
+
+                                <img src="assets/replay_3.png" class="material-icons" width="70px" (click)="seek(-3)"
+                                    alt="replay_3">
+
+                            </span>
+
+                            <span class="icon"
+                                *ngIf=" role_id != '49E9C4A5-1EA9-EC11-983F-002248267FC3'  && role_id != '3B732AFD-FDA6-EC11-983F-00224825E0C8'">
+
+                                <img src="assets/replay_3.png" class="material-icons"
+                                    style="width:86; margin-top: -85px;" (click)="seek(-3)" alt="replay_3">
+
+                            </span>
+
+
+
+                            <span class="icon"
+                                *ngIf=" role_id == '49E9C4A5-1EA9-EC11-983F-002248267FC3'  || role_id == '3B732AFD-FDA6-EC11-983F-00224825E0C8'">
+
+                                <i class="material-icons play_pause" (click)="playPause()" width="120px">play_arrow</i>
+
+                            </span>
+
+                            <span class="icon"
+                                *ngIf=" role_id != '49E9C4A5-1EA9-EC11-983F-002248267FC3' && role_id != '3B732AFD-FDA6-EC11-983F-00224825E0C8'">
+
+                                <i class="material-icons play_pause" (click)="playPause()"
+                                    style="font-size: 85px; margin-top: -85px;">play_arrow</i>
+
+                            </span>
+
+                            <span class="icon"
+                                *ngIf="role_id == '49E9C4A5-1EA9-EC11-983F-002248267FC3'  || role_id == '3B732AFD-FDA6-EC11-983F-00224825E0C8'">
+
+                                <img src="assets/forward_3.png" class="material-icons" width="70px" (click)="seek(3)"
+                                    alt="forward_3">
+
+                            </span>
+
+                            <span class="icon" *ngIf="role_id == '469C7509-FEA6-EC11-983F-00224825E0C8'">
+
+                                <img src="assets/forward_3.png" style="width:85;margin-top:-85px" class="material-icons"
+                                    style="font-size: 85px; margin-top: -85px;" (click)="seek(3)" alt="forward_3">
+
+                            </span>
+
+
+                            <span class="icon" *ngIf="role_id == '9A8F5827-FEA6-EC11-983F-00224825E0C8'">
+
+                                <i class="material-icons fast-forward" (click)="seek(5)"
+                                    style="font-size:85;margin-top:-85px">forward_5</i>
+
+                            </span>
+
+
+
+                            <!-- <span class="icon" *ngIf="role_id == '49E9C4A5-1EA9-EC11-983F-002248267FC3'">
+
+                                <img src="assets/forward_7.png" class="material-icons" style="display:none"
+                                    (click)="seek(7)" alt="forward_7">
+
+                            </span>
+
+                            <span class="icon" *ngIf="role_id == '469C7509-FEA6-EC11-983F-00224825E0C8'">
+
+                                <img src="assets/forward_7.png" class="material-icons" style="display:none"
+                                    (click)="seek(7)" alt="forward_7">
+
+                            </span> -->
+
+                            <span class="icon" *ngIf="role_id == '9A8F5827-FEA6-EC11-983F-00224825E0C8'">
+
+                                <img src="assets/forward_7.png" class="material-icons" style="width:85;margin-top:-85px"
+                                    (click)="seek(7)" alt="forward_7">
+
+                            </span>
+
+                            <span class="icon"
+                                *ngIf="role_id == '49E9C4A5-1EA9-EC11-983F-002248267FC3' || role_id == '3B732AFD-FDA6-EC11-983F-00224825E0C8'">
+
+                                <i class="material-icons fast-rewind" style="width:65" (click)="seek(10)">forward_10</i>
+
+                            </span>
+
+                            <span class="icon"
+                                *ngIf="role_id == '469C7509-FEA6-EC11-983F-00224825E0C8' && role_id != '3B732AFD-FDA6-EC11-983F-00224825E0C8'">
+
+                                <i class="material-icons fast-rewind" style="font-size:85;margin-top:-85px"
+                                    (click)="seek(10)">forward_10</i>
+
+                            </span>
+
+                            <!-- <span class="icon" *ngIf="role_id == '9A8F5827-FEA6-EC11-983F-00224825E0C8'">
+
+                                <i class="material-icons fast-rewind" style="display:none"
+                                    (click)="seek(10)">forward_10</i>
+
+                            </span> -->
+
+
+
+
+
+                            <span class="icon"
+                                *ngIf=" role_id == '49E9C4A5-1EA9-EC11-983F-002248267FC3' || role_id == '3B732AFD-FDA6-EC11-983F-00224825E0C8'">
+
+                                <i class="material-icons volume" (click)="muteUnmute()"
+                                    style="font-size:65">volume_up</i>
+
+                                <input type="range" min="0" max="100" #volume_ref
+                                    (change)="changeVolume(volume_ref.value)" class="volume_range" style="font-size:65">
+
+                            </span>
+
+                            <span class="icon"
+                                *ngIf=" role_id != '49E9C4A5-1EA9-EC11-983F-002248267FC3' &&  role_id != '3B732AFD-FDA6-EC11-983F-00224825E0C8'">
+
+                                <i class="material-icons volume" (click)="muteUnmute()"
+                                    style="font-size:80; margin-top: -85px;">volume_up</i>
+
+                                <input type="range" min="0" max="100" #volume_ref
+                                    (change)="changeVolume(volume_ref.value)" class="volume_range"
+                                    style="font-size:80; margin-top: -85px;">
+
+                            </span>
+
+
+
+                        </div>
+
+                        <div class="controls-right">
+                            <span class="icon"
+                                *ngIf=" role_id != '469C7509-FEA6-EC11-983F-00224825E0C8' &&  role_id != '9A8F5827-FEA6-EC11-983F-00224825E0C8'">
+
+                                <img src="assets/0.25x.png" class="material-icons" width="55px"
+                                    (click)="change_playbackRate(0.25)" alt="0.25x">
+                            </span>
+
+                            <span class="icon"
+                                *ngIf=" role_id != '469C7509-FEA6-EC11-983F-00224825E0C8' && role_id != '9A8F5827-FEA6-EC11-983F-00224825E0C8'">
+
+                                <img src="assets/0.5x.png" style="pointer-events:none;" class="material-icons"
+                                    width="55px" (click)="change_playbackRate(0.5)" alt="0.5x">
+
+                            </span>
+
+                            <span class="icon"
+                                *ngIf=" role_id == '49E9C4A5-1EA9-EC11-983F-002248267FC3' || role_id == '3B732AFD-FDA6-EC11-983F-00224825E0C8'">
+
+                                <img src="assets/1.0x.png" class="material-icons" width="55px"
+                                    (click)="change_playbackRate(1.0)" alt="1x">
+                            </span>
+
+                            <span class="icon"
+                                *ngIf=" role_id != '49E9C4A5-1EA9-EC11-983F-002248267FC3' && role_id != '3B732AFD-FDA6-EC11-983F-00224825E0C8'">
+
+                                <img src="assets/1.0x.png" class="material-icons" style="width:75;margin-top:-85px"
+                                    (click)="change_playbackRate(1.0)" alt="1x">
+                            </span>
+
+                            <span class="icon"
+                                *ngIf=" role_id == '49E9C4A5-1EA9-EC11-983F-002248267FC3' || role_id == '3B732AFD-FDA6-EC11-983F-00224825E0C8'">
+
+                                <img src="assets/1.5x.png" class="material-icons" width="55px"
+                                    (click)="change_playbackRate(1.5)" alt="1.5x">
+
+                            </span>
+
+                            <span class="icon"
+                                *ngIf=" role_id != '49E9C4A5-1EA9-EC11-983F-002248267FC3' &&  role_id != '3B732AFD-FDA6-EC11-983F-00224825E0C8'">
+
+                                <img src="assets/1.5x.png" class="material-icons" style="width:75;margin-top:-85px"
+                                    (click)="change_playbackRate(1.5)" alt="1.5x">
+
+                            </span>
+
+                            <span class="icon"
+                                *ngIf=" role_id == '49E9C4A5-1EA9-EC11-983F-002248267FC3' || role_id == '3B732AFD-FDA6-EC11-983F-00224825E0C8'">
+
+                                <img src="assets/2.0x.png" class="material-icons" width="55px"
+                                    (click)="change_playbackRate(2.0)" alt="2x">
+
+                            </span>
+
+                            <span class="icon"
+                                *ngIf=" role_id != '49E9C4A5-1EA9-EC11-983F-002248267FC3' &&  role_id != '3B732AFD-FDA6-EC11-983F-00224825E0C8'">
+
+                                <img src="assets/2.0x.png" class="material-icons" style="width:75;margin-top:-85px"
+                                    (click)="change_playbackRate(2.0)" alt="2x">
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </fieldset>
+
+
+        </div>
+
+    </section>
+
+
+</div>

@@ -1,0 +1,109 @@
+<div id="body-wrapper">
+
+    <h1 i18n>Your Dashboard</h1>
+
+    <div>
+        <mat-card fxFlex="35">
+            <mat-card-content>
+                <mat-toolbar>
+                    <span i18n>Events You Can Manage</span>
+                </mat-toolbar>
+                <div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th i18n>name</th>
+                                <th i18n>name (fr)</th>
+                                <th i18n>location</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngIf="events?.length === 0">
+                                <td colspan="6" i18n>No records</td>
+                            </tr>
+                            <tr *ngFor="let event of events" class="event_list">
+                                <td>{{event.enname}}</td>
+                                <td>{{event.frname}}</td>
+                                <td>{{event.location}}</td>
+                                <td><a class="edit_event" [routerLink]="" (click)="editEvent(event.eventid)"
+                                        i18n>edit</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <div>
+        <mat-card fxFlex="35">
+            <mat-card-content>
+                <mat-toolbar>
+                    <span i18n>Your Panel Assignments</span>
+                </mat-toolbar>
+                <div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th i18n>Event</th>
+                                <th i18n>Category</th>
+                                <th i18n>Discipline</th>
+                                <th i18n>Group</th>
+                                <th i18n>Segment</th>
+                                <th i18n>Role</th>
+                                <th i18n>Position</th>
+                                <th i18n>Startdate</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngIf="assignments?.length === 0">
+                                <td colspan="6" i18n>No records</td>
+                            </tr>
+                            <tr *ngFor="let assigns of assignments" class="event_list">
+                                <td>{{assigns.languages[language].eventname}}</td>
+                                <td>{{assigns.languages[language].catname}}</td>
+                                <td>{{assigns.languages[language].disname}}</td>
+                                <td>{{assigns.languages[language].groupname}}</td>
+                                <td>{{assigns.languages[language].segname}}</td>
+                                <td>{{assigns.languages[language].rolename}}</td>
+                                <td>{{assigns.position}}</td>
+                                <td>{{assigns.startdate | date:'longDate'}}</td>
+                                <td>
+                                    <a class="edit_event"
+                                        routerLink="/refereescreen/{{assigns.segmentid}}/{{assigns.officialassignmentid}}"
+                                         i18n
+                                        *ngIf="assigns.role == '9A8F5827-FEA6-EC11-983F-00224825E0C8'">go to event</a>
+                                    <a class="edit_event"
+                                        routerLink="/dioscreen/{{assigns.segmentid}}/{{assigns.officialassignmentid}}"
+                                        i18n *ngIf="assigns.role == '3B732AFD-FDA6-EC11-983F-00224825E0C8'">go to
+                                        event</a>
+                                    <a class="edit_event"
+                                        routerLink="/judgescreen/{{assigns.segmentid}}/{{assigns.officialassignmentid}}"
+                                        i18n *ngIf="assigns.role == '469C7509-FEA6-EC11-983F-00224825E0C8'">go to
+                                        event</a>
+                                    <a class="edit_event"
+                                        routerLink="/vroscreen/{{assigns.segmentid}}/{{assigns.officialassignmentid}}"
+                                        i18n *ngIf="assigns.role == '49E9C4A5-1EA9-EC11-983F-002248267FC3'">go
+                                        to event</a>
+
+                                    <a class="edit_event"
+                                        routerLink="/announcerscreen/{{assigns.segmentid}}/{{assigns.officialassignmentid}}"
+                                        i18n *ngIf="assigns.role == '98642430-1FA9-EC11-983F-002248267FC3'">go
+                                        to event</a>
+
+                                    <a class="edit_event"
+                                        routerLink="/broadcasterscreen/{{assigns.segmentid}}/{{assigns.officialassignmentid}}"
+                                        i18n *ngIf="assigns.role == '6A9D2736-8B66-ED11-9562-00224828DA82'">go
+                                        to event</a>
+
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+</div>

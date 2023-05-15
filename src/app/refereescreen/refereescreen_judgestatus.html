@@ -1,0 +1,236 @@
+<div class="judgestatus">
+    <div class="grid-container">
+        <mat-card>
+            <fieldset>
+                <legend i18n>Judges</legend>
+                <div class="fieldset_devide">
+                    <div class="w-80">
+                        <div>
+                            <button class="top_bottom_margin">Judge</button>
+
+                            <div *ngFor="let data1 of data.judgeGoeCount; let i = index" style="display: inline-block">
+                                <button *ngIf="data.judgePosition[i] == 1" [ngClass]="{
+                                    button_index: data.judgeOnline[i] == 0,
+                                    button_index_online: data.judgeOnline[i] == 1
+                                      }">{{i +
+                                    1}} </button>
+                            </div>
+                           
+                            <div *ngFor="let data2 of data.refGoeCount; let j = index" style="display: inline-block">
+                                <button *ngIf="data.refPosition[j] == 1" [ngClass]="{
+                                    button_index: data.refOnline[j] == 0,
+                                    button_index_online: data.refOnline[j] == 1
+                                      }">R </button>
+                            </div>
+
+                        </div>
+
+                        <div>
+                            <button class="top_bottom_margin">GOE</button>
+
+                            <div *ngFor="let data1 of data.judgeGoeCount; let i = index" style="display: inline-block">
+                                <button *ngIf="data.judgePosition[i] == 1"  [ngClass]="{
+                                    
+                                    button_goe_done: data1 == data.dataSource.length && data1 != 0 ,
+                                    button_goe: data1 < data.dataSource.length || data1 == 0
+
+                                      }"
+                                
+                                >{{data1}}</button>
+                            </div>
+
+                            <div *ngFor="let data2 of data.refGoeCount; let i = index" style="display: inline-block">
+                                <button *ngIf="data.refPosition[i] == 1" [ngClass]="{
+                                    
+                                    button_goe_done: data2 == data.dataSource.length && data2 != 0 ,
+                                    button_goe: data2 < data.dataSource.length || data2 == 0
+
+                                      }"
+                                >{{data2}}</button>
+                            </div>
+
+                            
+                        </div>
+
+                        <div>
+                            <button class="top_bottom_margin">PC</button>
+
+                            <div *ngFor="let data1 of data.judgePcCount; let i = index" style="display: inline-block">
+                                <button *ngIf="data.judgePosition[i] == 1"  [ngClass]="{
+                                    
+                                    button_pc_done: data1 == data.programComponent.length && data1 != 0 ,
+                                    button_pc: data1 < data.programComponent.length || data1 == 0
+
+                                      }"
+                                
+                                >{{data1}}</button>
+                            </div>
+
+                            <div *ngFor="let data2 of data.refPcCount; let i = index" style="display: inline-block">
+                                <button *ngIf="data.refPosition[i] == 1" [ngClass]="{
+                                    
+                                    button_pc_done: data2 == data.programComponent.length && data2 != 0 ,
+                                    button_pc: data2 < data.programComponent.length || data2 == 0
+
+                                      }"
+                                      >{{data2}}</button>
+                            </div>
+
+                        </div>
+
+                        <div>
+                            <button class="top_bottom_margin1">Status </button>
+
+                            <div *ngFor="let data1 of data.judgeStatus; let i = index" style="display: inline-block">
+                                <button *ngIf="data.judgePosition[i] == 1" [ngClass]="{
+                                    button_status: data1 == 'progress',
+                                    button_status_done: data1 == 'completed'
+                                      }">
+                                    <span *ngIf="data1 == 'progress'">Process</span><span
+                                        *ngIf="data1 == 'completed'">Done</span>
+                                </button>
+                            </div>
+
+                            <div *ngFor="let data2 of data.refereeStatus; let i = index" style="display: inline-block">
+                                <button *ngIf="data.refPosition[i] == 1" [ngClass]="{
+                                    button_status: data2 == 'progress',
+                                    button_status_done: data2 == 'completed'
+                                      }">
+                                    <span *ngIf="data2 == 'progress'">Process</span><span
+                                        *ngIf="data2 == 'completed'">Done</span>
+                                </button>
+                            </div>
+
+                            <!-- <button  *ngFor="let data1 of data.judgeStatus; let i = index"
+                                class="button_status" ><span *ngIf="data1 == 'progress'">Adding</span><span *ngIf="data1 == 'completed'">Done</span></button>
+                            -->
+
+                        </div>
+
+
+                        <div>
+                            <button  [ngClass]="{
+                                all : all_selected == false,
+                                all_done: all_selected == true
+                                  }" (click)="all_user()">All </button>
+
+                            <div *ngFor="let task of tasks; let i = index" style="display: inline-block">
+                                <button (click)="select_user(task)" [ngClass]="{
+                                    button_status: task.selected == false,
+                                    button_status_done: task.selected == true
+                                      }">
+                                    <span>{{task.name}}-{{task.position +1}}</span>
+                                </button>
+                            </div>
+
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <mat-form-field appearance="fill">
+                                <mat-label>Select an option</mat-label>
+                                <mat-select [(value)]="message_boardcast">
+                                  <mat-option>None</mat-option>
+                                  <mat-option value="Missing Goe Marks">Missing Goe Marks</mat-option>
+                                  <mat-option value="Missing PC Marks">Missing PC Marks</mat-option>
+                                  <mat-option value="Please hurry up..!">Please hurry up..!</mat-option>
+                                  <mat-option value="Transition">Transition</mat-option>
+                                </mat-select>
+                              </mat-form-field>
+
+                              <button mat-button color="warn" (click)="message_submit()">Submit</button>
+                              
+
+                        </div>
+
+
+                       
+
+                    </div>
+                    <div class="w-20">
+                        <div>
+                            <button class="els"># ELS</button>
+                        </div>
+                        <div>
+                            <button class="button_goe">{{data.dataSource.length}}</button>
+                        </div>
+                        <div>
+                            <button class="button_pc">{{data.programComponent.length}}</button>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="w-70">
+                <button class="submit" mat-button mat-dialog-close i18n>Return</button>
+            </div>
+
+            <!-- <br>
+            <fieldset>
+                <legend i18n>Referee</legend>
+                <div class="fieldset_devide">
+                    <div class="w-80">
+                        <div>
+                            <button class="top_bottom_margin">Referee</button>
+
+                            <div *ngFor="let data1 of data.refGoeCount; let i = index" style="display: inline-block">
+                                <button *ngIf="data.refPosition[i] == 1" [ngClass]="{
+                                    button_index: data.judgeOnline[i] == 0,
+                                    button_index_online: data.judgeOnline[i] == 1
+                                      }">{{i +
+                                    1}} </button>
+                            </div>
+                            
+                        </div>
+
+                        <div>
+                            <button class="top_bottom_margin">GOE</button>
+
+                            <div *ngFor="let data1 of data.refGoeCount; let i = index" style="display: inline-block">
+                                <button *ngIf="data.refPosition[i] == 1" class="button_goe">{{data1}}</button>
+                            </div>
+
+                          
+                        </div>
+
+                        <div>
+                            <button class="top_bottom_margin">PC</button>
+
+                            <div *ngFor="let data1 of data.refPcCount; let i = index" style="display: inline-block">
+                                <button *ngIf="data.refPosition[i] == 1" class="button_pc">{{data1}}</button>
+                            </div>
+
+                           
+
+                        </div>
+
+                        <div>
+                            <button class="top_bottom_margin1">Status </button>
+
+                            <div *ngFor="let data1 of data.refereeStatus; let i = index" style="display: inline-block">
+                                <button *ngIf="data.refPosition[i] == 1" [ngClass]="{
+                                    button_status: data1 == 'progress',
+                                    button_status_done: data1 == 'completed'
+                                      }">
+                                    <span *ngIf="data1 == 'progress'">Process</span><span
+                                        *ngIf="data1 == 'completed'">Done</span>
+                                </button>
+                            </div>
+
+                          
+                        </div>
+                       
+                    </div>
+                    <div class="w-20">
+                        <div>
+                            <button class="els"># ELS</button>
+                        </div>
+                        <div>
+                            <button class="button_goe">{{data.dataSource.length}}</button>
+                        </div>
+                        <div>
+                            <button class="button_pc">{{data.programComponent.length}}</button>
+                        </div>
+                    </div>
+                </div>
+            </fieldset> -->
+        </mat-card>
+    </div>
+</div>

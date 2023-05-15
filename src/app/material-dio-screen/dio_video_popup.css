@@ -1,0 +1,76 @@
+/* CSS for grid container and Left side panel */
+.dioscreen_video mat-card {
+    background-color: #000080;
+  }
+
+.dioscreen_video .grid-container {
+    margin-top: -12px;
+  }
+
+.dioscreen_video .fieldset_devide {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+
+.dioscreen_video .w-30 {
+    width: 30%;
+  }
+
+
+.dioscreen_video .w-70 {
+    width: 70%;
+}
+
+/* CSS for Scrollbar and element container */
+.dioscreen_video .element_container {
+height: 700px;
+overflow-y: scroll;
+}
+
+.dioscreen_video .element_container::-webkit-scrollbar {
+display: none;
+}
+
+/* CSS for Element table */
+.dioscreen_video table {
+    width: 100%;
+    background-color: #000080;
+    border-spacing: 0 8px !important;
+    cursor: pointer;
+  }
+
+  .dioscreen_video .mat-header-cell {
+    color: #000080;
+    font-weight: 500;
+    font-size: 20px;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    padding: 3px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    line-height: 20px;
+    width: 25vw;
+    background: white;
+  }
+
+  .dioscreen_video td.mat-cell {
+    padding: 16px 5px;
+    border-bottom: 1px solid white;
+  }
+  
+  .dioscreen_video .mat-cell {
+    color: white;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 32px;
+    border-style: 2px solid white;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+  }
+
+
+
+  .dioscreen_video .highlight{
+  background: skyblue;
+}
+

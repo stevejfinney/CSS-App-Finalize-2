@@ -1,0 +1,38 @@
+<h1 mat-dialog-title>Finalize Skater</h1>
+<div mat-dialog-content>
+    Are you sure you want to score? Not all scores received yet.
+
+    
+    <div *ngIf="pending_submit.length != 0">
+      <br>
+      <p>Following judges still not submitted:</p>
+      <ul>
+        <li>Judge - <span *ngFor="let task of pending_submit; let i = index"> {{task}} <span *ngIf="i != pending_submit.length -1">,</span></span></li>
+      </ul>  
+      
+    </div>
+
+    <div *ngIf="goe_missing.length != 0">
+      <p>Following judges are missing GOEs:</p>
+      <ul>
+        <li *ngFor="let task of goe_missing; let i = index" >Judge {{task[0]}} - Missing {{task[1]}} GOE</li>
+      </ul>  
+      
+    </div>
+
+    <div *ngIf="pc_missing.length != 0">
+      <p>Following judges are missing PCs:</p>
+      <ul>
+        <li *ngFor="let task of pc_missing; let i = index" >Judge {{task[0]}} - Missing {{task[1]}} PC</li>
+      </ul>  
+      
+    </div>
+
+
+    
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>No</button>
+  <button mat-button mat-dialog-close (click)="confirmed()" >Yes</button>
+</div>

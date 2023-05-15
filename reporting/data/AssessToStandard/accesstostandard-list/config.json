@@ -1,0 +1,29 @@
+{
+    "name": "accesstostandard-list",
+    "engine": "handlebars",
+    "recipe": "chrome-pdf",
+    "shortid": "tzJd7TJLX",
+    "chrome": {
+        "printBackground": true,
+        "landscape": true,
+        "marginLeft": "1cm",
+        "marginBottom": "2cm",
+        "marginRight": "1cm",
+        "marginTop": "1cm"
+    },
+    "data": {
+        "shortid": "PT83A-_JD"
+    },
+    "localization": {
+        "language": "en"
+    },
+    "creationDate": {
+        "$$date": 1681414261770
+    },
+    "modificationDate": {
+        "$$date": 1681761374235
+    },
+    "_id": "KzeFTndxBBp26sig",
+    "$entitySet": "templates",
+    "scripts": []
+}

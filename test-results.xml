@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="0.175" tests="41" failures="0" skipped="11">
+  <testsuite name="Root Suite" timestamp="2023-04-06T03:33:51" tests="0" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="Admin option test for different database operation" timestamp="2023-04-06T03:33:51" tests="3" file="C:\Users\SahilPatel\Steve testing\live stream check\CSS Application\test\admin_option.js" time="0.025" failures="0">
+    <testcase name="Admin option test for different database operation should check database request and response handler" time="0.024" classname="should check database request and response handler">
+    </testcase>
+  </testsuite>
+  <testsuite name="Api Tests" timestamp="2023-04-06T03:33:51" tests="34" file="C:\Users\SahilPatel\Steve testing\live stream check\CSS Application\test\api_events.js" time="0.149" failures="0">
+    <testcase name="Api Tests should not post new event" time="0.025" classname="should not post new event">
+    </testcase>
+    <testcase name="Api Tests should not get events data" time="0.008" classname="should not get events data">
+    </testcase>
+    <testcase name="Api Tests should not get single event data using Id" time="0.006" classname="should not get single event data using Id">
+    </testcase>
+    <testcase name="Api Tests should not update existing event" time="0.003" classname="should not update existing event">
+    </testcase>
+    <testcase name="Api Tests should not post new permission for wrong url" time="0.004" classname="should not post new permission for wrong url">
+    </testcase>
+    <testcase name="Api Tests should not delete recenlty added permission using Id" time="0.004" classname="should not delete recenlty added permission using Id">
+    </testcase>
+    <testcase name="Api Tests should not delete added permission during inserting event using Id" time="0.004" classname="should not delete added permission during inserting event using Id">
+    </testcase>
+    <testcase name="Api Tests should not insert category for an event" time="0.004" classname="should not insert category for an event">
+    </testcase>
+    <testcase name="Api Tests should not get all category for event" time="0.005" classname="should not get all category for event">
+    </testcase>
+    <testcase name="Api Tests should not get single category data using Id" time="0.003" classname="should not get single category data using Id">
+    </testcase>
+    <testcase name="Api Tests should not update existing category" time="0.004" classname="should not update existing category">
+    </testcase>
+    <testcase name="Api Tests should get all segment added by user by category" time="0.004" classname="should get all segment added by user by category">
+    </testcase>
+    <testcase name="Api Tests should not get all available segment by category" time="0.005" classname="should not get all available segment by category">
+    </testcase>
+    <testcase name="Api Tests should not insert segment for a category" time="0.004" classname="should not insert segment for a category">
+    </testcase>
+    <testcase name="Api Tests should not update existing segment" time="0.004" classname="should not update existing segment">
+    </testcase>
+    <testcase name="Api Tests should not get segments using Id" time="0.003" classname="should not get segments using Id">
+    </testcase>
+    <testcase name="Api Tests should not get segment competitors by id" time="0.004" classname="should not get segment competitors by id">
+    </testcase>
+    <testcase name="Api Tests should not update update Segment Competitor Order" time="0.004" classname="should not update update Segment Competitor Order">
+    </testcase>
+    <testcase name="Api Tests should not get Segment Definition Defaults" time="0.003" classname="should not get Segment Definition Defaults">
+    </testcase>
+    <testcase name="Api Tests should not get Category Definition By Parent" time="0.004" classname="should not get Category Definition By Parent">
+    </testcase>
+    <testcase name="Api Tests should not get view pc factors" time="0.004" classname="should not get view pc factors">
+    </testcase>
+    <testcase name="Api Tests should not get search competitors" time="0.004" classname="should not get search competitors">
+    </testcase>
+    <testcase name="Api Tests should not get random start order" time="0.003" classname="should not get random start order">
+    </testcase>
+    <testcase name="Api Tests should not set warm up groups" time="0.003" classname="should not set warm up groups">
+    </testcase>
+    <testcase name="Api Tests should not insert segment for a category" time="0.004" classname="should not insert segment for a category">
+    </testcase>
+    <testcase name="Api Tests should not delete competitors using id" time="0.003" classname="should not delete competitors using id">
+    </testcase>
+    <testcase name="Api Tests should not delete single segment data using Id" time="0.003" classname="should not delete single segment data using Id">
+    </testcase>
+    <testcase name="Api Tests should not delete single category data using Id" time="0.003" classname="should not delete single category data using Id">
+    </testcase>
+    <testcase name="Api Tests should not delete single event data using Id" time="0.002" classname="should not delete single event data using Id">
+    </testcase>
+  </testsuite>
+  <testsuite name="Authetication Test for Backend API" timestamp="2023-04-06T03:33:51" tests="4" file="C:\Users\SahilPatel\Steve testing\live stream check\CSS Application\test\auth_test.js" time="0.000" failures="0">
+  </testsuite>
+</testsuites>

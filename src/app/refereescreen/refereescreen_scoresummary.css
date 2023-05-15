@@ -1,0 +1,116 @@
+/* CSS for score-summary dialox box */
+.referee_scoresummary legend {
+  color: red;
+  font-size: 20px;
+  font-weight: 500px;
+}
+.referee_scoresummary .fieldset_devide {
+  display: flex;
+  flex-wrap: wrap;
+}
+.referee_scoresummary .field {
+  width: 100%;
+  margin: 5px;
+}
+.referee_scoresummary .mat-title {
+  margin: 0px;
+}
+.referee_scoresummary .mat-button {
+  padding: 10px;
+  margin: 5px;
+  line-height: 30px;
+  background-color: white;
+  border-radius: 30px;
+}
+.referee_scoresummary .segment_name {
+  margin-top: 20px;
+  width: 92%;
+  color: #000080;
+  display: inline-block;
+  height: 40px;
+  text-align: center;
+  margin-left: 10px;
+  font-size: 20px;
+  font-weight: 900px;
+  margin-bottom: 20px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.referee_scoresummary .top_bottom_margin {
+  margin-left: 20px;
+  padding: 5px;
+}
+
+/* CSS for program components */
+.referee_scoresummary .w-70 {
+  width: 70%;
+  background-color: khaki;
+  font-weight: 600;
+  font-size: 20px;
+  color: #000080 !important;
+  margin-right: 20px;
+  text-align: center;
+  margin-top: 5px;
+  padding:5px;
+  border-radius: 10px solid red;
+}
+
+/* CSS for panel violations */
+.referee_scoresummary .w-30 {
+  width: 0%;
+  background-color: khaki;
+  font-weight: 600;
+  font-size: 20px;
+  color: #000080 !important;
+  margin-right: 30px;
+  text-align: center;
+  margin-top: 5px;
+}
+.referee_scoresummary .w-33 {
+  width: 33%;
+}
+
+.referee_scoresummary .cdk-global-scrollblock {
+  overflow-y: hidden;
+}
+
+::ng-deep.cdk-global-overlay-wrapper {
+  justify-content: end !important;
+  overflow-y: hidden !important;
+}
+
+.referee_scoresummary .competitor_input_type2 {
+  background-color: khaki;
+  width: 60px;
+  color: #000080;
+  height: 35px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 20px;
+}
+
+.referee_scoresummary .submit {
+  background-color: khaki;
+  margin-top: 20px;
+  color: #000080;
+  width: auto;
+  padding: 3px 15px;
+  font-size: 20px;
+  font-weight: 600px;
+  border-radius: 30px;
+}
+.referee_scoresummary .w-80 {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  margin-right: 5px;
+}
+.referee_scoresummary .scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+.referee_scoresummary .mat-card::-webkit-scrollbar {
+  display: none;
+}
+.referee_scoresummary .mat-dialog-container {
+  background-color: #000080 !important;
+  padding: 0px 0px 0px 0px !important;
+}

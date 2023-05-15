@@ -1,0 +1,1316 @@
+<div class="grid-container" *ngIf="user_access==true">
+  <div *ngIf=" data.hasOwnProperty('segmentid')">
+    <div *ngIf=" data.segmentid.definitionid.sc_elementconfiguration.sc_mode == 947960000">
+
+      <mat-card *ngIf="language=='en'">
+        <mat-grid-list cols="8" rowHeight="4:1" gutterSize="10px">
+          <mat-grid-tile colspan="4">
+            <button mat-raised-button color="primary" class="segment_name">
+              <!-- <div class="mat-title">{{data["segmentid"]["categoryid"]["definitionid"]["sc_name"]}} - {{data["segmentid"]["enname"]}} <div
+                  style="display: inline-block;" *ngIf="data['segmentid']['patterndanceid']['sc_name']!=''">
+                  [{{data["segmentid"]["patterndanceid"]["sc_name"]}}]</div>
+              </div> -->
+
+              <div class="mat-title" *ngIf=" data.hasOwnProperty('segmentid')">
+                {{data["segmentid"]["categoryid"]["definitionid"]["sc_name"]}} - {{data["segmentid"]["enname"]}} <div
+                  style="display: inline-block;" *ngIf=" pattern_dance_data.hasOwnProperty('sc_name')">
+                  [{{pattern_dance_data["sc_name"]}}]</div>
+              </div>
+            </button>
+
+          </mat-grid-tile>
+
+          <mat-grid-tile colspan="4">
+            <button mat-raised-button color="primary" class="competitor_name">
+              <div class="mat-title" *ngIf=" skater_data.hasOwnProperty('skater_data')">
+                {{skater_data["skater_data"]["sc_name"]}}</div>
+              <div class="mat-title" *ngIf=" !skater_data.hasOwnProperty('skater_data')">No Skater</div>
+            </button>
+          </mat-grid-tile>
+
+        </mat-grid-list>
+
+
+        <div class="fieldset_devide h-80">
+
+          <div class="w-50">
+            <fieldset class="margin_top margin_right">
+              <legend *ngIf=" data.hasOwnProperty('segmentid')">
+                {{data.segmentid.categoryid.definitionid.sc_skatingdisciplinedefinition.sc_name}}:</legend>
+
+              <div class="family_container">
+                <div class="fieldset_devide">
+
+                  <div class="w-50">
+
+
+                    <div *ngFor="let fam_type of input; let number = index">
+
+                      <fieldset class="margin_top margin_right jump_fieldset" *ngIf="number%2==0">
+                        <legend>{{fam_type.family_type}}:</legend>
+
+
+                        <button mat-button *ngFor="let fam of fam_type.family_type_component"
+                          (click)="family_button_clicked(fam.family,number)"
+                          class="button_title_new">{{fam.family_abbreviatedname}}</button>
+
+                        <br><br>
+
+                        <div style="display: inline-block;">
+
+                          <button mat-button class="button_score_new"
+                            (click)="score_button_click(level_data[number][0],number)"
+                            [disabled]="level_data[number][0] == ''"
+                            [ngClass]="{'hide_me': possible_family_type_level[number].includes(null) == false}">NV
+                          </button>
+                          <button mat-button class="button_score_new"
+                            (click)="score_button_click(level_data[number][1],number)"
+                            [disabled]="level_data[number][1] == ''"
+                            [ngClass]="{'hide_me': possible_family_type_level[number].includes('0') == false}">B</button>
+                          <button mat-button class="button_score_new"
+                            (click)="score_button_click(level_data[number][2],number)"
+                            [disabled]="level_data[number][2] == ''"
+                            [ngClass]="{'hide_me': possible_family_type_level[number].includes('1') == false}">1</button>
+                          <button mat-button class="button_score_new"
+                            (click)="score_button_click(level_data[number][3],number)"
+                            [disabled]="level_data[number][3] == ''"
+                            [ngClass]="{'hide_me': possible_family_type_level[number].includes('2') == false}">2</button>
+                          <button mat-button class="button_score_new"
+                            (click)="score_button_click(level_data[number][4],number)"
+                            [disabled]="level_data[number][4] == ''"
+                            [ngClass]="{'hide_me': possible_family_type_level[number].includes('3') == false}">3</button>
+                          <button mat-button class="button_score_new"
+                            (click)="score_button_click(level_data[number][5],number)"
+                            [disabled]="level_data[number][5] == ''"
+                            [ngClass]="{'hide_me': possible_family_type_level[number].includes('4') == false}">4</button>
+
+                        </div>
+
+                        <div
+                          [ngClass]="{'hide_me': data['segmentid']['categoryid']['definitionid']['sc_scoringmethod'] == 947960000  }">
+
+                          <div
+                            [ngClass]="{'hide_me': star_rating_type_data[number] == '' || star_rating_type_data[number] == 947960001 || star_rating_type_data[number] == 947960002}">
+                            <br>
+
+                            <button mat-button class="button_score_new"
+                              (click)="assessment_level(947960002,number)">Gold </button>
+                            <button mat-button class="button_score_new"
+                              (click)="assessment_level(947960001,number)">Silver </button>
+                            <button mat-button class="button_score_new"
+                              (click)="assessment_level(947960000,number)">Bronze </button>
+                          </div>
+
+                          <div
+                            [ngClass]="{'hide_me': star_rating_type_data[number] == '' || star_rating_type_data[number] == 947960002 || star_rating_type_data[number] == 947960000}">
+                            <br>
+
+                            <button mat-button class="button_score_new" (click)="assessment_level(947960004,number)">I/C
+                            </button>
+                            <button mat-button class="button_score_new"
+                              (click)="assessment_level(947960003,number)">Complete </button>
+
+                          </div>
+
+                          <div
+                            [ngClass]="{'hide_me': star_rating_type_data[number] == '' || star_rating_type_data[number] == 947960001 || star_rating_type_data[number] == 947960000}">
+                            <br>
+
+                            <button mat-button class="button_score_new" (click)="assessment_level(947960006,number)">U/S
+                            </button>
+                            <button mat-button class="button_score_new"
+                              (click)="assessment_level(947960005,number)">Successful </button>
+
+                          </div>
+
+                        </div>
+
+
+
+                        <div *ngIf="fam_type.family_type_modifier.length >0 ">
+                          <br>
+
+                          <button mat-button class="button_actions" (click)="modifier_button_click('!')"
+                            *ngIf="fam_type.family_type_modifier.includes('947960003')" i18n>Attention</button>
+                          <button mat-button class="button_actions" (click)="modifier_button_click('e')"
+                            *ngIf="fam_type.family_type_modifier.includes('947960003')" i18n>Edge (e)</button>
+
+                          <button mat-button class="button_actions" (click)="modifier_button_click('<')"
+                            *ngIf="fam_type.family_type_modifier.includes('947960004')" i18n>Under Rot.</button>
+                          <button mat-button class="button_actions" (click)="modifier_button_click('<<')"
+                            *ngIf="fam_type.family_type_modifier.includes('947960004')" i18n>Down Grade</button>
+                          <button mat-button class="button_actions" (click)="modifier_button_click('q')"
+                            *ngIf="fam_type.family_type_modifier.includes('947960004')" i18n>Quarter</button>
+
+                          <button mat-button class="button_actions" (click)="modifier_button_click('C')"
+                            *ngIf="fam_type.family_type_modifier.includes('947960001')" i18n>Change</button>
+                          <button mat-button class="button_actions" (click)="modifier_button_click('F')"
+                            *ngIf="fam_type.family_type_modifier.includes('947960000')" i18n>Fly</button>
+                          <button mat-button class="button_actions" (click)="modifier_button_click('V')"
+                            *ngIf="fam_type.family_type_modifier.includes('947960005')" i18n>( V )</button>
+
+
+
+
+                          <button mat-button class="button_actions" (click)="rep_jump_click('Rep_jump')"
+                            *ngIf="fam_type.family_type_modifier.includes('947960006')" i18n>Rep. Jump</button>
+
+                          <div>
+                            <button mat-button class="button_actions" (click)="seq_combo_click('SEQ')"
+                              *ngIf="fam_type.family_type_id =='7BFAB449-4C8B-EB11-A812-000D3A8DCA86'" i18n>SEQ</button>
+                            <button mat-button class="button_actions" (click)="seq_combo_click('COMBO')"
+                              *ngIf="fam_type.family_type_id =='7BFAB449-4C8B-EB11-A812-000D3A8DCA86'"
+                              i18n>COMBO</button>
+
+                          </div>
+
+                          <div class="" *ngIf="fam_type.family_type_modifier.includes('947960007')">
+
+                            <div style="display: inline-block;" *ngFor="let fam of fam_type.family_type_component">
+                              <button mat-button class="button_actions" *ngIf="fam.family=='Intersection'"
+                                (click)="modifier_button_click('pi')" i18n>PI</button>
+
+
+                              <button mat-button class="button_actions" *ngIf="fam.family=='Move'"
+                                (click)="modifier_button_click('fm')" i18n>FM</button>
+                              <button mat-button class="button_actions" *ngIf="fam.family=='No Hold'"
+                                (click)="modifier_button_click('s')" i18n>S</button>
+
+
+                            </div>
+                            <div class="top_bottom_margin">
+                              <button mat-button class="button_score" (click)="modifier_button_click('B')">B</button>
+                              <button mat-button class="button_score" (click)="modifier_button_click('1')">1</button>
+                              <button mat-button class="button_score" (click)="modifier_button_click('2')">2</button>
+                              <button mat-button class="button_score" (click)="modifier_button_click('3')">3</button>
+                              <button mat-button class="button_score" (click)="modifier_button_click('4')">4</button>
+
+                            </div>
+
+                          </div>
+
+                          <div>
+                            <button mat-button class="button_actions" (click)="modifier_button_click('down_1')"
+                              *ngIf="fam_type.family_type_modifier.includes('947960009')" i18n>Downgrade 1</button>
+
+                            <button mat-button class="button_actions" (click)="modifier_button_click('down_2')"
+                              *ngIf="fam_type.family_type_modifier.includes('947960009')" i18n>Downgrade 2</button>
+                          </div>
+
+
+                        </div>
+
+                      </fieldset>
+                    </div>
+
+                  </div>
+
+                  <div class="w-50">
+
+                    <div *ngFor="let fam_type of input; let number = index">
+
+                      <fieldset class="margin_top margin_right jump_fieldset" *ngIf="number%2!=0">
+                        <legend>{{fam_type.family_type}}:</legend>
+
+                        <button mat-button *ngFor="let fam of fam_type.family_type_component"
+                          (click)="family_button_clicked(fam.family,number)"
+                          class="button_title_new">{{fam.family_abbreviatedname}}</button>
+
+                        <br><br>
+
+                        <div style="display: inline-block;">
+
+                          <button mat-button class="button_score_new"
+                            (click)="score_button_click(level_data[number][0],number)"
+                            [disabled]="level_data[number][0] == ''"
+                            [ngClass]="{'hide_me': possible_family_type_level[number].includes(null) == false}">NV
+                          </button>
+                          <button mat-button class="button_score_new"
+                            (click)="score_button_click(level_data[number][1],number)"
+                            [disabled]="level_data[number][1] == ''"
+                            [ngClass]="{'hide_me': possible_family_type_level[number].includes('0') == false}">B</button>
+                          <button mat-button class="button_score_new"
+                            (click)="score_button_click(level_data[number][2],number)"
+                            [disabled]="level_data[number][2] == ''"
+                            [ngClass]="{'hide_me': possible_family_type_level[number].includes('1') == false}">1</button>
+                          <button mat-button class="button_score_new"
+                            (click)="score_button_click(level_data[number][3],number)"
+                            [disabled]="level_data[number][3] == ''"
+                            [ngClass]="{'hide_me': possible_family_type_level[number].includes('2') == false}">2</button>
+                          <button mat-button class="button_score_new"
+                            (click)="score_button_click(level_data[number][4],number)"
+                            [disabled]="level_data[number][4] == ''"
+                            [ngClass]="{'hide_me': possible_family_type_level[number].includes('3') == false}">3</button>
+                          <button mat-button class="button_score_new"
+                            (click)="score_button_click(level_data[number][5],number)"
+                            [disabled]="level_data[number][5] == ''"
+                            [ngClass]="{'hide_me': possible_family_type_level[number].includes('4') == false}">4</button>
+
+                        </div>
+
+
+
+                        <div
+                          [ngClass]="{'hide_me': data['segmentid']['categoryid']['definitionid']['sc_scoringmethod'] == 947960000  }">
+
+                          <div
+                            [ngClass]="{'hide_me': star_rating_type_data[number] == '' || star_rating_type_data[number] == 947960001 || star_rating_type_data[number] == 947960002}">
+                            <br>
+
+                            <button mat-button class="button_score_new"
+                              (click)="assessment_level(947960002,number)">Gold </button>
+                            <button mat-button class="button_score_new"
+                              (click)="assessment_level(947960001,number)">Silver </button>
+                            <button mat-button class="button_score_new"
+                              (click)="assessment_level(947960000,number)">Bronze </button>
+                          </div>
+
+                          <div
+                            [ngClass]="{'hide_me': star_rating_type_data[number] == '' || star_rating_type_data[number] == 947960002 || star_rating_type_data[number] == 947960000}">
+                            <br>
+
+                            <button mat-button class="button_score_new" (click)="assessment_level(947960004,number)">I/C
+                            </button>
+                            <button mat-button class="button_score_new"
+                              (click)="assessment_level(947960003,number)">Complete </button>
+
+                          </div>
+
+                          <div
+                            [ngClass]="{'hide_me': star_rating_type_data[number] == '' || star_rating_type_data[number] == 947960001 || star_rating_type_data[number] == 947960000}">
+                            <br>
+
+                            <button mat-button class="button_score_new" (click)="assessment_level(947960006,number)">U/S
+                            </button>
+                            <button mat-button class="button_score_new"
+                              (click)="assessment_level(947960005,number)">Successful </button>
+
+                          </div>
+
+                        </div>
+
+
+
+                        <div *ngIf="fam_type.family_type_modifier.length >0 ">
+                          <br>
+
+
+                          <button mat-button class="button_actions" (click)="modifier_button_click('!')"
+                            *ngIf="fam_type.family_type_modifier.includes('947960003')" i18n>Attention</button>
+                          <button mat-button class="button_actions" (click)="modifier_button_click('e')"
+                            *ngIf="fam_type.family_type_modifier.includes('947960003')" i18n>Edge (e)</button>
+
+                          <button mat-button class="button_actions" (click)="modifier_button_click('<')"
+                            *ngIf="fam_type.family_type_modifier.includes('947960004')" i18n>Under Rot.</button>
+                          <button mat-button class="button_actions" (click)="modifier_button_click('<<')"
+                            *ngIf="fam_type.family_type_modifier.includes('947960004')" i18n>Down Grade</button>
+                          <button mat-button class="button_actions" (click)="modifier_button_click('q')"
+                            *ngIf="fam_type.family_type_modifier.includes('947960004')" i18n>Quarter</button>
+
+                          <button mat-button class="button_actions" (click)="modifier_button_click('C')"
+                            *ngIf="fam_type.family_type_modifier.includes('947960001')" i18n>Change</button>
+                          <button mat-button class="button_actions" (click)="modifier_button_click('F')"
+                            *ngIf="fam_type.family_type_modifier.includes('947960000')" i18n>Fly</button>
+                          <button mat-button class="button_actions" (click)="modifier_button_click('V')"
+                            *ngIf="fam_type.family_type_modifier.includes('947960005')" i18n>( V )</button>
+
+
+                          <button mat-button class="button_actions" (click)="rep_jump_click('Rep_jump')"
+                            *ngIf="fam_type.family_type_modifier.includes('947960006')" i18n>Rep. Jump</button>
+
+
+                          <div>
+                            <button mat-button class="button_actions" (click)="seq_combo_click('SEQ')"
+                              *ngIf="fam_type.family_type_id =='7BFAB449-4C8B-EB11-A812-000D3A8DCA86'" i18n>SEQ</button>
+                            <button mat-button class="button_actions" (click)="seq_combo_click('COMBO')"
+                              *ngIf="fam_type.family_type_id =='7BFAB449-4C8B-EB11-A812-000D3A8DCA86'"
+                              i18n>COMBO</button>
+
+                          </div>
+
+                          <div class="" *ngIf="fam_type.family_type_modifier.includes('947960007')">
+
+                            <div style="display: inline-block;" *ngFor="let fam of fam_type.family_type_component">
+                              <button mat-button class="button_actions" *ngIf="fam.family=='Intersection'"
+                                (click)="modifier_button_click('pi')" i18n>PI</button>
+                              <button mat-button class="button_actions" *ngIf="fam.family=='Move'"
+                                (click)="modifier_button_click('fm')" i18n>FM</button>
+                              <button mat-button class="button_actions" *ngIf="fam.family=='No Hold'"
+                                (click)="modifier_button_click('s')" i18n>S</button>
+
+
+                            </div>
+                            <div class="top_bottom_margin">
+                              <button mat-button class="button_score" (click)="modifier_button_click('B')">B</button>
+                              <button mat-button class="button_score" (click)="modifier_button_click('1')">1</button>
+                              <button mat-button class="button_score" (click)="modifier_button_click('2')">2</button>
+                              <button mat-button class="button_score" (click)="modifier_button_click('3')">3</button>
+                              <button mat-button class="button_score" (click)="modifier_button_click('4')">4</button>
+
+                            </div>
+
+                          </div>
+
+                          <div>
+                            <button mat-button class="button_actions" (click)="modifier_button_click('down_1')"
+                              *ngIf="fam_type.family_type_modifier.includes('947960009')" i18n>Downgrade 1</button>
+
+                            <button mat-button class="button_actions" (click)="modifier_button_click('down_2')"
+                              *ngIf="fam_type.family_type_modifier.includes('947960009')" i18n>Downgrade 2</button>
+                          </div>
+
+                        </div>
+
+
+
+
+                      </fieldset>
+
+
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="w-50">
+            <fieldset class="margin_top margin_left h-10">
+              <legend i18n>Competitor: </legend>
+
+
+
+              <div class="top_bottom_margin ">
+
+                <div class="fieldset_devide">
+
+                  <div class="w-55">
+
+                    <input matInput readonly class="margin_right competitor_input_type1" [(ngModel)]="input_code_new">
+
+
+                  </div>
+
+                  <div class="w-45">
+                    <div class="competitor_container">
+
+                      <div class="">
+                        <button mat-button class="competitor_top_action" (click)="add_element(selectedRowIndex)"
+                          i18n>Add</button>
+                        <button mat-button class="competitor_top_action margin_left" (click)="cancel_input()"
+                          i18n>Cancel</button>
+
+
+
+                        <button mat-button class="competitor_top_action margin_left" (click)="invalid_button()"
+                          i18n>Inv</button>
+
+                        <button mat-button [matMenuTriggerFor]="ct_top_action" class="competitor_top_action"
+                          i18n>Note</button>
+                        <mat-menu #ct_top_action="matMenu">
+
+
+                          <button *ngFor="let note_details of notes; let z = index" (click)="note_input(note_details)"
+                            mat-menu-item>{{note_details["sc_skatingelementnoteid"]["sc_name"]}}
+                            [{{note_details["sc_skatingelementnoteid"]["sc_value"]}}]</button>
+
+                        </mat-menu>
+                        <button mat-button class="competitor_top_action_icon margin_left" (click)="video_button()" i18n>
+                          <mat-icon>ondemand_video</mat-icon>
+                        </button>
+
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+
+
+            </fieldset>
+
+            <div class="fieldset_devide h-85">
+
+              <div class="w-65">
+
+                <fieldset class="margin_top margin_left margin_right">
+                  <legend i18n>Elements:</legend>
+
+                  <div class="element_container">
+
+                    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                      <tr class="mat-row" *matNoDataRow>
+
+                        <td class="mat-cell" colspan="9999" i18n>
+
+                          No data Available
+                        </td>
+
+                      </tr>
+
+
+                      <!-- Position Column -->
+                      <ng-container matColumnDef="position">
+                        <th mat-header-cell *matHeaderCellDef i18n> No. </th>
+                        <td mat-cell *matCellDef="let element" [ngClass]="{
+                          halfway_highlight: element.position == halfway_index
+                      
+                          }">
+                          <div style="display: inline-block;" [ngClass]="{
+                            review_highlight:review_index.includes(element['position']) == true
+                        
+                          }">&nbsp;{{element.position}}&nbsp;
+                          </div>
+                        </td>
+
+                      </ng-container>
+
+                      <!-- Name Column -->
+                      <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef i18n> Definition </th>
+                        <td mat-cell *matCellDef="let element" [ngClass]="{
+                          text_error: wbp_failed_index.includes(element['position']) == true,
+                          halfway_highlight: element.position == halfway_index
+                      
+                        }"> {{element.name}} </td>
+                      </ng-container>
+
+                      <!-- Action -->
+                      <ng-container matColumnDef="action">
+                        <th mat-header-cell *matHeaderCellDef i18n> Action </th>
+                        <td mat-cell *matCellDef="let element;let j = index;" [ngClass]="{
+                          halfway_highlight: element.position == halfway_index
+                      
+                        }">
+
+                          <button mat-icon-button [matMenuTriggerFor]="menu"
+                            aria-label="Example icon-button with a menu">
+                            <mat-icon>more_vert</mat-icon>
+                          </button>
+
+                          <mat-menu #menu="matMenu">
+                            <button mat-menu-item (click)="edit_element(element)">
+                              <mat-icon>edit</mat-icon>
+                              <span i18n>Edit</span>
+                            </button>
+
+                            <button *ngIf="halfway_available == true" mat-menu-item (click)='halfway_set(j+1)'>
+                              <mat-icon>access_time</mat-icon>
+                              <span i18n>Halfway insert</span>
+                            </button>
+
+
+                            <button mat-menu-item (click)="insert_before(element)">
+                              <mat-icon>arrow_upward</mat-icon>
+                              <span i18n>Insert Before</span>
+                            </button>
+
+                            <button mat-menu-item (click)="check_uncheck(element)">
+
+                              <mat-icon>outlined_flag</mat-icon>
+                              <span i18n>Check / Uncheck</span>
+                            </button>
+
+                            <!-- <button mat-menu-item (click)="insert_after(element)" >
+                                  <mat-icon>arrow_downward</mat-icon>
+                                  <span>Insert After</span>
+                                </button> -->
+
+
+                            <button mat-menu-item (click)="delete_element(j)">
+                              <mat-icon>delete_outline</mat-icon>
+                              <span i18n>Delete</span>
+                            </button>
+                            <button mat-menu-item (click)="invalid_element(j)">
+                              <mat-icon>not_interested</mat-icon>
+                              <span i18n>Mark Invalid</span>
+                            </button>
+
+
+
+                          </mat-menu>
+                        </td>
+                      </ng-container>
+
+
+                      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+
+                      <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{
+                            highlight: selectedRowIndex == row.position
+                        
+                          }"></tr>
+
+
+                    </table>
+                  </div>
+
+
+                </fieldset>
+
+              </div>
+              <div class="w-35">
+
+                <fieldset class="margin_top margin_left h-20 ">
+                  <legend i18n>Procedural Command:</legend>
+
+                  <div class="procedural_command_container">
+
+
+                    <div class="top_bottom_margin">
+                      <button mat-button class="button_actions" [disabled]="validate_done == true"
+                        (click)="validate_element()" i18n>Validate Elements</button>
+                      <button mat-button class="button_score" [disabled]="wbp_done == true" (click)="wbp_element()"
+                        i18n>WBP</button>
+
+                    </div>
+
+
+
+                    <div class="top_bottom_margin">
+                      <button mat-button class="button_actions" [disabled]="finalize_done == true" (click)="finalize()"
+                        i18n>Finalize</button>
+                      <button
+                        [ngClass]="{'hide_me': data['segmentid']['categoryid']['definitionid']['sc_scoringmethod'] == 947960000}"
+                        mat-button class="button_actions" (click)="noncpc_scoresubmit()"
+                        [disabled]="finalize_done == false || ref_score_finalize== true" i18n>Ref
+                        Score</button>
+
+                    </div>
+
+
+                  </div>
+
+
+                </fieldset>
+
+                <fieldset class="margin_top margin_left h-50 ">
+                  <legend i18n>Bonus & Deduction:</legend>
+
+
+                  <div class="sp_action_container">
+
+
+                    <div class="top_bottom_margin"
+                      *ngFor="let bonuses of bonuses_deduction_tech_team_data; let k = index;">
+
+                      <div *ngIf="bonuses.sc_group == 947960000 ">
+                        <button mat-button class="button_score" (click)="change_bonus_value(k,-1)">-1</button>
+                        <button mat-button class="button_score" (click)="change_bonus_value(k,+1)">1</button>
+
+                        <button mat-button class="button_actions" class="bonus_title" disabled>{{bonuses.sc_name |
+                          slice:0:12}}</button>
+                        <input matInput class=" margin_left competitor_input_type2" readonly id="bonus_value_{{k}}"
+                          value="0">
+
+                      </div>
+                    </div>
+
+                    <br>
+
+                    <div class="top_bottom_margin"
+                      *ngFor="let bonuses of bonuses_deduction_tech_team_data; let k = index;">
+
+                      <div *ngIf="bonuses.sc_group == 947960001 ">
+                        <button mat-button class="button_score" (click)="change_bonus_value(k,-1)">-1</button>
+                        <button mat-button class="button_score" (click)="change_bonus_value(k,+1)">1</button>
+
+                        <button mat-button class="button_actions" class="bonus_title" disabled>{{bonuses.sc_name |
+                          slice:0:12}}</button>
+                        <input matInput class=" margin_left competitor_input_type2" readonly id="bonus_value_{{k}}"
+                          value="0">
+
+                      </div>
+                    </div>
+
+
+                  </div>
+
+
+                </fieldset>
+
+                <fieldset class="margin_top margin_left  h-25">
+                  <legend i18n>Extra:</legend>
+
+                  <div class="extra_command_container">
+
+
+                    <div class="segment_container ">
+                      <!-- <div class="mt_5 mb_10">
+                     
+                        <input matInput  class="margin_right competitor_input_halfway" [(ngModel)]="halfway_index">
+    
+                        <button mat-raised-button class="segment_command_button_reload" (click)='halfway_set()' >Done</button>
+    
+                      </div> -->
+                      <div class="mt_5 mb_10">
+                        <label class="segment_command_title" i18n>Prog. Time : </label>
+                        <!-- <button mat-raised-button class="segment_command_button"> {{data.segmentid.programtime}}</button> -->
+                        <button mat-raised-button class="segment_command_button"> 00:00</button>
+                      </div>
+
+                      <div class="mt_10 mb_10" *ngIf="halfway_available == true">
+                        <button mat-raised-button class="segment_command_button_reload"
+                          (click)='startTimer()'>Start</button> <span style="color: white">- {{time}}</span>
+
+
+
+                      </div>
+
+                      <div class="mt_10 mb_10" *ngIf="halfway_available == true">
+                        <button mat-raised-button class="segment_command_button_reload"
+                          (click)='stopTimer()'><mat-icon>timer_off</mat-icon></button>
+
+                        <button mat-raised-button class="segment_command_button_reload"
+                          (click)='resetTimer()'><mat-icon>restore</mat-icon></button>
+
+                      </div>
+
+                    </div>
+
+
+
+
+
+                  </div>
+
+
+                </fieldset>
+
+                <!-- <div class="sp_action_container">
+                          <div class="top_bottom_margin">
+    
+                            <button mat-button  class="button_actions margin_top help_button">Help</button>
+                            <button mat-button  class="button_actions margin_top log_off">Log Off</button>
+    
+                              
+                        </div>
+                        </div> -->
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+      </mat-card>
+      <mat-card *ngIf="language=='fr'">
+        <mat-grid-list cols="8" rowHeight="4:1" gutterSize="10px">
+          <mat-grid-tile colspan="4">
+            <button mat-raised-button color="primary" class="segment_name">
+
+              <div class="mat-title">{{data.segmentid.categoryid.definitionid.sc_frenchname}} -
+                {{data.segmentid.frname}}
+
+              </div>
+            </button>
+
+          </mat-grid-tile>
+
+          <mat-grid-tile colspan="4">
+            <button mat-raised-button color="primary" class="competitor_name">
+              <div class="mat-title">Com. name fr</div>
+            </button>
+          </mat-grid-tile>
+
+        </mat-grid-list>
+
+
+        <div class="fieldset_devide">
+
+          <div class="w-50">
+            <fieldset class="margin_top margin_right">
+              <legend>{{data.segmentid.categoryid.definitionid.sc_skatingdisciplinedefinition.sc_frenchname}}:</legend>
+
+              <div class="family_container">
+                <div class="fieldset_devide">
+
+                  <div class="w-50">
+
+
+                    <div *ngFor="let fam_type of input; let number = index">
+
+                      <fieldset class="margin_top margin_right jump_fieldset" *ngIf="number%2==0">
+                        <legend>{{fam_type.family_type}}:</legend>
+
+                        <button mat-button *ngFor="let fam of fam_type.family_type_component"
+                          (click)="family_button_clicked(fam.family,number)"
+                          class="button_title_new">{{fam.family_abbreviatednamefr}}</button>
+
+                        <br><br>
+
+                        <div style="display: inline-block;">
+
+                          <button mat-button class="button_score_new"
+                            (click)="score_button_click(level_data[number][0],number)"
+                            [disabled]="level_data[number][0] == ''"
+                            [ngClass]="{'hide_me': possible_family_type_level[number].includes(null) == false}">NV
+                          </button>
+                          <button mat-button class="button_score_new"
+                            (click)="score_button_click(level_data[number][1],number)"
+                            [disabled]="level_data[number][1] == ''"
+                            [ngClass]="{'hide_me': possible_family_type_level[number].includes('0') == false}">B</button>
+                          <button mat-button class="button_score_new"
+                            (click)="score_button_click(level_data[number][2],number)"
+                            [disabled]="level_data[number][2] == ''"
+                            [ngClass]="{'hide_me': possible_family_type_level[number].includes('1') == false}">1</button>
+                          <button mat-button class="button_score_new"
+                            (click)="score_button_click(level_data[number][3],number)"
+                            [disabled]="level_data[number][3] == ''"
+                            [ngClass]="{'hide_me': possible_family_type_level[number].includes('2') == false}">2</button>
+                          <button mat-button class="button_score_new"
+                            (click)="score_button_click(level_data[number][4],number)"
+                            [disabled]="level_data[number][4] == ''"
+                            [ngClass]="{'hide_me': possible_family_type_level[number].includes('3') == false}">3</button>
+                          <button mat-button class="button_score_new"
+                            (click)="score_button_click(level_data[number][5],number)"
+                            [disabled]="level_data[number][5] == ''"
+                            [ngClass]="{'hide_me': possible_family_type_level[number].includes('4') == false}">4</button>
+
+                        </div>
+
+
+
+                        <div *ngIf="fam_type.family_type_modifier.length >0 ">
+                          <br>
+
+                          <button mat-button class="button_actions" (click)="modifier_button_click('!')"
+                            *ngIf="fam_type.family_type_modifier.includes('947960003')" i18n>Attention</button>
+                          <button mat-button class="button_actions" (click)="modifier_button_click('e')"
+                            *ngIf="fam_type.family_type_modifier.includes('947960003')" i18n>Edge (e)</button>
+
+                          <button mat-button class="button_actions" (click)="modifier_button_click('<')"
+                            *ngIf="fam_type.family_type_modifier.includes('947960004')" i18n>Under Rot.</button>
+                          <button mat-button class="button_actions" (click)="modifier_button_click('<<')"
+                            *ngIf="fam_type.family_type_modifier.includes('947960004')" i18n>Down Grade</button>
+                          <button mat-button class="button_actions" (click)="modifier_button_click('q')"
+                            *ngIf="fam_type.family_type_modifier.includes('947960004')" i18n>Quarter</button>
+
+                          <button mat-button class="button_actions" (click)="modifier_button_click('C')"
+                            *ngIf="fam_type.family_type_modifier.includes('947960001')" i18n>Change</button>
+                          <button mat-button class="button_actions" (click)="modifier_button_click('F')"
+                            *ngIf="fam_type.family_type_modifier.includes('947960000')" i18n>Fly</button>
+                          <button mat-button class="button_actions" (click)="modifier_button_click('V')"
+                            *ngIf="fam_type.family_type_modifier.includes('947960005')" i18n>( V )</button>
+
+
+                          <button mat-button class="button_actions" (click)="modifier_button_click('')"
+                            *ngIf="fam_type.family_type_modifier.includes('947960006')" i18n>Rep. Jump</button>
+
+
+                          <div class="" *ngIf="fam_type.family_type_modifier.includes('947960007')">
+
+                            <div style="display: inline-block;" *ngFor="let fam of fam_type.family_type_component">
+                              <button mat-button class="button_actions" *ngIf="fam.family=='Intersection'"
+                                (click)="modifier_button_click('+pi')" i18n>PI</button>
+
+
+                              <button mat-button class="button_actions" *ngIf="fam.family=='Move'"
+                                (click)="modifier_button_click('+fm')" i18n>FM</button>
+                              <button mat-button class="button_actions" *ngIf="fam.family=='No Hold'"
+                                (click)="modifier_button_click('+s')" i18n>S</button>
+
+
+                            </div>
+                            <div class="top_bottom_margin">
+                              <button mat-button class="button_score" (click)="modifier_button_click('B')">B</button>
+                              <button mat-button class="button_score" (click)="modifier_button_click('1')">1</button>
+                              <button mat-button class="button_score" (click)="modifier_button_click('2')">2</button>
+                              <button mat-button class="button_score" (click)="modifier_button_click('3')">3</button>
+                              <button mat-button class="button_score" (click)="modifier_button_click('4')">4</button>
+
+                            </div>
+
+                          </div>
+
+                          <div>
+                            <button mat-button class="button_actions" (click)="modifier_button_click('down_1')"
+                              *ngIf="fam_type.family_type_modifier.includes('947960009')" i18n>Downgrade 1</button>
+
+                            <button mat-button class="button_actions" (click)="modifier_button_click('down_2')"
+                              *ngIf="fam_type.family_type_modifier.includes('947960009')" i18n>Downgrade 2</button>
+                          </div>
+
+                        </div>
+
+
+
+                      </fieldset>
+
+
+                    </div>
+
+                  </div>
+
+                  <div class="w-50">
+
+                    <div *ngFor="let fam_type of input; let number = index">
+
+                      <fieldset class="margin_top margin_right jump_fieldset" *ngIf="number%2!=0">
+                        <legend>{{fam_type.family_type}}:</legend>
+
+                        <button mat-button *ngFor="let fam of fam_type.family_type_component"
+                          (click)="family_button_clicked(fam.family,number)"
+                          class="button_title_new">{{fam.family_abbreviatednamefr}}</button>
+
+                        <br><br>
+
+                        <div style="display: inline-block;">
+
+                          <button mat-button class="button_score_new"
+                            (click)="score_button_click(level_data[number][0],number)"
+                            [disabled]="level_data[number][0] == ''"
+                            [ngClass]="{'hide_me': possible_family_type_level[number].includes(null) == false}">NV
+                          </button>
+                          <button mat-button class="button_score_new"
+                            (click)="score_button_click(level_data[number][1],number)"
+                            [disabled]="level_data[number][1] == ''"
+                            [ngClass]="{'hide_me': possible_family_type_level[number].includes('0') == false}">B</button>
+                          <button mat-button class="button_score_new"
+                            (click)="score_button_click(level_data[number][2],number)"
+                            [disabled]="level_data[number][2] == ''"
+                            [ngClass]="{'hide_me': possible_family_type_level[number].includes('1') == false}">1</button>
+                          <button mat-button class="button_score_new"
+                            (click)="score_button_click(level_data[number][3],number)"
+                            [disabled]="level_data[number][3] == ''"
+                            [ngClass]="{'hide_me': possible_family_type_level[number].includes('2') == false}">2</button>
+                          <button mat-button class="button_score_new"
+                            (click)="score_button_click(level_data[number][4],number)"
+                            [disabled]="level_data[number][4] == ''"
+                            [ngClass]="{'hide_me': possible_family_type_level[number].includes('3') == false}">3</button>
+                          <button mat-button class="button_score_new"
+                            (click)="score_button_click(level_data[number][5],number)"
+                            [disabled]="level_data[number][5] == ''"
+                            [ngClass]="{'hide_me': possible_family_type_level[number].includes('4') == false}">4</button>
+
+                        </div>
+
+
+
+                        <div *ngIf="fam_type.family_type_modifier.length >0 ">
+                          <br>
+
+
+                          <button mat-button class="button_actions" (click)="modifier_button_click('!')"
+                            *ngIf="fam_type.family_type_modifier.includes('947960003')" i18n>Attention</button>
+                          <button mat-button class="button_actions" (click)="modifier_button_click('e')"
+                            *ngIf="fam_type.family_type_modifier.includes('947960003')" i18n>Edge (e)</button>
+
+                          <button mat-button class="button_actions" (click)="modifier_button_click('<')"
+                            *ngIf="fam_type.family_type_modifier.includes('947960004')" i18n>Under Rot.</button>
+                          <button mat-button class="button_actions" (click)="modifier_button_click('<<')"
+                            *ngIf="fam_type.family_type_modifier.includes('947960004')" i18n>Down Grade</button>
+                          <button mat-button class="button_actions" (click)="modifier_button_click('q')"
+                            *ngIf="fam_type.family_type_modifier.includes('947960004')" i18n>Quarter</button>
+
+                          <button mat-button class="button_actions" (click)="modifier_button_click('C')"
+                            *ngIf="fam_type.family_type_modifier.includes('947960001')" i18n>Change</button>
+                          <button mat-button class="button_actions" (click)="modifier_button_click('F')"
+                            *ngIf="fam_type.family_type_modifier.includes('947960000')" i18n>Fly</button>
+                          <button mat-button class="button_actions" (click)="modifier_button_click('V')"
+                            *ngIf="fam_type.family_type_modifier.includes('947960005')" i18n>( V )</button>
+
+
+                          <button mat-button class="button_actions" (click)="modifier_button_click('')"
+                            *ngIf="fam_type.family_type_modifier.includes('947960006')" i18n>Rep. Jump</button>
+
+                          <div class="" *ngIf="fam_type.family_type_modifier.includes('947960007')">
+
+                            <div style="display: inline-block;" *ngFor="let fam of fam_type.family_type_component">
+                              <button mat-button class="button_actions" *ngIf="fam.family=='Intersection'"
+                                (click)="modifier_button_click('+pi')" i18n>PI</button>
+                              <button mat-button class="button_actions" *ngIf="fam.family=='Move'"
+                                (click)="modifier_button_click('+fm')" i18n>FM</button>
+                              <button mat-button class="button_actions" *ngIf="fam.family=='No Hold'"
+                                (click)="modifier_button_click('+s')" i18n>S</button>
+
+
+                            </div>
+                            <div class="top_bottom_margin">
+                              <button mat-button class="button_score" (click)="modifier_button_click('B')">B</button>
+                              <button mat-button class="button_score" (click)="modifier_button_click('1')">1</button>
+                              <button mat-button class="button_score" (click)="modifier_button_click('2')">2</button>
+                              <button mat-button class="button_score" (click)="modifier_button_click('3')">3</button>
+                              <button mat-button class="button_score" (click)="modifier_button_click('4')">4</button>
+
+                            </div>
+
+                          </div>
+
+                          <div>
+                            <button mat-button class="button_actions" (click)="modifier_button_click('down_1')"
+                              *ngIf="fam_type.family_type_modifier.includes('947960009')" i18n>Downgrade 1</button>
+
+                            <button mat-button class="button_actions" (click)="modifier_button_click('down_2')"
+                              *ngIf="fam_type.family_type_modifier.includes('947960009')" i18n>Downgrade 2</button>
+                          </div>
+
+                        </div>
+
+
+
+
+                      </fieldset>
+
+
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+            </fieldset>
+
+
+
+          </div>
+          <div class="w-50">
+            <fieldset class="margin_top margin_left">
+              <legend i18n>Competitor: </legend>
+
+
+
+              <div class="top_bottom_margin ">
+
+                <div class="fieldset_devide">
+
+                  <div class="w-60">
+
+                    <input matInput class="margin_right competitor_input_type1" [(ngModel)]="input_code_new">
+
+
+                  </div>
+
+                  <div class="w-40">
+                    <div class="competitor_container">
+
+                      <div class="">
+                        <button mat-button class="competitor_top_action" (click)="add_element(selectedRowIndex)"
+                          i18n>Add</button>
+                        <button mat-button class="competitor_top_action margin_left" (click)="cancel_input()"
+                          i18n>Cancel</button>
+
+                        <button mat-button [matMenuTriggerFor]="ct_top_action" class="competitor_top_action"
+                          i18n>Note</button>
+                        <mat-menu #ct_top_action="matMenu">
+
+                          <button (click)="note_input(note_details)" *ngFor="let note_details of notes; let z = index"
+                            mat-menu-item>{{note_details["sc_skatingelementnoteid"]["sc_namefr"]}}
+                            [{{note_details["sc_skatingelementnoteid"]["sc_value"]}}]</button>
+
+                        </mat-menu>
+
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+
+
+            </fieldset>
+
+            <div class="fieldset_devide">
+
+              <div class="w-65">
+
+                <fieldset class="margin_top margin_left margin_right">
+                  <legend i18n>Elements:</legend>
+
+                  <div class="element_container">
+
+                    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                      <tr class="mat-row" *matNoDataRow>
+
+                        <td class="mat-cell" colspan="9999" i18n>
+
+                          No data Available
+                        </td>
+
+                      </tr>
+
+                      <!-- Position Column -->
+                      <ng-container matColumnDef="position">
+                        <th mat-header-cell *matHeaderCellDef i18n> No. </th>
+                        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+                      </ng-container>
+
+                      <!-- Name Column -->
+                      <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef i18n> Defination </th>
+                        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                      </ng-container>
+
+                      <!-- Action -->
+                      <ng-container matColumnDef="action">
+                        <th mat-header-cell *matHeaderCellDef i18n> Action </th>
+                        <td mat-cell *matCellDef="let element;let j = index;">
+
+                          <button mat-icon-button [matMenuTriggerFor]="menu"
+                            aria-label="Example icon-button with a menu">
+                            <mat-icon>more_vert</mat-icon>
+                          </button>
+
+                          <mat-menu #menu="matMenu">
+                            <button mat-menu-item (click)="edit_element(element)">
+                              <mat-icon>edit</mat-icon>
+                              <span i18n>Edit</span>
+                            </button>
+
+                            <button mat-menu-item (click)="insert_before(element)">
+                              <mat-icon>arrow_upward</mat-icon>
+                              <span i18n>Insert Before</span>
+                            </button>
+                            <!-- <button mat-menu-item (click)="insert_after(element)" >
+                              <mat-icon>arrow_downward</mat-icon>
+                              <span>Insert After</span>
+                            </button> -->
+                            <button mat-menu-item (click)="delete_element(j)">
+                              <mat-icon>delete_outline</mat-icon>
+                              <span i18n>Delete</span>
+                            </button>
+                            <button mat-menu-item (click)="invalid_element(j)">
+                              <mat-icon>not_interested</mat-icon>
+                              <span i18n>Mark Invalid</span>
+                            </button>
+
+                          </mat-menu>
+                        </td>
+                      </ng-container>
+
+
+                      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+                      <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{
+                        highlight: selectedRowIndex == row.position
+                    
+                      }"></tr>
+
+                    </table>
+                  </div>
+
+
+                </fieldset>
+
+              </div>
+              <div class="w-35">
+
+                <fieldset class="margin_top margin_left ">
+                  <legend i18n>Procedural Command:</legend>
+
+                  <div class="procedural_command_container">
+
+
+                    <div class="top_bottom_margin">
+                      <button mat-button class="button_actions" [disabled]="validate_done == true"
+                        (click)="validate_element()" i18n>Validate Elements</button>
+                      <button mat-button class="button_score" [disabled]="wbp_done == true" (click)="wbp_element()"
+                        i18n>WBP</button>
+
+                    </div>
+
+
+
+                    <div class="top_bottom_margin">
+                      <button mat-button class="button_actions" [disabled]="finalize_done == true" (click)="finalize()"
+                        i18n>Finalize</button>
+
+                    </div>
+
+
+                  </div>
+
+
+                </fieldset>
+
+                <fieldset class="margin_top margin_left ">
+                  <legend i18n>Bonus & Deduction:</legend>
+
+
+                  <div class="sp_action_container">
+
+
+
+                    <div class="top_bottom_margin"
+                      *ngFor="let bonuses of bonuses_deduction_tech_team_data; let k = index;">
+
+                      <div *ngIf="bonuses.sc_group == 947960000 ">
+                        <button mat-button class="button_score" (click)="change_bonus_value(k,-1)">-1</button>
+                        <button mat-button class="button_score" (click)="change_bonus_value(k,+1)">1</button>
+
+                        <button mat-button class="button_actions" class="bonus_title" disabled>{{bonuses.sc_name |
+                          slice:0:12}}</button>
+                        <input matInput class=" margin_left competitor_input_type2" readonly id="bonus_value_{{k}}"
+                          value="0">
+
+                      </div>
+                    </div>
+
+                    <br>
+
+                    <div class="top_bottom_margin"
+                      *ngFor="let bonuses of bonuses_deduction_tech_team_data; let k = index;">
+
+                      <div *ngIf="bonuses.sc_group == 947960001 ">
+                        <button mat-button class="button_score" (click)="change_bonus_value(k,-1)">-1</button>
+                        <button mat-button class="button_score" (click)="change_bonus_value(k,+1)">1</button>
+
+                        <button mat-button class="button_actions" class="bonus_title" disabled>{{bonuses.sc_name |
+                          slice:0:12}}</button>
+                        <input matInput class=" margin_left competitor_input_type2" readonly id="bonus_value_{{k}}"
+                          value="0">
+
+                      </div>
+                    </div>
+
+
+
+
+                  </div>
+
+
+                </fieldset>
+
+                <fieldset class="margin_top margin_left ">
+                  <legend i18n>Extra:</legend>
+
+                  <div class="extra_command_container">
+
+
+                    <div class="segment_container ">
+                      <div class="mt_5 mb_10">
+                        <label class="segment_command_title" i18n>Status :</label>
+                        <button mat-raised-button class="segment_command_button"><span *ngIf="data.segmentid.status">
+                            {{data.segmentid.status}}</span><span *ngIf="!data.segmentid.status"> N/A</span> </button>
+                      </div>
+                      <div class="mt_5 mb_10">
+                        <label class="segment_command_title" i18n>Prog. Time : </label>
+                        <button mat-raised-button class="segment_command_button"> 00:00</button>
+                      </div>
+
+                      <div class="mt_10 mb_10">
+                        <button mat-raised-button class="segment_command_button_reload"
+                          (click)='startTimer()'>Start</button> - <span>00</span>
+
+                      </div>
+
+
+                    </div>
+
+                  </div>
+
+                </fieldset>
+
+
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+      </mat-card>
+
+    </div>
+
+    <div *ngIf=" data.segmentid.definitionid.sc_elementconfiguration.sc_mode == 947960001">
+
+      <mat-card style="background-color: #fff !important;">
+
+
+        <section class="example-container mat-elevation-z8" style="width: 100%; overflow: auto;  " tabindex="0">
+          <table mat-table [dataSource]="Template_datasource">
+
+            <tr class="mat-row" *matNoDataRow>
+
+              <td class="mat-cell" colspan="9999" i18n>
+
+                No data Available
+              </td>
+
+            </tr>
+
+            <ng-container *ngFor="let column of TemplatedSegmentColumns; let i = index" [matColumnDef]="column"
+              [sticky]="i===0">
+              <th mat-header-cell *matHeaderCellDef i18n style="padding: 10px;text-align: center;color: black;"
+                [ngClass]="{'column_color': i==0}">{{column}}</th>
+              <td mat-cell *matCellDef="let element;let k = index"
+                style="padding: 10px;text-align: center;color: black;" [ngClass]="{'column_color': i==0}">
+
+                <button mat-raised-button color="primary" *ngIf="i==TemplatedSegmentColumns.length-1"
+                  [disabled]="element[column] == false" (click)="insert_rating(element)">Submit</button>
+
+                <span *ngIf="i==0">{{element[column] == "" ? '--' : element[column] }}</span>
+
+                <mat-form-field class="dropdown_width" appearance="fill"
+                  *ngIf="i!=0 && i!=TemplatedSegmentColumns.length-1 && template_rating_type[i-1]==947960000">
+
+                  <mat-select (selectionChange)="optionSelectionChange(element)" [(value)]="element[column]">
+                    <mat-option value="947960002">Gold </mat-option>
+                    <mat-option value="947960001">Silver</mat-option>
+                    <mat-option value="947960000">Bronze</mat-option>
+                  </mat-select>
+
+
+                </mat-form-field>
+
+                <mat-form-field class="dropdown_width" appearance="fill"
+                  *ngIf="i!=0 && i!=TemplatedSegmentColumns.length-1 && template_rating_type[i-1]==947960001">
+
+                  <mat-select (selectionChange)="optionSelectionChange(element)" [(value)]="element[column]">
+                    <mat-option value="947960003">Complete</mat-option>
+                    <mat-option value="947960004">Incomplete</mat-option>
+                  </mat-select>
+
+
+                </mat-form-field>
+
+                <mat-form-field class="dropdown_width" appearance="fill"
+                  *ngIf="i!=0 && i!=TemplatedSegmentColumns.length-1 && template_rating_type[i-1]==947960002">
+
+                  <mat-select (selectionChange)="optionSelectionChange(element)" [(value)]="element[column]">
+                    <mat-option value="947960005">Successful</mat-option>
+                    <mat-option value="947960006">Unsuccessful</mat-option>
+                  </mat-select>
+
+
+                </mat-form-field>
+
+
+
+              </td>
+            </ng-container>
+
+
+
+            <tr mat-header-row *matHeaderRowDef="TemplatedSegmentColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: TemplatedSegmentColumns"></tr>
+
+          </table>
+        </section>
+
+
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+<div class="grid-container" *ngIf="user_access==false" style="background: #fff url('assets/texture.jpg') repeat 0 0;">
+  <div class="error">
+    <div class="wrapper">
+      <div class="box">
+        <p>Sorry, Event is not started!</p>
+        <p><a href="/dashboard">Please, go back this way.</a></p>
+      </div>
+    </div>
+
+  </div>
+
+</div>

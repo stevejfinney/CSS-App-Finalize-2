@@ -1,0 +1,20 @@
+{
+    "name": "test",
+    "engine": "handlebars",
+    "recipe": "chrome-pdf",
+    "data": {
+        "shortid": "l-N-zcAxI"
+    },
+    "shortid": "9jGiLFqm6",
+    "chrome": {
+        "printBackground": true
+    },
+    "creationDate": {
+        "$$date": 1681847680955
+    },
+    "modificationDate": {
+        "$$date": 1681847680955
+    },
+    "_id": "wsVBGmC907kH35nm",
+    "$entitySet": "templates"
+}

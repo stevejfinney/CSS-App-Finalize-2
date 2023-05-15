@@ -1,0 +1,69 @@
+
+<div>
+    <mat-card fxFlex="35">
+        <mat-card-content>
+            <mat-toolbar>
+                <span i18n>Add / Edit Event</span>
+            </mat-toolbar>
+            <form (ngSubmit)="updateEvent()" name="eventForm" [formGroup]="eventForm">
+    
+                <div style="display:none;">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Event ID</mat-label>
+                        <input formControlName="eventid" matInput readonly />
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label i18n>Event Name</mat-label>
+                        <input formControlName="enname" matInput required />
+                        <mat-error *ngIf="!eventForm.controls['enname'].valid" i18n>
+                            Please type an event name
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label i18n>Event Name (French)</mat-label>
+                        <input formControlName="frname" matInput required />
+                        <mat-error *ngIf="!eventForm.controls['frname'].valid" i18n>
+                            Please type an event name
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label i18n>Event Location</mat-label>
+                        <input formControlName="location" matInput required />
+                        <mat-error *ngIf="!eventForm.controls['location'].valid" i18n>
+                            Please type an event location
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label i18n>Event Type</mat-label>
+                        <!--input formControlName="sc_skatingeventclassid" matInput required /-->
+                        <mat-select id="element_type" [(value)]="selectedClassValue" name="sc_skatingeventclassid"  required>
+                            <mat-option *ngFor="let class of eventClasses" [value]="class.sc_skatingeventclassid">
+                                {{class.languages[language].name}}
+                              </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="!eventForm.controls['sc_skatingeventclassid'].valid" i18n>
+                            Please select an event class
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <button type="submit" id="submit_changes" class="mat-flat" mat-flat-button color="primary" i18n>Submit Changes</button>
+                &nbsp;
+                <button class="mat-flat" mat-flat-button mat-dialog-close color="primary" i18n>Cancel</button>
+                
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

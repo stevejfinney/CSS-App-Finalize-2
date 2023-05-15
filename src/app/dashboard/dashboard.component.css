@@ -1,0 +1,7 @@
+td {
+  padding-left: 25px;
+}
+
+.data-table td {
+  border:1px solid #ddd;
+}

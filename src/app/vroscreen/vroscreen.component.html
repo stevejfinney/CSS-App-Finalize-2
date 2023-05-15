@@ -1,0 +1,144 @@
+<div class="grid-container" *ngIf="user_access==true">
+    <mat-card>
+        <!-- Left container for side panel -->
+        <div class="fieldset_devide">
+            <div class="w-30">
+                <fieldset class="table_container" [ngClass]="{
+                    blink_finalize: dio_finalized == true
+                  }">
+                    <div class="element_container">
+                        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                            <ng-container matColumnDef="index">
+                                <th mat-header-cell *matHeaderCellDef i18n>No.</th>
+                                <td mat-cell *matCellDef="let element" [ngClass]="{
+                                    highlight2: element.status == name_testing}">
+                                    <div style="display: inline-block;" [ngClass]="{
+                                        review_highlight:review_index.includes(element['index']) == true
+                                    
+                                      }"
+                                      >
+
+                                    &nbsp;{{ element.index }}&nbsp;
+                                    </div>
+
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="elementCode">
+                                <th mat-header-cell *matHeaderCellDef i18n>Name</th>
+                                <td mat-cell *matCellDef="let element" [ngClass]="{
+                                    highlight2: element.status == name_testing,
+                                        text_error: wbp_failed_index.includes(element['index']) == true}">
+                                    {{ element.elementCode | slice:0:12}}
+
+
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="elmclip">
+                                <th mat-header-cell *matHeaderCellDef i18n>Element Clip</th>
+                                <td mat-cell *matCellDef="let element" [ngClass]="{
+                                    highlight2: element.status == name_testing}">
+                                    <mat-icon *ngIf="element.elmclip !=''">live_tv</mat-icon>
+
+
+
+                                    <mat-icon id="play_element_clip_button_{{element.index}}"
+                                        *ngIf="element.elmclip !=''">
+                                        &nbsp;&nbsp;play_circle_outline</mat-icon>
+
+
+
+                                    <mat-icon (click)="onDelete(element.index)" *ngIf="element.elmclip !=''">
+                                        &nbsp;&nbsp; delete
+                                    </mat-icon>
+
+                                    <!-- <mat-icon id="play_element_clip_button_{{element.index}}" (click)="onAutoPlay()">
+                                        play_circle_outline</mat-icon>
+                                    &nbsp;&nbsp;
+
+                                    <mat-icon (click)="onDelete(element.index)">delete</mat-icon> -->
+                                </td>
+                            </ng-container>
+
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="element_click(row)"
+                                [ngClass]="{
+                                highlight: selectedRowIndex == row.index
+                                
+                                               }"></tr>
+                        </table>
+                    </div>
+                </fieldset>
+
+                <!-- Submit -->
+
+                <!-- <div class="bottom_panel">
+                    <button id="submit" (click)="OnSubmit()" mat-button class="panel" i18n>
+                        Submit
+                    </button>
+                </div> -->
+            </div>
+            <!-- Right side panel -->
+            <div class="w-70">
+
+                <div class="first">
+                    <button mat-raised-button class="segment_name">
+                        <div class="mat-title" *ngIf=" skater_data.hasOwnProperty('skater_data')">
+                            {{skater_data["skater_data"]["sc_name"]}}</div>
+                        <div class="mat-title" *ngIf=" !skater_data.hasOwnProperty('skater_data')">No Skater</div>
+
+                        <!-- <div class="mat-title">
+                            {{ data.sc_competitorid.sc_name }}
+                        </div> -->
+                    </button>
+                    <button mat-raised-button class="segment_name">
+                        <div class="mat-title" *ngIf="language == 'en' && on_join_data.hasOwnProperty('segmentid')">
+                            {{ on_join_data["segmentid"]["categoryid"]["definitionid"]["sc_name"]| slice:0:20}}
+                            -
+                            {{ on_join_data["segmentid"]["enname"] }}<span *ngIf="on_join_data['segmentid']['patterndanceid'].hasOwnProperty('sc_elementcodeprefix')"> [{{on_join_data['segmentid']['patterndanceid']['sc_elementcodeprefix']}}]</span>
+                        </div>
+                        <!-- <div class="mat-title" *ngIf="language == 'en'">
+                            {{ data.segmentid.categoryid.definitionid.sc_name | slice:0:20}}
+                            -
+                            {{ data.segmentid.enname }}
+                        </div>
+                        <div *ngIf="language == 'fr'">
+                            {{ data.segmentid.categoryid.definitionid.sc_frenchname| slice:0:20 }} -
+                            {{ data.segmentid.frname }}
+                        </div> -->
+                    </button>
+                    <button mat-raised-button class="help_button">
+                        <div>
+                            <mat-icon (click)="OnHelp()">help</mat-icon>
+                        </div>
+                    </button>
+                </div>
+
+                <div class="second">
+                    <app-videoreplay [user_access]="user_access" [role_id]="official_role_id"  [video_feed]="video_feed" [locator_url]="locator_url"
+                        [element_clip_clicked]="clip" (parentFunction)="parentFunction($event)"
+                        (currentMediaTime)="currentMediaTime($event)" [skater_data]="skater_data" [room]="room">
+                    </app-videoreplay>
+                </div>
+
+
+
+            </div>
+        </div>
+    </mat-card>
+</div>
+
+<div class="grid-container" *ngIf="user_access==false" style="background: #fff url('assets/texture.jpg') repeat 0 0;">
+    <div class="error">
+        <div class="wrapper">
+            <div class="box">
+                <p>Sorry, Event is not started!</p>
+                <p><a href="/dashboard">Please, go back this way.</a></p>
+            </div>
+        </div>
+
+    </div>
+
+</div>

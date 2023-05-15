@@ -1,0 +1,63 @@
+<div class="judgescreen_programcomponents">
+    <div class="grid-container">
+        <mat-card>
+            <div class="fieldset_devide">
+                <fieldset class="field">
+                    <legend i18n>Program Component</legend>
+                    <div class="fieldset_devide">
+                        <div class="w-50">
+                            <div class="top_bottom_margin" *ngFor="let item of score_summary_pc; let i = index">
+                                <div class="fieldset_devide">
+                                    <div class="w-70" id="pc_label{{ i }}" (click)="programComponentName(i, item)">
+                                        <label *ngIf="language == 'en'">
+                                            {{ score_summary_pc[i]["sc_pctype"]["sc_name"]| slice:0:25 }}</label>
+
+                                        <label *ngIf="language == 'fr'">
+                                            {{ score_summary_pc[i]["sc_pctype"]["sc_frenchname"]| slice:0:25 }}</label>
+                                    </div>
+                                    <div class="w-30">
+                                        <input type="textBox" *ngIf="data['programComponent'][i] != -1"
+                                            value="{{ data['programComponent'][i] }}" readonly id="program_component{{ i }}"
+                                            class="competitor_input_type2" />
+                                        <input type="textBox" *ngIf="data['programComponent'][i] == -1" value=""
+                                            id="program_component{{ i }}" readonly class="competitor_input_type2" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="w-50">
+                            <div class="top_bottom_margin">
+                                <div class="fieldset_devide">
+                                    <div class="w-15" *ngFor="let value of program_com; let index = index">
+                                        <button (click)="valueClicked(index, program_com[index])" value="{{ value }}"
+                                            class="button_value">
+                                            {{ value }}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="top_bottom_margin1">
+                                <div class="fieldset_devide">
+                                    <div class="w-25" *ngFor="let item of program_comdecimal; let index = index">
+                                        <button (click)="valueClickedDecimal(index, item)" value="{{ item }}"
+                                            class="decimal_click">
+                                            {{ item }}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-100"></div>
+                </fieldset>
+
+                <div class="w-80">
+                    <button class="submit" mat-button mat-dialog-close i18n>Return</button>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div>

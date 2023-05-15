@@ -1,0 +1,219 @@
+<div id="body-wrapper">
+
+    <h1 i18n>Category Management</h1>
+    <div><a routerLink="/event/" i18n>&lt; Back to event list</a></div>
+
+    <h2>{{ event[0]?.languages[language].name }} - {{ event[0]?.location }}</h2>
+
+
+    <!--div id="event_control">
+
+    Run Event <mat-slide-toggle (ngModelChange)="toggleEvent($event,event[0]?.eventid)" [(ngModel)]="runEventToggle" color="primary"></mat-slide-toggle>
+    
+</div-->
+
+    <div>
+        <mat-card fxFlex="35">
+            <mat-card-content>
+                <mat-toolbar>
+                    <span i18n>Categories List</span>
+                </mat-toolbar>
+
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th i18n>Program</th>
+                                <th i18n>Discipline</th>
+                                <th i18n>Category</th>
+                                <th i18n>Group</th>
+                                <th i18n>Startdate</th>
+                                <th i18n>Enddate</th>
+                                <th i18n>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngIf="categories?.length === 0">
+                                <td colspan="5" i18n>No records</td>
+                            </tr>
+                            <tr *ngFor="let category of categories">
+                                <td>{{category.languages[language].progname}}</td>
+                                <td>{{category.languages[language].discname}}</td>
+                                <td>{{category.languages[language].catdefname}}</td>
+                                <td>{{category.languages[language].name}}</td>
+                                <td>{{category.startdate | date:'longDate'}}</td>
+                                <td>{{category.enddate | date:'longDate'}}</td>
+                                <td>{{category.status}}</td>
+                                <!-- Links are active / inactive depending on event status -->
+                                <td *ngIf="runEventToggle; else catEdit">
+                                    <span style="color:#ddd" i18n>edit</span> |
+                                    <span style="color:#ddd" i18n>delete</span> |
+                                    <a routerLink="/category/{{category.categoryid}}" i18n>segments</a>
+                                </td>
+                                <ng-template #catEdit>
+                                    <td>
+                                        <a [routerLink]="" (click)="categoryForm('edit',category.categoryid)"
+                                            i18n>edit</a> |
+                                        <a [routerLink]=""
+                                            (click)="deleteCategory(category.eventid,category.categoryid)"
+                                            i18n>delete</a> |
+                                        <a routerLink="/category/{{category.categoryid}}" i18n>segments</a>
+                                    </td>
+                                </ng-template>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+                <button [disabled]="runEventToggle" class="mat-flat" mat-flat-button color="primary"
+                    (click)="categoryForm('new',null)" i18n>Create New Category</button>
+                &nbsp;&nbsp;
+                <button [disabled]="runEventToggle" class="mat-flat" mat-flat-button color="primary"
+                    (click)="addRink(event[0].eventid)" i18n>Manage Rinks</button>
+                <!-- Move the event upload button here for now-->
+                <input type="file" class="mat-flat file-input" mat-flat-button color="primary"
+                    (change)="onFileSelected($event)" #fileUpload multiple="false" />
+
+                &nbsp;&nbsp;
+                <button [disabled]="runEventToggle" class="mat-flat" mat-flat-button color="primary"
+                    (click)="fileUpload.click()" i18n>Import Competition Data</button>
+                {{fileName || "No file uploaded yet."}}
+                <mat-progress-bar mode="indeterminate" *ngIf="isShown"></mat-progress-bar>
+                <div>
+                    <mat-list role="list">
+                        <mat-list-item *ngFor="let err of fileUploadedMessages">{{err}}</mat-list-item>
+                    </mat-list>
+                </div>
+
+            </mat-card-content>
+
+        </mat-card>
+
+
+    </div>
+
+    <!--div>
+    <mat-card fxFlex="35">
+        <mat-card-content>
+            <mat-toolbar>
+                <span i18n>Add / Edit Category</span>
+            </mat-toolbar>
+
+            <form (ngSubmit)="updateCategory()" name="categoryForm" [formGroup]="categoryForm">
+    
+                <div style="display:none;">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Category ID</mat-label>
+                        <input formControlName="categoryid" matInput readonly />
+                    </mat-form-field>
+                </div>
+
+                <div style="display:none;">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Event ID</mat-label>
+                        <input formControlName="eventid" matInput readonly />
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label i18n>Program</mat-label>
+                        <mat-select [(value)]="selectedProgramValue" name="programid" required (selectionChange)="onProgramChange($event)">
+                            <mat-option i18n>-- Select --</mat-option>
+                            <mat-option *ngFor="let prog of programs" [value]="prog.sc_programsid">
+                                {{prog.languages[language].name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="!categoryForm.controls['programid'].valid" i18n>
+                            Please select a program
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label i18n>Discipline</mat-label>
+                        <mat-select [(value)]="selectedDisciplineValue" name="disciplineid" required (selectionChange)="onDisciplineChange($event)">
+                            <mat-option i18n>-- Select --</mat-option>
+                            <mat-option *ngFor="let disc of disciplines" [value]="disc.sc_skatingdisciplinedefinitionid">
+                                {{disc.languages[language].name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="!categoryForm.controls['disciplineid'].valid" i18n>
+                            Please select a discipline
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label i18n>Category Definition</mat-label>
+                        <mat-select [(value)]="selectedDefinitionValue" name="definitionid" required>
+                            <mat-option i18n>-- Select --</mat-option>
+                            <mat-option *ngFor="let def of definitions" [value]="def.sc_skatingcategorydefinitionid">
+                                {{def.languages[language].name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="!categoryForm.controls['definitionid'].valid" i18n>
+                            Please select a definition
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label i18n>Group</mat-label>
+                        <input formControlName="enname" matInput />
+                        <mat-error *ngIf="!categoryForm.controls['enname'].valid" i18n>
+                            Please type a group name
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label i18n>Group (French)</mat-label>
+                        <input formControlName="frname" matInput />
+                        <mat-error *ngIf="!categoryForm.controls['frname'].valid" i18n>
+                            Please type a group name
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label i18n>Category Status</mat-label>
+                        <mat-select [(value)]="selectedValue" name="status">
+                            <mat-option value="Setup" i18n>Setup</mat-option>
+                            <mat-option value="Ready" i18n>Ready</mat-option>
+                            <mat-option value="In Progress" i18n>In Progress</mat-option>
+                            <mat-option value="Completed" i18n>Completed</mat-option>
+                            <mat-option value="Cancelled" i18n>Cancelled</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label i18n>Enter a start and end date</mat-label>
+                        <mat-date-range-input [formGroup]="categoryForm" [rangePicker]="picker">
+                          <input matStartDate formControlName="startdate" placeholder="Start date" required>
+                          <input matEndDate formControlName="enddate" placeholder="End date" required>
+                        </mat-date-range-input>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-date-range-picker #picker></mat-date-range-picker>
+                      
+                        <mat-error *ngIf="categoryForm.controls.startdate.hasError('matStartDateInvalid')" i18n>Invalid start date</mat-error>
+                        <mat-error *ngIf="categoryForm.controls.enddate.hasError('matEndDateInvalid')" i18n>Invalid end date</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <button [disabled]="runEventToggle" type="submit" class="mat-flat" mat-flat-button color="primary" i18n>Submit Changes</button>
+
+            </form>
+
+        </mat-card-content>
+    </mat-card>
+</div-->
+
+</div>

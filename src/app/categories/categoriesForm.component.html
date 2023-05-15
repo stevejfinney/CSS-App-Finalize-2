@@ -1,0 +1,135 @@
+<div>
+    <mat-card fxFlex="35">
+        <mat-card-content>
+            <mat-toolbar>
+                <span i18n>Add / Edit Category</span>
+            </mat-toolbar>
+
+            <form (ngSubmit)="updateCategory()" name="categoryForm" [formGroup]="categoryForm">
+    
+                <div style="display:none;">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Category ID</mat-label>
+                        <input formControlName="categoryid" matInput readonly />
+                    </mat-form-field>
+                </div>
+
+                <div style="display:none;">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Event ID</mat-label>
+                        <input formControlName="eventid" matInput readonly />
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label i18n>Program</mat-label>
+                        <mat-select [(value)]="selectedProgramValue" name="programid" required (selectionChange)="onProgramChange($event)">
+                            <mat-option i18n>-- Select --</mat-option>
+                            <mat-option *ngFor="let prog of programs" [value]="prog.sc_programsid">
+                                {{prog.languages[language].name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="!categoryForm.controls['programid'].valid" i18n>
+                            Please select a program
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label i18n>Discipline</mat-label>
+                        <!--input formControlName="sc_skatingeventclassid" matInput required /-->
+                        <mat-select [(value)]="selectedDisciplineValue" name="disciplineid" required (selectionChange)="onDisciplineChange($event)">
+                            <mat-option i18n>-- Select --</mat-option>
+                            <mat-option *ngFor="let disc of disciplines" [value]="disc.sc_skatingdisciplinedefinitionid">
+                                {{disc.languages[language].name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="!categoryForm.controls['disciplineid'].valid" i18n>
+                            Please select a discipline
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label i18n>Category Definition</mat-label>
+                        <!--input formControlName="sc_skatingeventclassid" matInput required /-->
+                        <mat-select [(value)]="selectedDefinitionValue" name="definitionid" required (selectionChange)="onDefinitionChange($event)">
+                            <mat-option i18n>-- Select --</mat-option>
+                            <mat-option *ngFor="let def of definitions" [value]="def.sc_skatingcategorydefinitionid">
+                                {{def.languages[language].name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="!categoryForm.controls['definitionid'].valid" i18n>
+                            Please select a definition
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div *ngIf="labels?.length > 0">
+                    <mat-form-field>
+                        <mat-label i18n>Select Labels</mat-label>
+                        <mat-select [(value)]="selectedLabels" multiple name="labels">
+                            <mat-option *ngFor="let label of labels" [value]="label.sc_skatingcategorylabelsid" [disabled]="label.sc_forced === 1 || label.sc_forced === true" >{{label.sc_name}} - {{label.languages[language].name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label i18n>Group</mat-label>
+                        <input formControlName="enname" matInput />
+                        <mat-error *ngIf="!categoryForm.controls['enname'].valid" i18n>
+                            Please type a group name
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label i18n>Group (French)</mat-label>
+                        <input formControlName="frname" matInput />
+                        <mat-error *ngIf="!categoryForm.controls['frname'].valid" i18n>
+                            Please type a group name
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <!--div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label i18n>Category Status</mat-label>
+                        <mat-select [(value)]="selectedValue" name="status">
+                            <mat-option value="Setup" i18n>Setup</mat-option>
+                            <mat-option value="Ready" i18n>Ready</mat-option>
+                            <mat-option value="In Progress" i18n>In Progress</mat-option>
+                            <mat-option value="Completed" i18n>Completed</mat-option>
+                            <mat-option value="Cancelled" i18n>Cancelled</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div-->
+
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label i18n>Enter a start and end date</mat-label>
+                        <mat-date-range-input [formGroup]="categoryForm" [rangePicker]="picker">
+                          <input matStartDate formControlName="startdate" placeholder="Start date" required>
+                          <input matEndDate formControlName="enddate" placeholder="End date" required>
+                        </mat-date-range-input>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-date-range-picker #picker></mat-date-range-picker>
+                      
+                        <mat-error *ngIf="categoryForm.controls.startdate.hasError('matStartDateInvalid')" i18n>Invalid start date</mat-error>
+                        <mat-error *ngIf="categoryForm.controls.enddate.hasError('matEndDateInvalid')" i18n>Invalid end date</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <button [disabled]="runEventToggle" id="submit_changes" type="submit" class="mat-flat" mat-flat-button color="primary" i18n>Submit Changes</button>
+                &nbsp;
+                <button class="mat-flat" mat-flat-button mat-dialog-close color="primary" i18n>Cancel</button>
+            </form>
+
+        </mat-card-content>
+    </mat-card>
+</div>

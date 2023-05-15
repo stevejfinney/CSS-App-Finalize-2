@@ -1,0 +1,15 @@
+{
+    "shortid": "PT83A-_JD",
+    "name": "data-list",
+    "creationDate": {
+        "$$date": 1681414232049
+    },
+    "modificationDate": {
+        "$$date": 1681827259202
+    },
+    "_id": "aeKhuJRTjZJ8Gmgx",
+    "$entitySet": "data",
+    "entitySet": "data",
+    "type": "entity",
+    "key": "aeKhuJRTjZJ8Gmgx"
+}

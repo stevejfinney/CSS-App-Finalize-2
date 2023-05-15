@@ -1,0 +1,94 @@
+<div id="body-wrapper">
+
+    <h1 i18n>Segment Management</h1>
+    <div><a routerLink="/event/{{category[0]?.eventid}}" i18n>&lt; Back to category list</a></div>
+    <h2>{{ category[0]?.languages[language].progname }} {{ category[0]?.languages[language].discname }} {{
+        category[0]?.languages[language].catdefname }}
+        <span *ngIf="category[0]?.startdate"><br />({{ category[0]?.startdate | date:'longDate' }} - {{
+            category[0]?.enddate | date:'longDate' }})</span>
+    </h2>
+
+    <div>
+        <mat-card fxFlex="35">
+            <mat-card-content>
+                <mat-toolbar>
+                    <span i18n>Segments List (drag to reorder)</span>
+                </mat-toolbar>
+
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>&nbsp;</th>
+                                <th i18n>order</th>
+                                <th i18n>name</th>
+                                <th *ngIf="viewDances">dance</th>
+                                <th i18n>rink</th>
+                            </tr>
+                        </thead>
+                        <tbody cdkDropList (cdkDropListDropped)="drop($event)">
+                            <tr *ngIf="segments?.length === 0">
+                                <td colspan="5">No records</td>
+                            </tr>
+                            <tr *ngFor="let segment of segments" cdkDrag cdkDragLockAxis="y" class="draggableItem">
+                                <td class="col-xs">
+                                    <span class="drag-handle">
+                                        <span class="material-icons">
+                                            drag_handle
+                                        </span>
+                                    </span>
+                                </td>
+                                <td class="col-sm">{{segment.performanceorder}}</td>
+                                <td class="col-md">{{segment.languages[language].name}}</td>
+                                <td class="col-md" *ngIf="viewDances">{{segment.languages[language].pdname}}</td>
+                                <td class="col-md">{{segment.rinkname}}</td>
+                                <td class="col-md">
+                                <td *ngIf="segment.inprogress == 1; else segEdit">
+                                    <span style="color:#ddd" i18n>edit</span> |
+                                    <span style="color:#ddd" i18n>delete</span> |
+                                    <a routerLink="/segment-competitors/{{segment.segmentid}}" i18n>competitors</a> |
+                                    <a routerLink="/segment-officials/{{segment.segmentid}}" i18n>officials</a> |
+                                    <a [routerLink]="" (click)="viewPcFactors(segment.definitionid)" i18n>review pc
+                                        factors</a> |
+                                    <a [routerLink]="" (click)="viewStandardsCriteria(segment.definitionid)" i18n>review
+                                        standards criteria</a> |
+                                    <a routerLink="/segment/{{segment.segmentid}}" i18n>run segment</a>
+                                </td>
+                                <ng-template #segEdit>
+                                    <td>
+                                        <a [routerLink]="" (click)="segmentForm('edit',segment.segmentid)" i18n>edit</a>
+                                        |
+                                        <a [routerLink]="" (click)="deleteSegment(segment.segmentid,segment.categoryid)"
+                                            i18n>delete</a> |
+                                        <a routerLink="/segment-competitors/{{segment.segmentid}}" i18n>competitors</a>
+                                        |
+                                        <a routerLink="/segment-officials/{{segment.segmentid}}" i18n>officials</a> |
+                                        <a [routerLink]="" (click)="viewPcFactors(segment.definitionid)" i18n>review pc
+                                            factors</a> |
+                                        <a [routerLink]="" (click)="viewStandardsCriteria(segment.definitionid)"
+                                            i18n>review standards criteria</a> |
+                                        <a routerLink="/segment/{{segment.segmentid}}" i18n>run segment</a>
+                                    </td>
+                                </ng-template>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+
+                <button class="mat-flat" mat-flat-button color="primary" (click)="segmentForm('add',null)" i18n>Create
+                    New Segment</button>
+                &nbsp;&nbsp;&nbsp;
+                <button [disabled]="segmentActive" class="mat-flat" mat-flat-button color="primary"
+                    (click)="addCompetitors(category[0]?.categoryid)" i18n>Add Competitors (to all segments)</button>
+                &nbsp;&nbsp;&nbsp;
+                <button [disabled]="segmentActive" class="mat-flat" mat-flat-button color="primary"
+                    (click)="addOfficials(category[0]?.categoryid)" i18n>Add Officials (to all segments)</button>
+            </mat-card-content>
+
+        </mat-card>
+
+
+    </div>
+
+</div>

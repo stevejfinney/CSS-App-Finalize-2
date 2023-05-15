@@ -1,0 +1,180 @@
+* {
+    
+}
+
+.report-box {
+    width:100%;
+    margin: auto;
+    /* padding: 30px; */
+    /* padding-top:0px; */
+    font-size: 16px;
+    line-height: 24px;
+    font-family: 'Arial'; 
+    color: #555;
+    /* border: 1px solid #000000; */
+}
+.report-box table {
+    width: 100%;
+    line-height: inherit;
+    text-align: left;
+}
+.report-box table td {
+    padding: 5px;
+    vertical-align: top;
+}
+.report-box table tr.heading td {
+    background: #eee;
+    border-bottom: 1px solid #ddd;
+    font-weight: bold;
+}
+.report-box table tr.item td {
+    border-bottom: 1px solid #eee;
+}
+
+.compDetail td.numberCentre {
+    width:50px;
+}
+
+.endOfReport {
+    color:#808080;
+    font-size: small;
+    text-align:center;
+    width:100%;
+    display:block;
+    padding-top:20px;
+}
+
+.detail-box {
+
+    text-align:right;
+    font-size:normal;
+    margin-right:20px;
+
+}
+
+h1 {
+    margin-bottom:10px;
+    margin-top:5px;
+}
+
+.event-logo {
+    max-width:130px;
+    max-height:85px;
+}
+
+.revised {
+    font-weight: bold;
+    color: red;
+}
+
+table.compDetail {
+    page-break-before:always;
+}
+
+table.components, table.elements, table.compDetail, table.adjustments {
+    font-size:small;
+}
+table.components td, table.elements td, table.adjustments td {
+    font-size: 10pt;
+    padding-top:0px;
+    padding-bottom:0px;
+    line-height:14pt;
+}
+
+td.numberWidth {
+    width: 40px;
+}
+td.numberCentre {
+    text-align:center;
+}
+
+.hideOverflow {
+    overflow:hidden;
+}
+
+
+
+@media print {
+    .infoHeader {
+        position:fixed;
+        top:0;
+        left:0;
+        /* padding:15px; */
+    }
+    header, .header-space {
+        height: 3cm;
+        width: 100%;
+        display:block;
+    }
+}
+
+
+/* GOLD, SILVER, BRONZE and MERIT AWARDS */
+
+.awards-section {
+    margin-bottom: 20px;
+}
+
+.award-title {
+   font-weight: bold;
+   font-size: 18px;
+}
+
+.award-details {
+    margin-left: 20px;
+    font-size: 16px;
+}
+
+.award-name {
+    font-weight: bold;
+}
+
+.award-time {
+    margin-left: 20px;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+/* REPORT CARD */
+
+ .assessment-section {
+            margin-bottom: 20px;
+        }
+
+        .block-title {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .assessment-details {
+            margin-left: 20px;
+            font-size: 16px;
+        }
+
+        .element-name {
+            font-weight: bold;
+        }
+
+        .element-assessment {
+            margin-left: 20px;
+        }
+
+        .program-title {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .program-details {
+            margin-left: 20px;
+        }
+
+        .overall-title {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .overall-assessment {
+            margin-left: 20px;
+        }

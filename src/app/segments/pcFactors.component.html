@@ -1,0 +1,17 @@
+<h2 mat-dialog-title i18n>Program Component Factors</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th i18n>pc code</th><th i18n>pc name</th><th i18n>point value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngIf= "factors?.length === 0"><td colspan="5" i18n>No records</td></tr>
+        <tr *ngFor="let dat of factors">
+            <td>{{dat.sc_name}}</td>
+            <td>{{dat.languages[language].pt_name}}</td>
+            <td>{{dat.sc_pointvalue}}</td>
+        </tr>
+    </tbody>
+</table>
