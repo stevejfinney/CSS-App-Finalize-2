@@ -274,6 +274,7 @@ exports.up = function(knex) {
         tbl.integer("sc_order");
         tbl.text("sc_modifiers");
         tbl.integer("sc_levelposition");
+        tbl.integer("sc_showleveltojudges");
     })
     .createTable("css_sc_skatingelementfamily", tbl => {
         tbl.text("sc_skatingelementfamilyid").unique().notNullable().primary();
@@ -397,6 +398,7 @@ exports.up = function(knex) {
         tbl.text("sc_abbreviatednamefrench");
         tbl.text("sc_rotationflag");
         tbl.text("sc_elementcode");
+        tbl.integer("statecode");
     })
     .createTable("css_sc_skatingelementnote", tbl => {
         tbl.text("sc_skatingelementnoteid").unique().notNullable().primary();
@@ -404,6 +406,8 @@ exports.up = function(knex) {
         tbl.text("sc_namefr");
         tbl.text("sc_value");
         tbl.text("sc_enteredby");
+        tbl.integer("sc_showonjudgescreens");
+        tbl.text("sc_usertype");
     })
 	.createTable("css_sc_skatingelementnote_sc_skatingdiscipl", tbl => {
         tbl.text("sc_skatingelementnote_sc_skatingdisciplid").unique().notNullable().primary();

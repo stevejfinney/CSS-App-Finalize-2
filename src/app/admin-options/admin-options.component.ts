@@ -128,8 +128,8 @@ export class AdminOptionsComponent implements OnInit {
     this.apiService.configToTest().subscribe(
         (response) => {
           var resp = JSON.parse(JSON.stringify(response)); // yes, i had to stringify then parse this....
-          this.testVersion = `CSS Stage version updated to ${resp.version}`;
-          this.configToTestRes = resp.dbresp;
+          this.testVersion = `${resp.message}`;
+          //this.configToTestRes = resp.dbresp;
         },
         (error) => this.configToTestErr = error.error)
   }

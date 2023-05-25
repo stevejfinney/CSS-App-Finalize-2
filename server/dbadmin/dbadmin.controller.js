@@ -176,6 +176,19 @@ exports.updateDefinitions = (req, res) => {
 }
 
 exports.scoringToTest = (req, res) => {
+    /*(async () => {
+        try {
+            const {body} = await got(`${apiUrl}/api/scoringtotest`, {
+                headers : { "Authorization" : `Raw ${apiCloudSecret}` }
+            });
+            res.status(200).send(body);
+        }
+        catch (error) { // api will send 400 response
+            //console.log(error.response);
+            res.status(400).send(error.response.body);
+        }
+        
+    })();*/
     (async () => {
         try {
             const {body} = await got(`${apiUrl}/api/scoringtotest`, {

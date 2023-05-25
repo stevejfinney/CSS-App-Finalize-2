@@ -23,11 +23,11 @@
         <span>
             <h2>{{apiTitle}}</h2>
             <p><br /></p>
-            <div><button (click)="configToTest()" i18n>Scoring config from dev to stage</button> Copy scoring
+            <div><button (click)="configToTest()" i18n>Scoring Config from CRM to Stage</button> Copy scoring
                 configuration to stage database</div>
             <div>
                 {{testVersion}}<br />
-                <table *ngIf="configToTestRes?.length > 0">
+                <!--table *ngIf="configToTestRes?.length > 0">
                     <tr>
                         <th i18n>Table</th>
                         <th i18n>Old record count</th>
@@ -40,11 +40,11 @@
                         <td>{{res.fromSource}}</td>
                         <td>{{res.newCount}}</td>
                     </tr>
-                </table>
+                </table-->
                 {{configToTestErr}}
             </div>
             <p><br /></p>
-            <div><button (click)="testToProd()" i18n>Scoring config from stage to production</button> Copy stage to
+            <div><button (click)="testToProd()" i18n>Scoring Config from Stage to Production</button> Copy stage to
                 production database</div>
             <div>
                 {{prodVersion}}<br />
